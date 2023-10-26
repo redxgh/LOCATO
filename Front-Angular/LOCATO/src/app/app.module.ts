@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ListAdsComponent } from './components/list-ads/list-ads.component';
+import { AdCardComponent } from './components/ad-card/ad-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListAdsComponent,
+    AdCardComponent
   ],
   imports: [
     BrowserModule,
