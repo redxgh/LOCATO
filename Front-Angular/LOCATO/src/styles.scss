@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+:root {
+  --white: #DDDDDD; /* Example color value */
+  --text-color: #222831;
+  --dark-blue: #30475E;
+  --red:#F05454; /* Example color value */
+}
+
+body {
+  font-family: "Roboto";
+  background-color: var(--white);
+}
