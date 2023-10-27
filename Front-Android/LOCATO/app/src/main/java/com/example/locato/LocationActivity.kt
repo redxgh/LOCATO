@@ -3,6 +3,7 @@ package com.example.locato
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.widget.Button
 import android.widget.Toast
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -21,7 +22,6 @@ class LocationActivity : AppCompatActivity() {
 
         mapView = findViewById(R.id.mapView)
         mapView.setTileSource(TileSourceFactory.MAPNIK)
-
         val mapController = mapView.controller
         val tunisiaCenter = GeoPoint(33.8869, 9.5375) // Latitude and longitude of Tunisia
         mapController.setCenter(tunisiaCenter)
@@ -32,19 +32,28 @@ class LocationActivity : AppCompatActivity() {
         marker.position = tunisiaCenter
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         mapView.overlays.add(marker)
-        // Inside onCreate method, after setting the click listener
         mapView.setOnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                val projectedPoint = mapView.projection.fromPixels(event.x.toInt(), event.y.toInt())
-                marker.position = projectedPoint as GeoPoint?
-                mapView.invalidate() // Refresh the map view to update the marker's position
-                // Do something with the GeoPoint, for example, display its latitude and longitude
-                Toast.makeText(this, "Latitude: ${projectedPoint.latitude}, Longitude: ${projectedPoint.longitude}", Toast.LENGTH_SHORT).show()
+            when (event.action) {
+                MotionEvent.ACTION_UP -> {
+                    val projectedPoint = mapView.projection.fromPixels(event.x.toInt(), event.y.toInt())
+                    marker.position = projectedPoint as GeoPoint?
+                    mapView.invalidate()
+                    Toast.makeText(
+                        this,
+                        "Latitude: ${projectedPoint.latitude}, Longitude: ${projectedPoint.longitude}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                MotionEvent.ACTION_POINTER_DOWN, MotionEvent.ACTION_POINTER_UP -> {
+                    // Handle multi-touch events for zooming
+                    mapView.onTouchEvent(event)
+                }
             }
             true
         }
-        
+
     }
+
     override fun onResume() {
         super.onResume()
         mapView.onResume()
@@ -54,5 +63,4 @@ class LocationActivity : AppCompatActivity() {
         super.onPause()
         mapView.onPause()
     }
-
 }
