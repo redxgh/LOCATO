@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.ads {
+  padding: 2vh;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#ad {
+  margin: 2vh;
+}
