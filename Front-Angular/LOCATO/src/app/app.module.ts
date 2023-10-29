@@ -5,12 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListAdsComponent } from './components/list-ads/list-ads.component';
 import { AdCardComponent } from './components/ad-card/ad-card.component';
-
+import { PostAdComponent } from './post-ad/post-ad/post-ad.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListAdsComponent,
-    AdCardComponent
+    AdCardComponent,
+    PostAdComponent,
   ],
   imports: [
     BrowserModule,

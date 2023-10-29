@@ -1,0 +1,52 @@
+<nav>
+  <div>  <img class="logo" src="../../../assets/logo.png" alt="">
+  </div>
+
+  <div>
+    <button routerLink="/" id="exit" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Exit</button>
+  </div>
+</nav>
+<div class="content">
+   <ul>
+    <li>
+      <h1 class="title">choose type of post</h1>
+    </li>
+    <li>
+        <h3 class="sub-title"></h3>
+    </li>
+    <li>
+
+    <div class="start" routerLink="/type-post">
+      <div class="card" class="card" [class.active]="activeCardIndex === 0" (click)="setActiveCard(0)">
+        <ul>
+          <li>
+            <h1>Im here to rent a house</h1>
+          </li>
+          <li>
+              <h3>ghhh</h3>
+          </li>
+          </ul>
+          <div>
+
+          </div>
+      </div>
+      <div class="card" class="card" [class.active]="activeCardIndex === 1" (click)="setActiveCard(1)">
+        <ul>
+          <li>
+            <h1 >Im looking for roomate</h1>
+          </li>
+          <li>
+              <h3>ghhh</h3>
+          </li>
+          </ul>
+          <div>
+            <img class="roommate" src="../../../assets/2608579061553771652-128.png" alt="ggggggggg">
+          </div>
+      </div>
+    </div>
+    </li>
+   </ul>
+   <div>
+    <button (click)="goTo()" [disabled]="selectedCardIndex === null" id="exit" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Next</button>
+  </div>
+</div>
