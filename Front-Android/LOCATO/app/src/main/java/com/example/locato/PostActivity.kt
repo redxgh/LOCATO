@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
+import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.material.button.MaterialButton
 
-class MainActivity : AppCompatActivity() {
+class PostActivity : AppCompatActivity() {
 
     private lateinit var adTitle: EditText
     private lateinit var adDesc: EditText
@@ -22,6 +23,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // Set up the Toolbar as the ActionBar
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        // Enable the "Up" button
+        val actionBar: ActionBar? = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         adTitle = findViewById(R.id.adTitle)
         adDesc = findViewById(R.id.adDesc)
@@ -45,6 +54,10 @@ class MainActivity : AppCompatActivity() {
         adTitle.addTextChangedListener(textWatcher)
         adDesc.addTextChangedListener(textWatcher)
         adPrice.addTextChangedListener(textWatcher)
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun checkFormCompletion() {

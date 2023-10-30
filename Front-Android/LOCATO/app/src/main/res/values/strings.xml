@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">LOCATO</string>
+    <string name="home_icon">Home Icon</string>
+    <string name="welcome">Welcome</string>
+    <string name="name">Name</string>
+    <string name="search">Search…</string>
+    <string name="rent_your_house_now">Rent Your House Now !</string>
+    <string name="house">Home</string>
+    <string name="office">Office </string>
+    <string name="apartment">Apartment</string>
+    <string name="villa">Villa</string>
+    <string name="locato">LOCATO</string>
+    <string name="villa1">Villa</string>
+    <string name="popular">Popular</string>
+    <string name="see_all">See All</string>
+    <string name="new1">New</string>
+    <string name="see_all1">See All</string>
+    <string name="apartment1">Apartment</string>
+    <string name="office1">Office</string>
+    <string name="home1">Home</string>
+    <string name="welcome1">Welcome</string>
+    <string name="sousse">Sousse</string>
+    <string name="_000_000_dt">000.000 DT</string>
+    <string name="dar_colibri">Dar Colibri</string>
+    <string name="dar_colibri1">Dar Colibri</string>
+    <string name="sousse1">Sousse</string>
+    <string name="_000_000_dt1">000.000 DT</string>
 </resources>
