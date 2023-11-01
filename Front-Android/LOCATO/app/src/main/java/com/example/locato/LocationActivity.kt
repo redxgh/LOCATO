@@ -21,18 +21,21 @@ class LocationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
-        installSplashScreen()
         Configuration.getInstance().load(applicationContext, getPreferences(MODE_PRIVATE))
+        val selectedCity = intent.getStringExtra("selectedCity")
+
 
         mapView = findViewById(R.id.mapView)
         mapView.setTileSource(TileSourceFactory.MAPNIK)
         mapView.setMultiTouchControls(true) // Enable multi-touch gestures
 
         val mapController = mapView.controller
-        val tunisiaCenter = GeoPoint(33.8869, 9.5375) // Latitude and longitude of Tunisia
-        mapController.setCenter(tunisiaCenter)
-        mapController.setZoom(8.0) // Adjust the zoom level as per your requirement
 
+        val selectedCityLocation = getCityLocation(selectedCity)
+        if (selectedCityLocation != null) {
+            mapController.setCenter(selectedCityLocation)
+            mapController.setZoom(12.0) // Adjust the zoom level as per your requirement
+        }
         zoomInButton = findViewById(R.id.zoomInButton)
         zoomOutButton = findViewById(R.id.zoomOutButton)
 
@@ -45,10 +48,11 @@ class LocationActivity : AppCompatActivity() {
         }
 
         marker = Marker(mapView)
-        marker.position = tunisiaCenter
+        marker.position = selectedCityLocation
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         mapView.overlays.add(marker)
-    // Add the following code to mark a place on the map
+
+
         val targetLocation = GeoPoint(37.7749, -122.4194) // Latitude and longitude of the target location
         val targetMarker = Marker(mapView)
         targetMarker.position = targetLocation
@@ -65,5 +69,22 @@ class LocationActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mapView.onPause()
+    }
+
+    private fun getCityLocation(city: String?): GeoPoint? {
+
+        val cityLocations = mapOf(
+            "Tunis" to GeoPoint(36.8065, 10.1815),
+            "Sfax" to GeoPoint(34.7397, 10.7604),
+            "Bizerte" to GeoPoint(37.2744, 9.8733),
+             "Sousse" to GeoPoint(35.8254, 10.6367),
+            "Gabes" to GeoPoint(33.8819, 10.0982),
+        "Kairouan" to GeoPoint(35.6784, 10.0963),
+        "Gafsa" to GeoPoint(34.4250, 8.7842),
+        "Monastir" to GeoPoint(35.7833, 10.8333),
+        "Hammamet" to  GeoPoint(36.4000, 10.6167),
+        "Nabeul" to GeoPoint(36.4564, 10.7376),
+        )
+        return cityLocations[city]
     }
 }
