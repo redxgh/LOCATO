@@ -7,11 +7,11 @@ import { RentingAdComponent } from './post-ad/renting-ad/renting-ad.component';
 import { RoommateAdComponent } from './post-ad/roommate-ad/roommate-ad.component';
 
 const routes: Routes = [
-  { path: '' , component:ListAdsComponent},
-  { path: 'post-ad', component: PostAdComponent},
-  { path: 'type-post' , component:TypePostComponent},
-  { path: 'renting-ad', component: RentingAdComponent},
-    { path: 'roommate-ad' , component:RoommateAdComponent},
+  { path: '', component: ListAdsComponent },
+  { path: 'post-ad', component: PostAdComponent },
+  { path: 'type-post', component: TypePostComponent },
+  { path: 'renting-ad', component: RentingAdComponent },
+  { path: 'roommate-ad', component: RoommateAdComponent },
 
 
 ];
