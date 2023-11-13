@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component , AfterViewInit } from '@angular/core';
 import { Ad } from 'src/app/Ad';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-list-ads',
   templateUrl: './list-ads.component.html',
   styleUrls: ['./list-ads.component.scss']
 })
-export class ListAdsComponent {
+export class ListAdsComponent implements AfterViewInit {
+
   ads: Ad[] = [
     {
       id: 1,
@@ -99,5 +101,51 @@ export class ListAdsComponent {
       userId: 205,
     },
   ];
+
+  ngAfterViewInit() {
+    $('.slider').each(function () {
+      var slideCount = $(this).find('ul li').length;
+      var slideWidth = $(this).find('ul li').first().width() || 0;
+      var slideHeight = $(this).find('ul li').height();
+      var sliderUlWidth = slideCount * slideWidth;
+    
+    
+      $(this).find('ul').css({ width: sliderUlWidth, marginLeft: -slideWidth });
+    
+      $(this).find('ul li:last-child').prependTo($(this).find('ul'));
+    
+      function moveLeft(slider: JQuery<any>) {
+        var sliderUl = $(slider).find('ul');
+        sliderUl.animate({
+          left: +slideWidth
+        }, 200, function () {
+          sliderUl.find('li:last-child').prependTo(sliderUl);
+          sliderUl.css('left', '');
+        });
+      };
+    
+      function moveRight(slider: JQuery<any>) {
+        var sliderUl = $(slider).find('ul');
+        sliderUl.animate({
+          left: -slideWidth
+        }, 200, function () {
+          sliderUl.find('li:first-child').appendTo(sliderUl);
+          sliderUl.css('left', '');
+        });
+      };
+    
+      $(this).on('click', 'a.control_prev', function () {
+        var slider = $(this).closest('.slider');
+        moveLeft(slider);
+      });
+    
+      $(this).on('click', 'a.control_next', function () {
+        var slider = $(this).closest('.slider');
+        moveRight(slider);
+      });
+    });
+  }
+  
+
 
 }

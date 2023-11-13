@@ -3,10 +3,10 @@
 </div> -->
 <div>
   <a href="" class="logo show-logo"></a>
-  <!-- <header>
+  <header>
       <div class="row">
           <div class="col-md-3">
-              <a href="" class="burger"><span class="icon"></span> Renting</a>
+            <img src="../../../assets/logo.png" width="70px"  alt="">
           </div>
           <div class="col-md-6">
 
@@ -25,7 +25,7 @@
               </ul>
           </div>
       </div>
-  </header> -->
+  </header>
   <section>
       <div class="row">
           <div class="col-md-9">
@@ -34,22 +34,25 @@
                       <a href="" class="active">All Categories</a>
                   </li>
                   <li>
-                      <a href=""></a>
+                      <a href="">House</a>
                   </li>
                   <li>
-                      <a href="">Wethepeople</a>
+                      <a href="">Appartment</a>
                   </li>
                   <li>
-                      <a href="">Fiend</a>
+                    <a href="">Villa</a>
+                 </li>
+                  <li>
+                      <a href="">Studio</a>
                   </li>
                   <li>
-                      <a href="">Cult</a>
+                      <a href="">Hotel</a>
                   </li>
                   <li>
-                      <a href="">Suprosa</a>
+                      <a href="">Hostel</a>
                   </li>
                   <li>
-                      <a href="">Odyssey</a>
+                      <a href="">Villa</a>
                   </li>
               </ul>
           </div>
@@ -64,19 +67,19 @@
       </div>
       <div class="row">
           <div class="col-md-2">
-              <h3 class="side-title">Poperties</h3>
+              <h3 class="side-title">Cities</h3>
               <ul class="products-category">
                   <li>
                       <a href="" class="active">All</a>
                   </li>
-                  <li><a href="">Bikes</a></li>
-                  <li><a href="">Frames</a></li>
-                  <li><a href="">Wheels</a></li>
-                  <li><a href="">Steering</a></li>
-                  <li><a href="">Clothing</a></li>
-                  <li><a href="">Drivechain</a></li>
-                  <li><a href="">Misc</a></li>
-                  <li><a href="">Seating</a></li>
+                  <li><a href="">Bizerte</a></li>
+                  <li><a href="">Tunis</a></li>
+                  <li><a href="">Nabeul</a></li>
+                  <li><a href="">Gafsa</a></li>
+                  <li><a href="">Gasserine</a></li>
+                  <li><a href="">Tozeur</a></li>
+                  <li><a href="">Kairaoane</a></li>
+                  <li><a href=""></a></li>
                   <li><a href="">Sale</a></li>
               </ul>
           </div>
@@ -84,8 +87,8 @@
               <div class="row">
                   <div class="col-md-8">
                       <div class="main-hero-slider">
-                          <h2>Garret Reynolds'<br>New Bike.</h2>
-                          <img class="dude" src="https://trumasex.com/tom/i-removebg-preview.png" alt="">
+                          <h2>Garret Reynolds'<br>New Hotel</h2>
+                          <img class="dude" src="" alt="">
                           <div class="content-cta">
                               <button>Buy now</button>
                               <button class="dark">See review</button>
@@ -96,8 +99,8 @@
                       <div class="card">
                           <div class="card-image example"></div>
                           <div class="card-content">
-                              <h5>XGAMES 2020</h5>
-                              <p>New DVD, USA 2020 + Flybikes and Red Bull</p>
+                              <h5>New House For Renting In Bizerte ! </h5>
+                              <p>Lorem, ipsum dolor </p>
                               <ul class="users">
                                   <li><img src="https://i.pravatar.cc/150?img=13" alt=""></li>
                                   <li><img src="https://i.pravatar.cc/150?img=14" alt=""></li>
@@ -107,38 +110,31 @@
                       </div>
                   </div>
               </div>
-              <div class="row">
-                  <div class="col-md-2">
-                      <div class="card product-item">
-                          product
-                      </div>
-                  </div>
-                  <div class="col-md-2">
-                      <div class="card product-item">
-                          product
-                      </div>
-                  </div>
-                  <div class="col-md-2">
-                      <div class="card product-item">
-                          product
-                      </div>
-                  </div>
-                  <div class="col-md-2">
-                      <div class="card product-item">
-                          product
-                      </div>
-                  </div>
-                  <div class="col-md-2">
-                      <div class="card product-item">
-                          product
-                      </div>
-                  </div>
-                  <div class="col-md-2">
-                      <div class="card product-item">
-                          product
-                      </div>
-                  </div>
-              </div>
+
+              <div class="main-ads">
+                      <!-- <div class="card product-item">
+                        <div class="slider">
+                            <a href="#" class="control_next">></a>
+                            <a href="#" class="control_prev"><</a>
+                            <ul>
+                                <li style="background-image: url(../../../assets/house1.jpg);">S</li>
+                                <li style="background-image: url(../../../assets/house2.jpg);">S</li>
+                                <li style="background-image: url(../../../assets/house3.jpg);">S</li>
+                                <li style="background-image: url(../../../assets/yujiro.jpg);">S</li>
+                            </ul>  
+                          </div>
+                          <div class="product-item-desc px-1 py-1">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.!
+                            <div class="product-item-price">
+                             <b class="font-bold">400DT</b>
+                            </div>
+                          </div>
+                       </div> -->
+                       
+                       <app-ad-card *ngFor="let ad of ads" [ad]="ad" id="ad"></app-ad-card>
+
+
+                </div>  
           </div>
       </div>
   </section>

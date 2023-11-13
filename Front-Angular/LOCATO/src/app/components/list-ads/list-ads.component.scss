@@ -135,7 +135,7 @@ section {
 				display: inline-block;
 				&:hover {
 					transform: translatex(5px);
-					color: var(--color-dark);
+					color: var(--red);
 				}
 				&.active {
 					color: var(--color-dark);
@@ -162,7 +162,7 @@ section {
 				&:hover {
 					box-shadow: 3px 9px 8px var(--color-secondary);
 					color: var(--color-light);
-					background: var(--color-primary);
+					background: var(--dark-blue);
 				}
 				&.active {
 					background: var(--color-dark);
@@ -219,7 +219,7 @@ section {
 			height: 180px;
 			border-radius: 22px;
 			&.example {
-				background-image: url("https://images.unsplash.com/flagged/photo-1553677969-1d67bbe9d55a?auto=format&fit=crop&w=1350&q=80");
+				background-image: url("https://cf.bstatic.com/xdata/images/hotel/max1024x768/463156637.jpg?k=5d913fb55963d82c13fe5960117723b5d57007e15e813be871395bf090418f2f&o=&hp=1");
 			}
 		}
 		.card-content {
@@ -345,8 +345,10 @@ section {
 			}
 		}
 	}
-	.product-item {
-		margin: 15px 0;
-		height: 250px;
-	}
+	.main-ads {
+	  display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 16px;
+         }
 }
+
