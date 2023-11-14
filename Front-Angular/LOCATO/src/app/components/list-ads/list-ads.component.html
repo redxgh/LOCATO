@@ -3,29 +3,6 @@
 </div> -->
 <div>
   <a href="" class="logo show-logo"></a>
-  <header>
-      <div class="row">
-          <div class="col-md-3">
-            <img src="../../../assets/logo.png" width="70px"  alt="">
-          </div>
-          <div class="col-md-6">
-
-          </div>
-          <div class="col-md-3">
-              <ul class="top-menu">
-                  <li>
-                      <a href="">US</a>
-                  </li>
-                  <li>
-                      <a href="">Login</a>
-                  </li>
-                  <li>
-                      <a href="">Support</a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </header>
   <section>
       <div class="row">
           <div class="col-md-9">
@@ -86,9 +63,8 @@
           <div class="col-md-10">
               <div class="row">
                   <div class="col-md-8">
-                      <div class="main-hero-slider">
+                      <div class="main-hero-slider" style="background-image: url('../../../assets/hotel.jpg');">
                           <h2>Garret Reynolds'<br>New Hotel</h2>
-                          <img class="dude" src="" alt="">
                           <div class="content-cta">
                               <button>Buy now</button>
                               <button class="dark">See review</button>
@@ -112,24 +88,7 @@
               </div>
 
               <div class="main-ads">
-                      <!-- <div class="card product-item">
-                        <div class="slider">
-                            <a href="#" class="control_next">></a>
-                            <a href="#" class="control_prev"><</a>
-                            <ul>
-                                <li style="background-image: url(../../../assets/house1.jpg);">S</li>
-                                <li style="background-image: url(../../../assets/house2.jpg);">S</li>
-                                <li style="background-image: url(../../../assets/house3.jpg);">S</li>
-                                <li style="background-image: url(../../../assets/yujiro.jpg);">S</li>
-                            </ul>  
-                          </div>
-                          <div class="product-item-desc px-1 py-1">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit.!
-                            <div class="product-item-price">
-                             <b class="font-bold">400DT</b>
-                            </div>
-                          </div>
-                       </div> -->
+            
                        
                        <app-ad-card *ngFor="let ad of ads" [ad]="ad" id="ad"></app-ad-card>
 

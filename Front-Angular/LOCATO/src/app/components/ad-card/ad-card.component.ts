@@ -15,5 +15,6 @@ export class AdCardComponent {
     timestamp: "",
     accommodationId: 0,
     userId: 0,
+    images:[],
   }
 }

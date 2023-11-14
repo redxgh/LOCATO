@@ -6,4 +6,5 @@ export interface Ad {
   timestamp: string; // You can use a string or Date for timestamps
   accommodationId: number;
   userId: number;
+  images:string[];
 }
