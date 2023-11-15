@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { Ad } from 'src/app/Ad';
+import { Ad } from 'src/app/model/Ad';
 import * as $ from 'jquery';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-list-ads',
@@ -110,9 +111,8 @@ export class ListAdsComponent implements AfterViewInit {
       images: ['house2.jpg'],
     },
   ];
-
-
   ngAfterViewInit() {
+    //sliders 
     $('.slider').each(function () {
       var slideCount = $(this).find('ul li').length;
       var slideWidth = $(this).find('ul li').first().width() || 0;
@@ -161,5 +161,7 @@ export class ListAdsComponent implements AfterViewInit {
         moveRight(slider);
       });
     });
+    //Aos(animate on scroll animation) animation 
+    Aos.init();
   }
 }

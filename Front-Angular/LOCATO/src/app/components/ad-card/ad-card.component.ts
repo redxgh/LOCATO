@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Ad } from 'src/app/Ad';
+import { Ad } from 'src/app/model/Ad';
 
 @Component({
   selector: 'app-ad-card',

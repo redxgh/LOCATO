@@ -1,11 +1,8 @@
-<!-- <div class="ads">
-  <app-ad-card *ngFor="let ad of ads" [ad]="ad" id="ad"></app-ad-card>
-</div> -->
 <div>
   <a href="" class="logo show-logo"></a>
   <section>
-      <div class="row">
-          <div class="col-md-9">
+      <div class="row"  >
+          <div class="col-md-9" data-aos="fade-right">
               <ul class="brand-list">
                   <li>
                       <a href="" class="active">All Categories</a>
@@ -33,7 +30,7 @@
                   </li>
               </ul>
           </div>
-          <div class="col-md-3 search-top">
+          <div class="col-md-3 search-top" data-aos="fade-left" data-aos-duration="1000">
               <div class="input-wrapper">
                   <input type="text" placeholder="Search">
                   <button><svg viewBox="0 0 512 512" width="100" title="search">
@@ -42,8 +39,8 @@
               </div>
           </div>
       </div>
-      <div class="row">
-          <div class="col-md-2">
+      <div class="row ">
+          <div class="col-md-2" data-aos="fade-right">
               <h3 class="side-title">Cities</h3>
               <ul class="products-category">
                   <li>
@@ -87,7 +84,7 @@
                   </div>
               </div>
 
-              <div class="main-ads">
+              <div class="main-ads" >
             
                        
                        <app-ad-card *ngFor="let ad of ads" [ad]="ad" id="ad"></app-ad-card>
