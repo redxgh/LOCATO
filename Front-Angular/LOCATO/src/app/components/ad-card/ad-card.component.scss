@@ -4,12 +4,24 @@
     margin: 15px 0;
     width: 300px;
     height: 300px;
-    padding: 0px 0px 10px 0px;
+    padding: 0px 0px 10px 0px;  
+
+    .product-category{
+      font-size: 11px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: white;
+      padding: 5px 10px;
+      border-radius: 15px;
+    }
+//slider
     .slider {
         position: relative;
         overflow: hidden;
         // margin: 20px auto 0 auto;
         border-radius: 4px;
+        
       }
       
       .slider ul {
@@ -65,4 +77,24 @@
         right: 0;
         border-radius: 100%;
       }
+
+      .product-item-city{
+        font-weight: 600;
+        font-size: 13px;
+        color: var(--dark-blue);
+      }
+      //product price 
+      .product-item-price{
+       text-align: right;
+       padding: 5px;
+       span{
+        font-size: 13px;        
+        background-color: var(--red);
+        padding: 5px 10px;
+        border-radius: 15px;
+        color: white;
+        font-weight: 600;
+      }
+    }
+      
 }
