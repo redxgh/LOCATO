@@ -112,13 +112,21 @@ export class ListAdsComponent implements AfterViewInit {
     },
   ];
   ngAfterViewInit() {
-    //sliders 
+    //sliders
     $('.slider').each(function () {
       var slideCount = $(this).find('ul li').length;
       var slideWidth = $(this).find('ul li').first().width() || 0;
       var slideHeight = $(this).find('ul li').height();
       var sliderUlWidth = slideCount * slideWidth;
 
+      // If there's only one image, don't set up the slider functionality
+      if (slideCount === 1) {
+        $(this).find('ul li').show(); // show the single image
+        $(this).find('.control_next').hide();
+        $(this).find('.control_prev').hide();
+
+        return;
+      }
       $(this).find('ul').css({ width: sliderUlWidth, marginLeft: -slideWidth });
 
       $(this).find('ul li:last-child').prependTo($(this).find('ul'));
@@ -161,7 +169,7 @@ export class ListAdsComponent implements AfterViewInit {
         moveRight(slider);
       });
     });
-    //Aos(animate on scroll animation) animation 
+    //Aos(animate on scroll animation) animation
     Aos.init();
   }
 }
