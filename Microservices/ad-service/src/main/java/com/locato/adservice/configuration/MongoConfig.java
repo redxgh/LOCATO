@@ -1,4 +1,4 @@
-package com.locato.adservice;
+package com.locato.adservice.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
