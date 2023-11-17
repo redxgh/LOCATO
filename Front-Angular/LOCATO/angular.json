@@ -20,6 +20,7 @@
             "outputPath": "dist/locato",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "allowedCommonJsDependencies": ["aos","jquery"],
             "polyfills": [
               "zone.js"
             ],
@@ -30,7 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/aos/dist/aos.css"
+              
             ],
             "scripts": []
           },
@@ -93,7 +96,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/aos/dist/aos.css"
+
             ],
             "scripts": []
           }

@@ -1,0 +1,99 @@
+
+
+.product-item {
+    margin: 15px 0;
+    width: 300px;
+    height: 300px;
+    padding: 0px 0px 10px 0px;  
+
+    .product-category{
+      font-size: 11px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: white;
+      padding: 5px 10px;
+      border-radius: 15px;
+    }
+//slider
+    .slider {
+        position: relative;
+        overflow: hidden;
+        // margin: 20px auto 0 auto;
+        border-radius: 4px;
+        
+      }
+      
+      .slider ul {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        // height: 200px;
+        list-style: none;
+      }
+      
+      .slider ul li {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 300px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+      }
+      
+      a.control_prev, a.control_next {
+        position: absolute;
+        top: 40%;
+        z-index: 999;
+        display: block;
+        padding: 0;
+        width: 30px;
+        text-align: center;
+        height: auto;
+        background: #ffffffc7;
+        color: #000000;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 20px;
+        font-family: monospace;
+        opacity: 0.8;
+        cursor: pointer;
+      }
+      
+      a.control_prev:hover, a.control_next:hover {
+        opacity: 1;
+        -webkit-transition: all 0.2s ease;
+      }
+      
+      a.control_prev {
+        border-radius: 100%;
+      }
+      a.control_next {
+        right: 0;
+        border-radius: 100%;
+      }
+
+      .product-item-city{
+        font-weight: 600;
+        font-size: 13px;
+        color: var(--dark-blue);
+      }
+      //product price 
+      .product-item-price{
+       text-align: right;
+       padding: 5px;
+       span{
+        font-size: 13px;        
+        background-color: var(--red);
+        padding: 5px 10px;
+        border-radius: 15px;
+        color: white;
+        font-weight: 600;
+      }
+    }
+      
+}

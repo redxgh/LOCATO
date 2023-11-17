@@ -1,3 +1,96 @@
-<div class="ads">
-  <app-ad-card *ngFor="let ad of ads" [ad]="ad" id="ad"></app-ad-card>
+<div>
+  <section>
+      <div class="row"  >
+          <div class="col-md-9" data-aos="fade-right">
+              <ul class="brand-list">
+                  <li>
+                      <a href="" class="active">All Categories</a>
+                  </li>
+                  <li>
+                      <a href="">House</a>
+                  </li>
+                  <li>
+                      <a href="">Appartment</a>
+                  </li>
+                  <li>
+                    <a href="">Villa</a>
+                 </li>
+                  <li>
+                      <a href="">Studio</a>
+                  </li>
+                  <li>
+                      <a href="">Hotel</a>
+                  </li>
+                  <li>
+                      <a href="">Hostel</a>
+                  </li>
+                  <li>
+                      <a href="">Villa</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-3 search-top" data-aos="fade-left" data-aos-duration="1000">
+              <div class="input-wrapper">
+                  <input type="text" placeholder="Search">
+                  <button><svg viewBox="0 0 512 512" width="100" title="search">
+                          <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                      </svg></button>
+              </div>
+          </div>
+      </div>
+      <div class="row ">
+          <div class="col-md-2" data-aos="fade-right">
+              <h3 class="side-title">Cities</h3>
+              <ul class="products-category">
+                  <li>
+                      <a href="" class="active">All</a>
+                  </li>
+                  <li><a href="">Bizerte</a></li>
+                  <li><a href="">Tunis</a></li>
+                  <li><a href="">Nabeul</a></li>
+                  <li><a href="">Gafsa</a></li>
+                  <li><a href="">Gasserine</a></li>
+                  <li><a href="">Tozeur</a></li>
+                  <li><a href="">Kairaoane</a></li>
+                  <li><a href=""></a></li>
+                  <li><a href="">Sale</a></li>
+              </ul>
+          </div>
+          <div class="col-md-10">
+              <div class="row">
+                  <div class="col-md-8">
+                      <div class="main-hero-slider" style="background-image: url('../../../assets/hotel.jpg');">
+                          <h2>Garret Reynolds'<br>New Hotel</h2>
+                          <div class="content-cta">
+                              <button>Buy now</button>
+                              <button class="dark">See review</button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="card">
+                          <div class="card-image example"></div>
+                          <div class="card-content">
+                              <h5>New House For Renting In Bizerte ! </h5>
+                              <p>Lorem, ipsum dolor </p>
+                              <ul class="users">
+                                  <li><img src="https://i.pravatar.cc/150?img=13" alt=""></li>
+                                  <li><img src="https://i.pravatar.cc/150?img=14" alt=""></li>
+                                  <li><img src="https://i.pravatar.cc/150?img=15" alt=""></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="main-ads" >
+            
+                       
+                       <app-ad-card *ngFor="let ad of ads" [ad]="ad" id="ad"></app-ad-card>
+
+
+                </div>  
+          </div>
+      </div>
+  </section>
 </div>

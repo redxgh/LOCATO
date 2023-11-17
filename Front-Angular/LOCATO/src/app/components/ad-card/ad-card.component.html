@@ -1,89 +1,46 @@
-<div
-  class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-3"
->
-  <a href="#">
-    <img
-      class="p-8 rounded-t-lg"
-      src="https://www.forbes.com/home-improvement/wp-content/uploads/2022/07/download-23.jpg"
-      alt="product image"
-    />
-  </a>
-  <div class="px-5 pb-5">
-    <a href="#">
-      <h5
-        class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"
-      >
-        {{ ad.title }}
-      </h5>
-    </a>
-    <div class="flex items-center mt-2.5 mb-5">
-      <svg
-        class="w-4 h-4 text-yellow-300 mr-1"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 22 20"
-      >
-        <path
-          d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-        />
-      </svg>
-      <svg
-        class="w-4 h-4 text-yellow-300 mr-1"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 22 20"
-      >
-        <path
-          d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-        />
-      </svg>
-      <svg
-        class="w-4 h-4 text-yellow-300 mr-1"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 22 20"
-      >
-        <path
-          d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-        />
-      </svg>
-      <svg
-        class="w-4 h-4 text-yellow-300 mr-1"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 22 20"
-      >
-        <path
-          d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-        />
-      </svg>
-      <svg
-        class="w-4 h-4 text-gray-200 dark:text-gray-600"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 22 20"
-      >
-        <path
-          d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-        />
-      </svg>
-      <span
-        class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3"
-        >5.0</span
-      >
-    </div>
-    <div class="flex items-center justify-left">
-      <span class="text-3xl font-bold text-gray-900 dark:text-white m-2"
-        >${{ ad.price }}</span
-      >
-      <span class="text-2xl text-gray-500 dark:text-yellow-50">{{
-        ad.timestamp
-      }}</span>
-    </div>
+
+<div class="card product-item">
+  <div class="slider">
+    <a class="control_next">></a>
+    <a class="control_prev"><</a>
+    <ul>
+      <li *ngFor="let image of ad.images" 
+          style="background-image: url('../../../assets/{{ image }}');
+                 width: 300px; 
+                 height: 300px;">
+      </li>
+    </ul>  
   </div>
-</div>
+  <span class="product-category">Category</span>
+  
+    <div class="product-item-desc px-2 py-2">
+      <div class="product-item-city">
+        <span style="display: inline-block;">
+          <svg height="13px" width="13px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+          viewBox="0 0 512 512"  xml:space="preserve" style="display: inline-block; vertical-align: middle;">
+       <g>
+         <path class="st0" d="M255.996,0C145.058,0,55.138,89.929,55.138,200.866c0,68.454,34.648,128.363,86.55,165.174
+           c47.356,33.594,57.811,41.609,74.462,73.4c13.174,25.147,34.541,69.279,34.541,69.279c1.004,2.008,3.052,3.281,5.306,3.281
+           c2.244,0,4.31-1.274,5.313-3.281c0,0,21.368-44.132,34.541-69.279c16.642-31.791,27.106-39.806,74.454-73.4
+           c51.91-36.811,86.558-96.72,86.558-165.174C456.862,89.929,366.925,0,255.996,0z M255.996,335.473
+           c-74.331,0-134.599-60.268-134.599-134.608c0-74.339,60.268-134.607,134.599-134.607c74.339,0,134.606,60.268,134.606,134.607
+           C390.602,275.205,330.335,335.473,255.996,335.473z"/>
+       </g>
+           </svg>
+          <span style="display: inline-block; vertical-align: middle;">City Name</span>
+        </span>
+      </div>
+      <div class="product-item-title">{{ ad.title }} </div>
+      <!-- <div class="product-item-user">
+        User
+      </div> -->
+      <div class="product-item-price">
+      <span>
+        {{ ad.price }} DT
+      </span>
+      </div>
+
+    </div>
+
+ </div>
+ 

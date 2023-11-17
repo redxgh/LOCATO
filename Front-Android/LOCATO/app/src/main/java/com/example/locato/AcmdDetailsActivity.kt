@@ -2,6 +2,7 @@ package com.example.locato
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
@@ -44,11 +45,13 @@ class AcmdDetailsActivity : AppCompatActivity() {
     private lateinit var autoCompleteTxt: AutoCompleteTextView
     private lateinit var adapterItems: ArrayAdapter<String>
     private lateinit var setlocationButton :Button
+    private lateinit var selectedCity : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_acmd_details)
 
-        // Set up the Toolbar as the ActionBar
+        //Toolbar
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -66,18 +69,25 @@ class AcmdDetailsActivity : AppCompatActivity() {
             val item = parent.getItemAtPosition(position).toString()
             Toast.makeText(applicationContext, "Item: $item", Toast.LENGTH_SHORT).show()
         }
+
+
        //city
         autoCompleteTxt = findViewById(R.id.auto_complete_txt1)
         adapterItems = ArrayAdapter(this, R.layout.list_item, itemsCity)
         autoCompleteTxt.setAdapter(adapterItems)
         autoCompleteTxt.dropDownAnchor = autoCompleteTxt.id
-        autoCompleteTxt.setOnItemClickListener(OnItemClickListener { parent, view, position, id ->
-            setlocationButton.setEnabled(true)
-        })
+        autoCompleteTxt.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem = parent.getItemAtPosition(position).toString()
+            //enabled setlocation btn
+            setlocationButton.isEnabled = true
+            selectedCity = selectedItem
+        }
         //location map
         setlocationButton.setOnClickListener(){
             val intent = Intent(this,LocationActivity::class.java)
+            intent.putExtra("selectedCity", selectedCity)
             startActivity(intent)
+
         }
      //filled all form condtion missing !
     }
@@ -87,7 +97,6 @@ class AcmdDetailsActivity : AppCompatActivity() {
     }
 
     fun onUploadButtonClick(view: View) {
-        // Create an Intent to open the image picker
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
@@ -100,7 +109,7 @@ class AcmdDetailsActivity : AppCompatActivity() {
 
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             val selectedImage = data.data
-            // You can now use the selected image in your app
+            //bch nestaamlo selectedImage ka result ( naarash list kfe )
         }
     }
 

@@ -12,8 +12,6 @@ const routes: Routes = [
   { path: 'type-post', component: TypePostComponent },
   { path: 'renting-ad', component: RentingAdComponent },
   { path: 'roommate-ad', component: RoommateAdComponent },
-
-
 ];
 
 @NgModule({

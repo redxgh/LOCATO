@@ -1,5 +1,6 @@
 package com.example.locato
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,12 @@ class ItemsAdapter(private val items: ArrayList<ItemsDomaine>) : RecyclerView.Ad
         Glide.with(holder.itemView.context)
             .load(drawableResourceId)
             .into(holder.pic)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra("object", items[position])
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

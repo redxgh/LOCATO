@@ -16,6 +16,9 @@
         android:theme="@style/Theme.LOCATO"
         tools:targetApi="31">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdDetailsActivity"
             android:exported="false" />
         <activity
@@ -29,13 +32,13 @@
         </activity>
         <activity
             android:name=".LocationActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".AcmdDetailsActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".PostActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

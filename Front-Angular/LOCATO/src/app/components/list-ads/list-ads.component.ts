@@ -1,103 +1,78 @@
-import { Component } from '@angular/core';
-import { Ad } from 'src/app/Ad';
+import { Component, AfterViewInit } from '@angular/core';
+import { Ad } from 'src/app/model/Ad';
+import * as $ from 'jquery';
+import * as Aos from 'aos';
+import { AdService } from 'src/app/ad.service';
 
 @Component({
   selector: 'app-list-ads',
   templateUrl: './list-ads.component.html',
-  styleUrls: ['./list-ads.component.scss']
+  styleUrls: ['./list-ads.component.scss'],
 })
-export class ListAdsComponent {
-  ads: Ad[] = [
-    {
-      id: 1,
-      title: "Luxury Apartment in Downtown",
-      description: "Spacious 2-bedroom apartment with a great view.",
-      price: 1500,
-      timestamp: "month",
-      accommodationId: 101,
-      userId: 201,
-    },
-    {
-      id: 2,
-      title: "Cozy Room in Shared House",
-      description: "A comfortable room in a friendly shared house.",
-      price: 50,
-      timestamp: "night",
-      accommodationId: 102,
-      userId: 202,
-    },
-    {
-      id: 3,
-      title: "Roommate Wanted for Spacious Condo",
-      description: "Looking for a roommate to share a beautiful condo.",
-      price: 800,
-      timestamp: "month",
-      accommodationId: 103,
-      userId: 203,
-    },
-    {
-      id: 4,
-      title: "Charming Single Room for Rent",
-      description: "Single room available in a lovely house.",
-      price: 60,
-      timestamp: "night",
-      accommodationId: 104,
-      userId: 204,
-    },
-    {
-      id: 5,
-      title: "Spacious House with Garden",
-      description: "3-bedroom house with a beautiful garden and pool.",
-      price: 2000,
-      timestamp: "month",
-      accommodationId: 105,
-      userId: 205,
-    },
-    {
-      id: 1,
-      title: "Luxury Apartment in Downtown",
-      description: "Spacious 2-bedroom apartment with a great view.",
-      price: 1500,
-      timestamp: "month",
-      accommodationId: 101,
-      userId: 201,
-    },
-    {
-      id: 2,
-      title: "Cozy Room in Shared House",
-      description: "A comfortable room in a friendly shared house.",
-      price: 50,
-      timestamp: "night",
-      accommodationId: 102,
-      userId: 202,
-    },
-    {
-      id: 3,
-      title: "Roommate Wanted for Spacious Condo",
-      description: "Looking for a roommate to share a beautiful condo.",
-      price: 800,
-      timestamp: "month",
-      accommodationId: 103,
-      userId: 203,
-    },
-    {
-      id: 4,
-      title: "Charming Single Room for Rent",
-      description: "Single room available in a lovely house.",
-      price: 60,
-      timestamp: "night",
-      accommodationId: 104,
-      userId: 204,
-    },
-    {
-      id: 5,
-      title: "Spacious House with Garden",
-      description: "3-bedroom house with a beautiful garden and pool.",
-      price: 2000,
-      timestamp: "month",
-      accommodationId: 105,
-      userId: 205,
-    },
-  ];
+export class ListAdsComponent implements AfterViewInit {
 
+  ads:Ad[];
+  constructor(private adService : AdService){
+    this.ads=adService.listAds();
+  }
+  
+  ngAfterViewInit() {
+    //sliders
+    $('.slider').each(function () {
+      var slideCount = $(this).find('ul li').length;
+      var slideWidth = $(this).find('ul li').first().width() || 0;
+      var slideHeight = $(this).find('ul li').height();
+      var sliderUlWidth = slideCount * slideWidth;
+
+      // idha ma3ana hata image bch y'affichi just el tawira loula
+      if (slideCount === 1) {
+        $(this).find('ul li').show(); // show the single image
+        $(this).find('.control_next').hide();
+        $(this).find('.control_prev').hide();
+        return;
+      }
+      $(this).find('ul').css({ width: sliderUlWidth, marginLeft: -slideWidth });
+
+      $(this).find('ul li:last-child').prependTo($(this).find('ul'));
+      function moveLeft(slider: JQuery<any>) {
+        var sliderUl = $(slider).find('ul');
+        sliderUl.animate(
+          {
+            left: +slideWidth,
+          },
+          200,
+          function () {
+            sliderUl.find('li:last-child').prependTo(sliderUl);
+            sliderUl.css('left', '');
+          }
+        );
+      }
+
+      function moveRight(slider: JQuery<any>) {
+        var sliderUl = $(slider).find('ul');
+        sliderUl.animate(
+          {
+            left: -slideWidth,
+          },
+          200,
+          function () {
+            sliderUl.find('li:first-child').appendTo(sliderUl);
+            sliderUl.css('left', '');
+          }
+        );
+      }
+
+      $(this).on('click', 'a.control_prev', function () {
+        var slider = $(this).closest('.slider');
+        moveLeft(slider);
+      });
+
+      $(this).on('click', 'a.control_next', function () {
+        var slider = $(this).closest('.slider');
+        moveRight(slider);
+      });
+    });
+    //Aos(animate on scroll animation) animation
+    Aos.init();
+  }
 }
