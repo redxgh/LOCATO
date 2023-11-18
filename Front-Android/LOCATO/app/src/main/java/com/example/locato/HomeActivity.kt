@@ -3,10 +3,12 @@ package com.example.locato
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dialog.FormDialogFragment
 
 
 class HomeActivity : AppCompatActivity() {
@@ -20,6 +22,8 @@ class HomeActivity : AppCompatActivity() {
     private val itemsListNew: ArrayList<ItemsDomaine> = ArrayList()
 
     private lateinit var postAdBtn : FloatingActionButton
+
+    private lateinit var filterButton : Button
 
 
     @SuppressLint("MissingInflatedId")
@@ -54,6 +58,16 @@ class HomeActivity : AppCompatActivity() {
         recyclerViewNew.adapter = itemsAdapterNew
 
 
+      //filter surch btn
+        // Create an instance of the dialog fragment
+        val dialog = FormDialogFragment()
+        filterButton = findViewById(R.id.filterBtn)
+        filterButton.setOnClickListener {
+            val dialog = FormDialogFragment()
+
+            // Show the dialog
+            dialog.show(supportFragmentManager, "FormDialogFragment")
+        }
 
         postAdBtn = findViewById(R.id.postAdBtn)
         postAdBtn.setOnClickListener(){
