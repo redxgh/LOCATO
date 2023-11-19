@@ -103,6 +103,11 @@ public class AdController {
         }
         return ResponseEntity.status(HttpStatus.SC_OK).build();
     }
+    @PatchMapping("editAd")
+    public ResponseEntity<Ad> editAd(@RequestParam("ad")Ad ad){
+        return ResponseEntity.status(HttpStatus.SC_OK)
+                .body(A);
+    }
     @GetMapping("categories")
     public ResponseEntity<List<Category>> getCategories(){
         return ResponseEntity.status(HttpStatus.SC_OK)

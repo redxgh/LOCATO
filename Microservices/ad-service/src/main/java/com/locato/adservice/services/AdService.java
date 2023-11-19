@@ -20,4 +20,5 @@ public class AdService {
     public List<Ad> getAds(){
         return adRepository.findAll();
     }
+
 }
