@@ -43,15 +43,15 @@ public class AdController {
                     @RequestParam int rooms,
                     @RequestParam int bathrooms,
                     @RequestParam int best,
-                    @RequestParam ArrayList<MultipartFile> imagesArr,
+                    @RequestParam("imagesArr") MultipartFile[] imagesArr,
                     @RequestParam String type,
                     @RequestParam String categoryId,
                     @RequestParam(value = "gender", defaultValue = "-1") int gender
                     ){
-        String[] images = new String[5];
+        ArrayList<String> images = new ArrayList<>();
         int i = 0;
         for(MultipartFile image : imagesArr){
-            images[i] = imageService.uploadImageToFileSystem(image);
+            images.add(imageService.uploadImageToFileSystem(image));
             i++;
         }
         if(gender == -1){
@@ -102,6 +102,11 @@ public class AdController {
             }
         }
         return ResponseEntity.status(HttpStatus.SC_OK).build();
+    }
+    @PatchMapping("editAd")
+    public ResponseEntity<Ad> editAd(@RequestParam("ad")Ad ad){
+        return ResponseEntity.status(HttpStatus.SC_OK)
+                .body(null);
     }
     @GetMapping("categories")
     public ResponseEntity<List<Category>> getCategories(){

@@ -1,7 +1,8 @@
 package com.locato.adservice.entities;
 
 import lombok.Getter;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.ArrayList;
 
 @Getter
 public class Accomodation{
@@ -10,10 +11,10 @@ public class Accomodation{
     private int rooms;
     private int bathrooms;
     private int best = 0;
-    private String[] images;
+    private ArrayList<String> images;
     private String type;
     Category category;
-    public Accomodation(String location, double surface, int rooms, int bathrooms, int best, String[] images, String type, Category category) {
+    public Accomodation(String location, double surface, int rooms, int bathrooms, int best, ArrayList<String> images, String type, Category category) {
         this.location = location;
         this.surface = surface;
         this.rooms = rooms;
@@ -44,7 +45,7 @@ public class Accomodation{
         this.best = best;
     }
 
-    public void setImages(String[] images) {
+    public void setImages(ArrayList<String> images) {
         this.images = images;
     }
 
