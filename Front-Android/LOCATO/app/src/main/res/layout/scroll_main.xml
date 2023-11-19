@@ -67,7 +67,7 @@
 
             <EditText
                 android:id="@+id/editTextText"
-                android:layout_width="258dp"
+                android:layout_width="289dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
@@ -86,13 +86,14 @@
 
             <Button
                 android:id="@+id/filterBtn"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_width="110dp"
+                android:layout_height="55dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
+                android:backgroundTint="@color/red"
                 android:text="Filter"
-                android:textStyle="bold"
-                ></Button>
+                android:textColor="@color/white"
+                android:textStyle="bold"></Button>
         </LinearLayout>
 
             <LinearLayout
