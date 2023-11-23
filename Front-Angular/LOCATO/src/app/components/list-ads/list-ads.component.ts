@@ -2,7 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { Ad } from 'src/app/model/Ad';
 import * as $ from 'jquery';
 import * as Aos from 'aos';
-import { AdService } from 'src/app/ad.service';
+import { AdService } from 'src/app/services/ad.service';
 
 @Component({
   selector: 'app-list-ads',

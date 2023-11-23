@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListAdsComponent } from './components/list-ads/list-ads.component';
@@ -13,6 +12,8 @@ import { AccomodationComponent } from './post-ad/accomodation/accomodation.compo
 import { RentingAdComponent } from './post-ad/renting-ad/renting-ad.component';
 import { RoommateAdComponent } from './post-ad/roommate-ad/roommate-ad.component';
 import { TypePostComponent } from './post-ad/type-post/type-post.component';
+import { PostImagesComponent } from './post-ad/post-images/post-images.component';
+import { LocationComponent } from './post-ad/location/location.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,12 +27,15 @@ import { TypePostComponent } from './post-ad/type-post/type-post.component';
     TypePostComponent,
     NavbarComponent,
     FormServiceComponent,
+    PostImagesComponent,
+    LocationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

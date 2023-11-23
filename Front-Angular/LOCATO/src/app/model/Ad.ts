@@ -3,8 +3,12 @@ export interface Ad {
   title: string;
   description: string;
   price: number;
-  timestamp: string;
-  accommodationId: number;
-  userId: number;
-  images:string[];
+  surface:number;
+  rooms:number
+  bathrooms:number
+  type:string
+  category:string
+  location:string
+  best:number
+  imagesArr:string[];
 }

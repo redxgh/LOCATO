@@ -1,13 +1,11 @@
-
 <h1 class="title">Complete post details</h1>
 <div class="content">
 
-  <form [formGroup]="form" (submit)="goto()" class="row g-3 needs-validation" novalidate >
+  <form [formGroup]="form" (submit)="goto()" class="row g-3 needs-validation" novalidate>
 
     <div class="col-md-4 position-relative">
       <label for="validationTooltip01" class="form-label">Title</label>
-      <input       formControlName="title"
-      type="text" class="form-control" id="validationTooltip01" required>
+      <input formControlName="title" type="text" class="form-control" id="validationTooltip01" required>
       <div class="valid-tooltip">
         Looks good!
       </div>
@@ -23,7 +21,7 @@
 
     <div class="col-md-4 position-relative">
       <label for="validationTooltip02" class="form-label">Select Gender</label>
-      <select name="gender" formControlName="gender" class="form-select" aria-label="Default select example" >
+      <select name="gender" formControlName="gender" class="form-select" aria-label="Default select example">
         <option selected></option>
         <option value="1">Male</option>
         <option value="2">Female</option>
@@ -35,8 +33,8 @@
       <textarea formControlName="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     <div class="col-lg-10">
-      <a href="/type-post" class="btn" > Return</a>
-        <button type="submit" class="btn"> Next</button>
+      <a href="/type-post" class="btn"> Return</a>
+      <button type="submit" class="btn"> Next</button>
     </div>
   </form>
 </div>

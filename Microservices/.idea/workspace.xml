@@ -5,32 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2f10fae-e778-497e-8c01-526a312d51e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/ad.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/ad.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/ad.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/components/list-ads/list-ads.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/components/list-ads/list-ads.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/components/list-ads/list-ads.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/components/list-ads/list-ads.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/form-data-resolver.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/form-data-resolver.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/form-service.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/form-service.service.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/model/Ad.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/model/Ad.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/navbar/navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-ad.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-ad/post-ad.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-ad/post-ad.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-ad/post-ad.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-ad/post-ad.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/renting-ad/renting-ad.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/renting-ad/renting-ad.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/renting-ad/renting-ad.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/renting-ad/renting-ad.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/accomodation/accomodation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/accomodation/accomodation.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/type-post/type-post.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/type-post/type-post.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/type-post/type-post.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/type-post/type-post.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/type-post/type-post.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/type-post/type-post.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/ImageService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +100,7 @@
       <workItem from="1700411670383" duration="2525000" />
       <workItem from="1700478105192" duration="506000" />
       <workItem from="1700506233123" duration="157000" />
+      <workItem from="1700731890667" duration="906000" />
     </task>
     <servers />
   </component>
