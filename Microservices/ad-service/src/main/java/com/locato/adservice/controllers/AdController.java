@@ -35,7 +35,8 @@ public class AdController {
         return adService.getAds();
     }
     @PostMapping("/addAd")
-    public ResponseEntity<? extends Ad> addAd(@RequestParam String title,
+    public ResponseEntity<? extends Ad> addAd(
+                    @RequestParam String title,
                     @RequestParam String description,
                     @RequestParam double price,
                     @RequestParam String location,

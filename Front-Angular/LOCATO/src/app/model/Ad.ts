@@ -3,7 +3,7 @@ export interface Ad {
   title: string;
   description: string;
   price: number;
-  timestamp: string; // You can use a string or Date for timestamps
+  timestamp: string;
   accommodationId: number;
   userId: number;
   images:string[];

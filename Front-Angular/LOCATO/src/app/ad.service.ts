@@ -5,9 +5,9 @@ import { Ad } from './model/Ad';
   providedIn: 'root'
 })
 export class AdService {
-
+  formData:any
   ads:Ad[];
-  constructor() { 
+  constructor() {
      this.ads = [
     {
       id: 1,

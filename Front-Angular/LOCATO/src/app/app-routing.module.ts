@@ -5,6 +5,7 @@ import { ListAdsComponent } from './components/list-ads/list-ads.component';
 import { TypePostComponent } from './post-ad/type-post/type-post.component';
 import { RentingAdComponent } from './post-ad/renting-ad/renting-ad.component';
 import { RoommateAdComponent } from './post-ad/roommate-ad/roommate-ad.component';
+import { AccomodationComponent } from './post-ad/accomodation/accomodation.component';
 
 const routes: Routes = [
   { path: '', component: ListAdsComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'type-post', component: TypePostComponent },
   { path: 'renting-ad', component: RentingAdComponent },
   { path: 'roommate-ad', component: RoommateAdComponent },
+  { path: 'accomodation', component:AccomodationComponent}
 ];
 
 @NgModule({

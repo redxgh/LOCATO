@@ -27,7 +27,7 @@ public class ImageService {
         LocalDateTime dateTime = LocalDateTime.now();
         String fileName = getString(image, dateTime);
         try{
-            String path = "C:/Users/graed/Desktop/integration/LOCATO/Microservices/ad-service/src/main/resources/static/images/";
+            String path = "A:/Integration project/LOCATO/Microservices/ad-service/src/main/resources/static/images/";
             image.transferTo(new File(path,fileName));
             System.out.println(path+fileName);
             return path +fileName;

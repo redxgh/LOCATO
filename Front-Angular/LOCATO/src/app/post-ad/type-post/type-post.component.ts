@@ -19,10 +19,8 @@ export class TypePostComponent {
   goTo() {
     if (this.selectedCardIndex === 0) {
       this.router.navigate(['/renting-ad']);
-      console.log(this.selectedCardIndex)
     } else if (this.selectedCardIndex === 1) {
       this.router.navigate(['roommate-ad']);
-      console.log(this.selectedCardIndex)
     } else {
     }
   }
