@@ -44,16 +44,14 @@ public class AdController {
                     @RequestParam int rooms,
                     @RequestParam int bathrooms,
                     @RequestParam int best,
-                    @RequestParam ArrayList<MultipartFile> imagesArr,
+                    @RequestParam("imagesArr") MultipartFile[] imagesArr,
                     @RequestParam String type,
                     @RequestParam String categoryId,
                     @RequestParam(value = "gender", defaultValue = "-1") int gender
                     ){
-        String[] images = new String[5];
-        int i = 0;
+        ArrayList<String> images = new ArrayList<>();
         for(MultipartFile image : imagesArr){
-            images[i] = imageService.uploadImageToFileSystem(image);
-            i++;
+            images.add(imageService.uploadImageToFileSystem(image));
         }
         if(gender == -1){
             Locationad ad = new Locationad(null,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,images,type,categoryService.getCategoryById(categoryId)));
@@ -89,20 +87,13 @@ public class AdController {
 
     }
     @DeleteMapping("deleteAd")
-    public ResponseEntity<?> deleteAd(@RequestParam("ad") Ad ad){
-        if(ad instanceof  Roommatead){
-            roommateAdRepository.delete((Roommatead) ad);
-            for(String image : ad.getAccomodation().getImages()){
-                imageService.deleteImage(image);
-            }
-        }
-        else{
-            locationAdRepository.delete((Locationad) ad);
-            for(String image : ad.getAccomodation().getImages()){
-                imageService.deleteImage(image);
-            }
-        }
-        return ResponseEntity.status(HttpStatus.SC_OK).build();
+    public ResponseEntity<?> deleteAd(@RequestParam("id")String id){
+        return ResponseEntity.status(HttpStatus.SC_OK).body(adService.deleteAd(id));
+    }
+    @PatchMapping("editAd")
+    public ResponseEntity<Ad> editAd(@RequestParam("ad")Ad ad){
+        return ResponseEntity.status(HttpStatus.SC_OK)
+                .body(adService.editAd(ad));
     }
     @GetMapping("categories")
     public ResponseEntity<List<Category>> getCategories(){

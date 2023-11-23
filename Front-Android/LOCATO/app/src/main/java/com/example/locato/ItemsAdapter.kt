@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import java.text.DecimalFormat
 
-class ItemsAdapter(private val items: ArrayList<ItemsDomaine>) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+class ItemsAdapter(private val items: ArrayList<ItemsDomaine> , private val recyclerViewType: Int) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     private val formatter = DecimalFormat("##,##,##,##,##")
+    private var onDeleteClickListener: OnDeleteClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflate: View = LayoutInflater.from(parent.context).inflate(R.layout.itemslistview, parent, false)
@@ -35,6 +36,7 @@ class ItemsAdapter(private val items: ArrayList<ItemsDomaine>) : RecyclerView.Ad
             intent.putExtra("object", items[position])
             holder.itemView.context.startActivity(intent)
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -46,5 +48,18 @@ class ItemsAdapter(private val items: ArrayList<ItemsDomaine>) : RecyclerView.Ad
         val priceTextView: TextView = itemView.findViewById(R.id.price)
         val titleTextView: TextView = itemView.findViewById(R.id.titleTxt)
         val pic: ImageView= itemView.findViewById(R.id.pic1)
+        init {
+            val deleteCard: ImageView = itemView.findViewById(R.id.deleteCard)
+            deleteCard.setOnClickListener {
+                onDeleteClickListener?.onDeleteClick(adapterPosition, recyclerViewType)
+            }
+        }
+    }
+    interface OnDeleteClickListener {
+        fun onDeleteClick(position: Int, recyclerViewType: Int)
+
+    }
+    fun setOnDeleteClickListener(listener: OnDeleteClickListener) {
+        onDeleteClickListener = listener
     }
 }
