@@ -25,23 +25,16 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <Button
-        android:id="@+id/zoomInButton"
-        android:layout_width="52dp"
-        android:layout_height="54dp"
+        android:id="@+id/setlocationBtn"
+        android:layout_width="167dp"
+        android:layout_height="55dp"
         android:layout_margin="16dp"
-        android:drawableTop="@drawable/zoom_in"
-        android:backgroundTint="#0000"
-        app:layout_constraintBottom_toBottomOf="@id/mapView"
-        app:layout_constraintEnd_toEndOf="@id/mapView" />
+        android:backgroundTint="@color/blue"
+        android:enabled="false"
+        android:text="Set Location"
+        app:layout_constraintEnd_toEndOf="@id/mapView"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <Button
-        android:id="@+id/zoomOutButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="16dp"
-        android:backgroundTint="#0000"
-        android:drawableTop="@drawable/zoom_out"
-        app:layout_constraintBottom_toTopOf="@id/zoomInButton"
-        app:layout_constraintEnd_toEndOf="@id/mapView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

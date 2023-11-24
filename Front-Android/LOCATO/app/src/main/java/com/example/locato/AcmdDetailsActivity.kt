@@ -13,39 +13,40 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import org.osmdroid.util.GeoPoint
 
 
+@Suppress("DEPRECATION")
 class AcmdDetailsActivity : AppCompatActivity() {
     //el items bch ywaliw yjiw ml entity(enum) category
     private val itemsType = arrayOf("Appartment", "House", "Studio", "Hotel", "Villa")
-    private val itemsCity = arrayOf("Beja",
-        "Ben Arous",
-        "Bizerte",
-        "Gabes",
-        "Gafsa",
-        "Jendouba",
-        "Kairouan",
-        "Kasserine",
-        "Kebili",
-        "L'Ariana",
-        "La Manouba",
-        "Le Kef",
-        "Mahdia",
-        "Medenine",
-        "Monastir",
-        "Nabeul",
-        "Sfax",
-        "Sidi Bouzid",
-        "Siliana",
-        "Sousse",
-        "Tataouine",
-        "Tozeur",
+    private val itemsCity = arrayOf(
         "Tunis",
-        "Zaghouan")
+        "Sfax" ,
+        "Bizerte" ,
+        "Sousse",
+        "Gabes" ,
+        "Kairouan" ,
+        "Gafsa" ,
+        "Monastir" ,
+        "Hammamet" ,
+        "Nabeul" ,
+        "Mahdia" ,
+        "Kebili" ,
+        "Medenine" ,
+        "Tataouine" ,
+        "Beja" ,
+        "Jendouba" ,
+        "El Kef" ,
+        "Siliana" ,
+        "Zaghouan" ,
+        "Tozeur" ,
+    )
     private lateinit var autoCompleteTxt: AutoCompleteTextView
     private lateinit var adapterItems: ArrayAdapter<String>
     private lateinit var setlocationButton :Button
     private lateinit var selectedCity : String
+    private var position: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +71,6 @@ class AcmdDetailsActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Item: $item", Toast.LENGTH_SHORT).show()
         }
 
-
        //city
         autoCompleteTxt = findViewById(R.id.auto_complete_txt1)
         adapterItems = ArrayAdapter(this, R.layout.list_item, itemsCity)
@@ -82,12 +82,22 @@ class AcmdDetailsActivity : AppCompatActivity() {
             setlocationButton.isEnabled = true
             selectedCity = selectedItem
         }
+
         //location map
         setlocationButton.setOnClickListener(){
             val intent = Intent(this,LocationActivity::class.java)
             intent.putExtra("selectedCity", selectedCity)
             startActivity(intent)
+        }
 
+
+        val latitude = intent.getStringExtra("Latitude")
+        val longitude = intent.getStringExtra("Longitude")
+        if (latitude != null && longitude != null) {
+            val geoPoint = GeoPoint(latitude.toDouble(), longitude.toDouble())
+            position= geoPoint.toString()
+            setlocationButton.setText(position)
+            Log.d("GeoPoint", geoPoint.toString())
         }
      //filled all form condtion missing !
     }
@@ -95,7 +105,6 @@ class AcmdDetailsActivity : AppCompatActivity() {
         onBackPressed() // or navigate to the previous activity
         return true
     }
-
     fun onUploadButtonClick(view: View) {
         val intent = Intent()
         intent.type = "image/*"
@@ -103,14 +112,9 @@ class AcmdDetailsActivity : AppCompatActivity() {
         startActivityForResult(intent, 1) // The "1" is a request code, you can use any unique number
     }
 
-    // Override the onActivityResult method to handle the selected image
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            val selectedImage = data.data
-            //bch nestaamlo selectedImage ka result ( naarash list kfe )
-        }
-    }
+
+
+
 
 }

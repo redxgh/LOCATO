@@ -30,8 +30,6 @@ class PostActivity : AppCompatActivity() {
         // Enable the "Up" button
         val actionBar: ActionBar? = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
-
-
         adTitle = findViewById(R.id.adTitle)
         adDesc = findViewById(R.id.adDesc)
         adPrice = findViewById(R.id.adPrice)
@@ -70,7 +68,5 @@ class PostActivity : AppCompatActivity() {
             nextButton.isEnabled = isFormComplete
             nextButton.setBackgroundColor(ContextCompat.getColor(this, R.color.disabled_color))
         }
-
-
     }
 }
