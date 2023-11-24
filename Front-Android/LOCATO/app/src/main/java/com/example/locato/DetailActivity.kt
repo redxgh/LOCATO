@@ -12,7 +12,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var addressTxt: TextView
     private lateinit var bedTxt: TextView
     private lateinit var bathTxt: TextView
-    private lateinit var wifiTxt: TextView
+    private lateinit var surfaceTxt: TextView
     private lateinit var descriptionTxt: TextView
     private lateinit var item: ItemsDomaine
     private lateinit var pic: ImageView
@@ -32,13 +32,10 @@ class DetailActivity : AppCompatActivity() {
         addressTxt.text = item.address
         bedTxt.text = "${item.bed} Bed"
         bathTxt.text = "${item.bath} Bath"
+        surfaceTxt.text = "${item.bath} "
         descriptionTxt.text = item.description
 
-        if (item.wifi==true) {
-            wifiTxt.text = "Wifi"
-        } else {
-            wifiTxt.text = "No Wifi"
-        }
+
 
         val drawableResourceId = resources.getIdentifier(item.pic, "drawable", packageName)
 
@@ -52,7 +49,7 @@ class DetailActivity : AppCompatActivity() {
         addressTxt = findViewById(R.id.addressTxt)
         bedTxt = findViewById(R.id.bedTxt)
         bathTxt = findViewById(R.id.bathTxt)
-        wifiTxt = findViewById(R.id.wifiTxt)
+        surfaceTxt = findViewById(R.id.wifiTxt)
         descriptionTxt = findViewById(R.id.descriptionTxt)
         pic = findViewById(R.id.pic)
     }
