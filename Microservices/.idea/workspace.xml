@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8f414420-28ac-4e41-b7b4-925ab3d18df2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/AdService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/AdService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ad-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +116,8 @@
       <workItem from="1700423083440" duration="26000" />
       <workItem from="1700423952817" duration="2807000" />
       <workItem from="1700434201394" duration="19000" />
-      <workItem from="1700589004378" duration="541000" />
+      <workItem from="1700589004378" duration="1648000" />
+      <workItem from="1700850242268" duration="1832000" />
     </task>
     <servers />
   </component>
