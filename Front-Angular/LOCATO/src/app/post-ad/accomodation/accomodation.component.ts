@@ -10,15 +10,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AccomodationComponent {
   formData: any;
   numbers: number[] = Array.from({ length: 11 }, (_, i) => i); // Array from 0 to 10
-  categories: string[] = ['category1', 'category2', 'category3']
+  categories: number[] = [1, 2, 3]
   types: string[] = ['villa', 'appartement', 'cave']
 
   form: FormGroup = this.fb.group({
     surface: [null, Validators.required],
     rooms: [null, Validators.required],
     bathrooms: [null, Validators.required],
-    category: ['', Validators.required],
+    categoryId: [null, Validators.required],
     type: ['', Validators.required],
+    best: [1, Validators.required],
   });
 
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
@@ -33,8 +34,9 @@ export class AccomodationComponent {
       surface: [null, Validators.required],
       rooms: [null, Validators.required],
       bathrooms: [null, Validators.required],
-      category: ['', Validators.required],
+      categoryId: [null, Validators.required],
       type: ['', Validators.required],
+      best: [1, Validators.required],
     });
   }
   mergeForms() {

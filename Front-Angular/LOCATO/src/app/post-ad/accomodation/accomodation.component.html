@@ -39,7 +39,7 @@
     <div class="row g-3 ">
       <div class="col-md-2 position-relative">
         <label for="validationTooltip04" class="form-label">Category</label>
-        <select formControlName="category" class="form-select" id="validationTooltip04" required>
+        <select formControlName="categoryId" class="form-select" id="validationTooltip04" required>
           <option selected disabled value="">Choose...</option>
           <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
         </select>

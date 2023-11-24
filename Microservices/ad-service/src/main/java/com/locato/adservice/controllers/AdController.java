@@ -17,7 +17,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
+@CrossOrigin("*")
 @RestController
 public class AdController {
     @Autowired

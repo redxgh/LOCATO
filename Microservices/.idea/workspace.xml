@@ -5,18 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2f10fae-e778-497e-8c01-526a312d51e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/accomodation/accomodation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/accomodation/accomodation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/accomodation/accomodation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/accomodation/accomodation.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/location/location.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/location/location.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/location/location.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/location/location.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/location/location.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/location/location.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-images/post-images.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-images/post-images.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-images/post-images.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/post-images/post-images.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Angular/LOCATO/src/app/post-ad/roommate-ad/roommate-ad.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/ad-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/resources/application.properties" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/ImageService.java" afterDir="false" />
+>>>>>>> 409e47496dfb9a441f9c2dda5e2e5beed957bd7a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -90,6 +108,23 @@
       <created>1700257877576</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1699695859750</updated>
+      <workItem from="1699695863677" duration="463000" />
+      <workItem from="1699696540254" duration="6674000" />
+      <workItem from="1699732990935" duration="6864000" />
+      <workItem from="1699808862956" duration="6658000" />
+      <workItem from="1699822749217" duration="7987000" />
+      <workItem from="1700070847453" duration="6690000" />
+      <workItem from="1700244866686" duration="971000" />
+      <workItem from="1700261434171" duration="47000" />
+      <workItem from="1700305606106" duration="188000" />
+      <workItem from="1700423083440" duration="26000" />
+      <workItem from="1700423952817" duration="2807000" />
+      <workItem from="1700434201394" duration="19000" />
+      <workItem from="1700589004378" duration="1648000" />
+      <workItem from="1700850242268" duration="1832000" />
+=======
       <updated>1700257877576</updated>
       <workItem from="1700257878779" duration="2053000" />
       <workItem from="1700411670383" duration="2525000" />
@@ -97,6 +132,9 @@
       <workItem from="1700506233123" duration="157000" />
       <workItem from="1700731890667" duration="906000" />
       <workItem from="1700817817756" duration="6000" />
+      <workItem from="1700832023988" duration="5897000" />
+      <workItem from="1700849207198" duration="486000" />
+>>>>>>> 409e47496dfb9a441f9c2dda5e2e5beed957bd7a
     </task>
     <servers />
   </component>

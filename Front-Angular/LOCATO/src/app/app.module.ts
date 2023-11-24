@@ -16,6 +16,7 @@ import { PostImagesComponent } from './post-ad/post-images/post-images.component
 import { LocationComponent } from './post-ad/location/location.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './post-ad/map/map.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,9 @@ import { MapComponent } from './post-ad/map/map.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    LeafletModule
+    LeafletModule,
+    HttpClientModule,
+
 
   ],
   providers: [],

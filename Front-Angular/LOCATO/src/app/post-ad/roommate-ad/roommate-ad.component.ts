@@ -11,8 +11,8 @@ export class RoommateAdComponent implements OnInit {
   form: FormGroup = this.fb.group({
     title: ['', Validators.required],
     price: [null, Validators.required],
-    gender: ['', Validators.required],
-    desc: ['', Validators.required],
+    best: [1, Validators.required],
+    description: ['', Validators.required],
   });
 
   constructor(private fb: FormBuilder, private router: Router) {}
@@ -22,8 +22,8 @@ export class RoommateAdComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', Validators.required],
       price: [null, Validators.required],
-      gender: ['', Validators.required],
-      desc: ['', Validators.required],
+      best: [1, Validators.required],
+      description: ['', Validators.required],
     });
   }
 
