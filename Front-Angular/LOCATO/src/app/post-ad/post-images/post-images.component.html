@@ -1,6 +1,18 @@
 <div class="content">
   <div class="mb-3">
-    <label for="formFileSm" class="form-label">Small file input example</label>
-    <input class="form-control form-control-sm" id="formFileSm" type="file">
+    <label for="formFileSm" class="form-label">Upload Images</label>
+    <input class="form-control form-control-sm" id="formFileSm" type="file" multiple (change)="onFileSelected($event)">
   </div>
+
+  <!-- Display selected images -->
+  <div *ngIf="imagesArr.length > 0">
+    <h2>Selected Images</h2>
+    <div *ngFor="let image of imagesArr">
+      <img [src]="image.url" alt="Selected Image">
+    </div>
+  </div>
+
+  <!-- Other form fields and buttons -->
+
+  <button (click)="uploadData(formData)" class="btn">Upload and Send Data</button>
 </div>

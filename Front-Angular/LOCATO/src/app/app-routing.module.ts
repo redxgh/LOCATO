@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'renting-ad', component: RentingAdComponent },
   { path: 'roommate-ad', component: RoommateAdComponent },
   { path: 'accomodation', component:AccomodationComponent},
-  { path: 'post-images', component:PostImagesComponent},
   { path: 'location', component:LocationComponent},
+  { path: 'post-images', component:PostImagesComponent},
 
 ];
 

@@ -1,1 +1,25 @@
-<app-map (locationSelected)="onLocationSelected($event)"></app-map>
+<h1 class="title">Complete accommodation details</h1>
+<div class="content">
+  <app-map (locationSelected)="onLocationSelected($event)"></app-map>
+  <div>
+    <h2>Location Details</h2>
+    <p>Latitude: {{ location?.lat }}</p>
+    <p>Longitude: {{ location?.lng }}</p>
+
+    <h2>Form Data Details</h2>
+    <p>Surface: {{ formData?.surface }}</p>
+    <p>Rooms: {{ formData?.rooms }}</p>
+    <p>Bathrooms: {{ formData?.bathrooms }}</p>
+    <p>Category: {{ formData?.category }}</p>
+    <p>Type: {{ formData?.type }}</p>
+    <!-- Display other form data details as needed -->
+    <p>Title: {{ formData?.title }}</p>
+    <p>Price: {{ formData?.price }}</p>
+    <p>Gender: {{ formData?.best }}</p>
+    <p>Description: {{ formData?.description }}</p>
+  </div>
+<div class="redi">
+  <button routerLink="/accomodation" class="btn">Return</button>
+  <button (click)="navigateToNextComponent()" class="btn">Next</button>
+</div>
+</div>
