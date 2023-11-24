@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 @import '~bootstrap/dist/css/bootstrap.css';
+@import "~leaflet/dist/leaflet.css";
 
 :root {
   --white: #DDDDDD; /* Example color value */

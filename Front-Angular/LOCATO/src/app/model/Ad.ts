@@ -3,8 +3,12 @@ export interface Ad {
   title: string;
   description: string;
   price: number;
-  timestamp: string; // You can use a string or Date for timestamps
-  accommodationId: number;
-  userId: number;
-  images:string[];
+  surface:number;
+  rooms:number
+  bathrooms:number
+  type:string
+  category:string
+  location:string
+  best:number
+  imagesArr:string[];
 }

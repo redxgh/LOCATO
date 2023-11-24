@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Ad } from 'src/app/model/Ad';
+import { Ad } from '../../model/Ad';
+
 
 @Component({
   selector: 'app-ad-card',
@@ -12,9 +13,14 @@ export class AdCardComponent {
     title: "",
     description: "",
     price: 0,
-    timestamp: "",
-    accommodationId: 0,
-    userId: 0,
-    images:[],
+    imagesArr: [],
+    surface: 0,
+    rooms: 0,
+    bathrooms: 0,
+    type: '',
+    category: '',
+    location: '',
+    best: 0,
+
   }
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dialog.FormDialogFragment
+import java.time.LocalTime
 
 class HomeActivity : AppCompatActivity(), ItemsAdapter.OnDeleteClickListener  {
     private lateinit var recyclerViewPopular: RecyclerView
@@ -34,12 +35,54 @@ class HomeActivity : AppCompatActivity(), ItemsAdapter.OnDeleteClickListener  {
 
 
         // Ajout d'exemples d'éléments à la liste itemsListPopular
-        val item1 = ItemsDomaine("House with a great view", "Sousse, Tunisie", "This 2 bed /1 bath home boasts an enormous. open-living plan, accented by striking architectural features and high-end finishes. Feel inspired by open sight lines that embrace the outdoors crowned by stunning coffered ceilings"
-            ,2, 1, 847456, "pic1", true)
-        val item2 = ItemsDomaine("Plermio", "Sud", "This 2 bed /1 bath home boasts an enormous. open-living plan, accented by striking architectural features and high-end finishes. Feel inspired by open sight lines that embrace the outdoors crowned by stunning coffered ceilings"
-            ,2, 1, 847456, "pic2", true)
-        val item3 = ItemsDomaine("dar maria", "cap zebib, Tunisie", "This 2 bed /1 bath home boasts an enormous. open-living plan, accented by striking architectural features and high-end finishes. Feel inspired by open sight lines that embrace the outdoors crowned by stunning coffered ceilings"
-            ,2, 1, 847456, "pic3", true)
+        val item1 = ItemsDomaine(
+            id = 1,
+            titleTxt = "House with a great view",
+            address = "Sousse, Tunisie",
+            description = "This 2 bed /1 bath home boasts an enormous open-living plan, " +
+                    "accented by striking architectural features and high-end finishes." +
+                    " Feel inspired by open sight lines that embrace the outdoors crowned by stunning coffered ceilings",
+            bed = 2,
+            bath = 1,
+            price = 200,
+            pic = "pic1",
+            category = "villa",
+            best = 847456,
+            surface = 0.0,
+            typeAd = "Type1",
+            time = LocalTime.now()
+        )
+
+        val item2 = ItemsDomaine(
+            id = 2,
+            titleTxt = "House with a great view",
+            address = "Sousse, Tunisie",
+            description = "This 2 bed /1 bath home boasts an enormous open-living plan, accented by striking architectural features and high-end finishes. Feel inspired by open sight lines that embrace the outdoors crowned by stunning coffered ceilings",
+            bed = 2,
+            bath = 1,
+            price = 200,
+            pic = "pic2",
+            category = "villa",
+            best = 847456,
+            surface = 0.0,
+            typeAd = "Type1",
+            time = LocalTime.now(),
+        )
+        val item3 = ItemsDomaine(
+            id = 3,
+            titleTxt = "House with a great view",
+            address = "Sousse, Tunisie",
+            description = "This 2 bed /1 bath home boasts an enormous open-living plan, accented by striking architectural features and high-end finishes. Feel inspired by open sight lines that embrace the outdoors crowned by stunning coffered ceilings",
+            bed = 2,
+            bath = 1,
+            price = 200,
+            pic = "pic3",
+            category = "villa",
+            best = 847456,
+            surface = 0.0,
+            typeAd = "Type1",
+            time = LocalTime.now(),
+        )
 
         itemsListPopular.add(item1)
         itemsListPopular.add(item2)

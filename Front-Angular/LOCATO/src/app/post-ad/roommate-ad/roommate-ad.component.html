@@ -1,1 +1,40 @@
-<p>roommate-ad works!</p>
+<h1 class="title">Complete post details</h1>
+<div class="content">
+
+  <form [formGroup]="form" (submit)="goto()" class="row g-3 needs-validation" novalidate>
+
+    <div class="col-md-4 position-relative">
+      <label for="validationTooltip01" class="form-label">Title</label>
+      <input formControlName="title" type="text" class="form-control" id="validationTooltip01" required>
+      <div class="valid-tooltip">
+        Looks good!
+      </div>
+    </div>
+
+    <div class="col-md-4 position-relative">
+      <label for="validationTooltip02" class="form-label">Price</label>
+      <input formControlName="price" type="number" class="form-control" id="validationTooltip02" required>
+      <div class="valid-tooltip">
+        Looks good!
+      </div>
+    </div>
+
+    <div class="col-md-4 position-relative">
+      <label for="validationTooltip02" class="form-label">Select Gender</label>
+      <select name="gender" formControlName="best" class="form-select" aria-label="Default select example">
+        <option selected></option>
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+      <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="col-lg-10">
+      <a href="/type-post" class="btn"> Return</a>
+      <button type="submit" class="btn"> Next</button>
+    </div>
+  </form>
+</div>
