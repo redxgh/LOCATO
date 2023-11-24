@@ -1,0 +1,50 @@
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-accomodation',
+  templateUrl: './accomodation.component.html',
+  styleUrls: ['./accomodation.component.scss']
+})
+export class AccomodationComponent {
+  formData: any;
+  numbers: number[] = Array.from({ length: 11 }, (_, i) => i); // Array from 0 to 10
+  categories: string[] = ['category1', 'category2', 'category3']
+  types: string[] = ['villa', 'appartement', 'cave']
+
+  form: FormGroup = this.fb.group({
+    surface: [null, Validators.required],
+    rooms: [null, Validators.required],
+    bathrooms: [null, Validators.required],
+    category: ['', Validators.required],
+    type: ['', Validators.required],
+  });
+
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe((params) => {
+      this.formData = params;
+      console.log('Received Data:', this.formData);
+    });
+  }
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      surface: [null, Validators.required],
+      rooms: [null, Validators.required],
+      bathrooms: [null, Validators.required],
+      category: ['', Validators.required],
+      type: ['', Validators.required],
+    });
+  }
+  mergeForms() {
+    if (this.form.valid) {
+      // Merge current form data with incoming form data
+      this.formData = { ...this.formData, ...this.form.value };
+
+      console.log('Merged Form Data:', this.formData);
+      // Pass merged form data in the route state
+      this.router.navigate(['/location'], { queryParams: this.formData });
+    }
+  }
+}

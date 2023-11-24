@@ -1,0 +1,66 @@
+<div>
+  <h2>Received Form Data</h2>
+  <p>Title: {{ formData.title }}</p>
+  <p>Price: {{ formData.price }}</p>
+  <p>Gender: {{ formData.gender }}</p>
+  <p>Description: {{ formData.desc }}</p>
+</div>
+
+<h1 class="title">Complete accomodation details</h1>
+<div class="content">
+  <form [formGroup]="form" (submit)="mergeForms()" class="row g-3 needs-validation" novalidate>
+    <div class="row g-3">
+      <div class="col-md-2 position-relative">
+        <label for="validationTooltip05" class="form-label">Surface</label>
+        <input formControlName="surface" type="number" class="form-control" id="validationTooltip05" required>
+        <div class="invalid-tooltip">
+          <!-- Please provide a valid zip. -->
+        </div>
+      </div>
+      <div class="col-2 position-relative">
+        <label for="validationTooltip04" class="form-label">Rooms</label>
+        <select formControlName="rooms" class="form-select" id="validationTooltip04" required>
+          <option *ngFor="let number of numbers" [value]="number">{{ number }}</option>
+        </select>
+        <div class="invalid-tooltip">
+          Please select a valid state.
+        </div>
+      </div>
+      <div class="col-md-2 position-relative">
+        <label for="validationTooltip04" class="form-label">Bathrooms</label>
+        <select formControlName="bathrooms" class="form-select" id="validationTooltip04" required>
+          <option *ngFor="let number of numbers" [value]="number">{{ number }}</option>
+        </select>
+        <div class="invalid-tooltip">
+          Please select a valid state.
+        </div>
+      </div>
+    </div>
+    <div class="row g-3 ">
+      <div class="col-md-2 position-relative">
+        <label for="validationTooltip04" class="form-label">Category</label>
+        <select formControlName="category" class="form-select" id="validationTooltip04" required>
+          <option selected disabled value="">Choose...</option>
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+        <div class="invalid-tooltip">
+          Please select a valid state.
+        </div>
+      </div>
+      <div class="col-md-2 position-relative">
+        <label for="validationTooltip04" class="form-label">Type</label>
+        <select formControlName="type" class="form-select" id="validationTooltip04" required>
+          <option selected disabled value="">Choose...</option>
+          <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+        <div class="invalid-tooltip">
+          Please select a valid state.
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <a href="/roommate-ad" class="btn"> Return</a>
+      <button type="submit" class="btn"> Next</button>
+    </div>
+  </form>
+</div>

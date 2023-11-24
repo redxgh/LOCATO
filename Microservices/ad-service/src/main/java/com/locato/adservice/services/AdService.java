@@ -20,5 +20,12 @@ public class AdService {
     public List<Ad> getAds(){
         return adRepository.findAll();
     }
+    public boolean deleteAd(String id){
+        adRepository.deleteById(id);
+        return true;
+    }
+    public Ad editAd(Ad ad){
+        return adRepository.save(ad);
+    }
 
 }
