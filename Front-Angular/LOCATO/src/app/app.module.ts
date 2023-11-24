@@ -14,6 +14,8 @@ import { RoommateAdComponent } from './post-ad/roommate-ad/roommate-ad.component
 import { TypePostComponent } from './post-ad/type-post/type-post.component';
 import { PostImagesComponent } from './post-ad/post-images/post-images.component';
 import { LocationComponent } from './post-ad/location/location.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapComponent } from './post-ad/map/map.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,12 +31,14 @@ import { LocationComponent } from './post-ad/location/location.component';
     FormServiceComponent,
     PostImagesComponent,
     LocationComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    LeafletModule
 
   ],
   providers: [],
