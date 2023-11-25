@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import java.text.DecimalFormat
 
 class DetailActivity : AppCompatActivity() {
 
@@ -18,6 +19,8 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var pic: ImageView
     private lateinit var priceTxt: TextView
 
+    private val formatter = DecimalFormat("##,##,##,##,##")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -28,25 +31,24 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setVariable() {
         item = intent.getSerializableExtra("object") as ItemsDomaine
-        titleTxt.text = item.titleTxt
-        addressTxt.text = item.address
-        bedTxt.text = "${item.bed} Bed"
-        bathTxt.text = "${item.bath} Bath"
-        surfaceTxt.text = "${item.bath} "
+        titleTxt.text = item.title
+        addressTxt.text = item.accomodation?.location
+        bedTxt.text = "${item.accomodation?.rooms} Bed"
+        bathTxt.text = "${item.accomodation?.bathrooms} Bath"
+        surfaceTxt.text = "${item.accomodation?.surface} m²"
         descriptionTxt.text = item.description
+        priceTxt.text = "${formatter.format(item.price)} DT"
 
-
-
-        val drawableResourceId = resources.getIdentifier(item.pic, "drawable", packageName)
-
-        Glide.with(this)
-            .load(drawableResourceId)
-            .into(pic)
+        if (item.accomodation?.images?.isNotEmpty() == true) {
+            Glide.with(this)
+                .load(item.accomodation!!.images?.get(0))
+                .into(pic)
+        }
     }
 
     private fun initView() {
         titleTxt = findViewById(R.id.titleTxt)
-        addressTxt = findViewById(R.id.addressTxt)
+        addressTxt = findViewById(R.id.adress) // Adjusted to match the XML layout
         bedTxt = findViewById(R.id.bedTxt)
         bathTxt = findViewById(R.id.bathTxt)
         surfaceTxt = findViewById(R.id.wifiTxt)

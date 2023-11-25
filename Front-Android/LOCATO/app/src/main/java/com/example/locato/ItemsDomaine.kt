@@ -3,22 +3,32 @@ package com.example.locato
 import java.io.Serializable
 import java.time.LocalTime
 
-class ItemsDomaine(
-    val id:Int,
-    val titleTxt: String,
-    val address: String,
+data class ItemsDomaine(
+    val id: String,
+    val title: String,
     val description: String,
-    val bed: Int,
-    val bath: Int,
-    val price: Int,
-    val pic: String,
-    val category: String,
-    val best: Int,
-    val surface: Double,
-    val typeAd:String,
-    val time: LocalTime
-
-
-
+    val price: Double,
+    val timeStamp: String?,
+    val accomodation: Accomodation?,
+    val gender: Int?
 ) : Serializable {
+    data class Accomodation(
+        val location: String?,
+        val surface: Double?,
+        val rooms: Int?,
+        val bathrooms: Int?,
+        val best: Int?,
+        val images: List<String>?,
+        val type: String?,
+        val category: Category?,
+        val categories: Category?
+    ) : Serializable
+    @Transient
+    val nonSerializableProperty: Any? = null
+
+    data class Category(
+        val id: String?,
+        val name: String?,
+        val image: String?
+    )
 }
