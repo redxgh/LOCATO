@@ -30,5 +30,5 @@ data class ItemsDomaine(
         val id: String?,
         val name: String?,
         val image: String?
-    )
+    ):Serializable
 }

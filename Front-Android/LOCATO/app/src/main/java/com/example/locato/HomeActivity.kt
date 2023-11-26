@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var postAdBtn : FloatingActionButton
 
     private lateinit var filterButton : Button
-    private val baseUrl = "http://192.168.1.19:8081/getAds"
+    private val baseUrl = "http://192.168.1.6:8081/getAds"
 
 
     @SuppressLint("MissingInflatedId")
@@ -81,8 +81,14 @@ class HomeActivity : AppCompatActivity() {
             ),
             gender = null
         )
+
+
         itemsListPopular.add(item1)
         itemsListPopular.add(item2)
+
+
+
+
 
         // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
         itemsAdapterPopular = ItemsAdapter(itemsListPopular, RECYCLER_VIEW_POPULAR)
@@ -124,12 +130,6 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, PostActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
-
 
     }
 
