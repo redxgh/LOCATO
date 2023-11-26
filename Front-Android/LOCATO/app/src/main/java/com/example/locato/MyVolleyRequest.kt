@@ -3,12 +3,16 @@ package com.example.locato
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import com.android.volley.NetworkResponse
 import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
+import multipartFiles.MultipartRequest
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
 
 class MyVolleyRequest private constructor(private val context: Context) {
     private val requestQueue: RequestQueue by lazy {
@@ -40,7 +44,10 @@ class MyVolleyRequest private constructor(private val context: Context) {
             { error ->
                 // Handle error
                 callback(null)
-                Log.e("MyVolleyRequest", "Error: ${error.networkResponse?.statusCode}, ${error.localizedMessage}")
+                Log.e(
+                    "MyVolleyRequest",
+                    "Error: ${error.networkResponse?.statusCode}, ${error.localizedMessage}"
+                )
             }
         )
 
@@ -67,7 +74,8 @@ class MyVolleyRequest private constructor(private val context: Context) {
         val timeStamp = adObject.optString("timeStamp")
 
         val accomodationObject = adObject.optJSONObject("accomodation")
-        val accomodation = if (accomodationObject != null) createAccomodationFromJsonObject(accomodationObject) else null
+        val accomodation =
+            if (accomodationObject != null) createAccomodationFromJsonObject(accomodationObject) else null
         val gender = adObject.optInt("gender", -1)
 
         return ItemsDomaine(id, title, description, price, timeStamp, accomodation, gender)
@@ -91,7 +99,17 @@ class MyVolleyRequest private constructor(private val context: Context) {
         val categoriesObject = accomodationObject.optJSONObject("categories")
         val categories = createCategoryFromJsonObject(categoriesObject)
 
-        return ItemsDomaine.Accomodation(location, surface, rooms, bathrooms, best, imagesList, type, category, categories)
+        return ItemsDomaine.Accomodation(
+            location,
+            surface,
+            rooms,
+            bathrooms,
+            best,
+            imagesList,
+            type,
+            category,
+            categories
+        )
     }
 
     private fun createCategoryFromJsonObject(categoryObject: JSONObject?): ItemsDomaine.Category {
@@ -111,4 +129,51 @@ class MyVolleyRequest private constructor(private val context: Context) {
         }
         return result
     }
+
+    //post request ( create ad)
+    fun addAd(
+        title: String,
+        description: String,
+        price: Double,
+        location: String,
+        surface: Double,
+        rooms: Int,
+        bathrooms: Int,
+        best: Int,
+        imagesArr: List<File>,
+        type: String,
+        categoryId: String,
+        gender: Int,
+        callback: (NetworkResponse?) -> Unit
+    ) {
+        val url = "http://192.168.1.19:8081/addAd"
+        val fileParts = imagesArr.mapIndexed { index, file -> "imagesArr[$index]" to file }.toMap()
+        val stringParts = mapOf(
+            "title" to title,
+            "description" to description,
+            "price" to price.toString(),
+            "location" to location,
+            "surface" to surface.toString(),
+            "rooms" to rooms.toString(),
+            "bathrooms" to bathrooms.toString(),
+            "best" to best.toString(),
+            "type" to type,
+            "categoryId" to categoryId,
+            "gender" to gender.toString()
+        )
+        val multipartRequest = MultipartRequest(
+            Request.Method.POST, url, fileParts, stringParts,
+            { response ->
+                // Handle successful response
+                callback(response)
+            },
+            { error ->
+                // Handle error
+                callback(null)
+            }
+        )
+
+        requestQueue.add(multipartRequest)
+    }
 }
+

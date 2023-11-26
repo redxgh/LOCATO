@@ -1,7 +1,11 @@
 package com.example.locato
 
+import android.app.Activity
 import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -110,11 +114,8 @@ class AcmdDetailsActivity : AppCompatActivity() {
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(intent, 1) // The "1" is a request code, you can use any unique number
+
     }
-
-
-
-
 
 
 }
