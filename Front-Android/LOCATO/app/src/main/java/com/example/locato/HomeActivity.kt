@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var postAdBtn : FloatingActionButton
 
     private lateinit var filterButton : Button
-    private val baseUrl = "http://192.168.1.6:8081/getAds"
+    private val baseUrl = "http://192.168.56.1:8081/getAds"
 
 
     @SuppressLint("MissingInflatedId")
