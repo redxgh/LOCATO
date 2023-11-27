@@ -88,6 +88,12 @@ class HomeActivity : AppCompatActivity() {
 
         itemsListPopular.add(item1)
         itemsListPopular.add(item2)
+        //button post ad
+        postAdBtn = findViewById(R.id.postAdBtn)
+        postAdBtn.setOnClickListener(){
+            val intent = Intent(this, PostActivity::class.java)
+            startActivity(intent)
+        }
         // Appel de la fonction DeleteRecyclerView() pour configurer le recyclerViewNew
         DeleteRecyclerView()
 
@@ -109,6 +115,7 @@ class HomeActivity : AppCompatActivity() {
 
         // ... Autres configurations ...
     }
+
        //DeleteAd
     private fun DeleteRecyclerView() {
         // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
