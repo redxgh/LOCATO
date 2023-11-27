@@ -3,17 +3,16 @@
   <div class="slider">
     <a class="control_next">></a>
     <a class="control_prev"><</a>
-    <ul>
-      <li *ngFor="let image of ad.imagesArr"
-          style="background-image: url('../../../assets/{{ image }}');
-                 width: 300px;
-                 height: 300px;">
-      </li>
+   <ul>
+     <li *ngFor="let image of ad.accomodation.images">
+      <img [src]="'../../../assets/ads/'+extractFileName(image)" alt="rrrrrr">
+
+    </li>
     </ul>
   </div>
   <span class="product-category">Category</span>
 
-    <div class="product-item-desc px-2 py-2">
+  <div class="product-item-desc px-2 py-2">
       <div class="product-item-city">
         <span style="display: inline-block;">
           <svg height="13px" width="13px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -26,20 +25,20 @@
            c-74.331,0-134.599-60.268-134.599-134.608c0-74.339,60.268-134.607,134.599-134.607c74.339,0,134.606,60.268,134.606,134.607
            C390.602,275.205,330.335,335.473,255.996,335.473z"/>
        </g>
-           </svg>
-          <span style="display: inline-block; vertical-align: middle;">City Name</span>
-        </span>
-      </div>
-      <div class="product-item-title">{{ ad.title }} </div>
-      <!-- <div class="product-item-user">
-        User
-      </div> -->
+      </svg>
+      <span style="display: inline-block; vertical-align: middle;">City Name</span>
+    </span>
+  </div>
+  <div class="product-item-title">{{ ad.title }} </div>
+  <!-- <div class="product-item-user">
+    User
+  </div> -->
       <div class="product-item-price">
       <span>
         {{ ad.price }} DT
       </span>
-      </div>
-
     </div>
+
+  </div>
 
  </div>

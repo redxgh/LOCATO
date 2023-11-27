@@ -31,7 +31,6 @@ export class RoommateAdComponent implements OnInit {
     if (this.form.valid) {
       FormData= this.form.value
       console.log('Form Data:', FormData);
-      // Pass form data in the route state
       this.router.navigate(['/accomodation'],{ queryParams: FormData });
     }
   }

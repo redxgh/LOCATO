@@ -59,3 +59,64 @@
 .redi{
   display: inline;
 }
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 200px;
+  margin-top: 120px;
+}
+input{
+  border-radius: 5px;
+}
+textarea{
+  border-radius: 5px;
+}
+button{
+  background-color: rgb(16, 233, 249);
+  padding: 10px;
+  margin: 5px;
+}
+
+.btn:link,
+.btn:visited {
+ text-transform: uppercase;
+ text-decoration: none;
+ color: rgb(27, 27, 27);
+ padding: 10px 30px;
+ border: 1px solid;
+ border-radius: 1000px;
+ border-color: aqua;
+ display: inline-block;
+ transition: all .2s;
+ position: relative;
+ margin: 10px;
+}
+
+.btn:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 10px 20px rgba(27, 27, 27, .5);
+}
+
+.btn:active {
+ transform: translateY(-3px);
+}
+
+.btn::after {
+ content: "";
+ display: inline-block;
+ height: 100%;
+ width: 100%;
+ border-radius: 100px;
+ top: 0;
+ left: 0;
+ position: absolute;
+ z-index: -1;
+ transition: all .3s;
+}
+
+.title {
+  font-size: 3em;
+}

@@ -1,18 +1,33 @@
-<div class="content">
-  <div class="mb-3">
-    <label for="formFileSm" class="form-label">Upload Images</label>
-    <input class="form-control form-control-sm" id="formFileSm" type="file" multiple (change)="onFileSelected($event)">
-  </div>
-
-  <!-- Display selected images -->
-  <div *ngIf="imagesArr.length > 0">
-    <h2>Selected Images</h2>
-    <div *ngFor="let image of imagesArr">
-      <img [src]="image.url" alt="Selected Image">
+<div class="custom-container px-5 my-5">
+  <div class="container px-2 my-8">
+    <div class="grid grid-cols-2 gap-2" id="pics">
+      <div
+        *ngFor="let image of imagesArr; let i = index"
+        (mouseenter)="setHoveredIndex(i)"
+        (mouseleave)="setHoveredIndex(null)"
+      >
+        <img
+          class="h-auto max-w-full rounded-lg"
+          [src]="image.url"
+          alt=""
+          id="img"
+        />
+        <button
+          *ngIf="hoveredIndex === i"
+          class="btn-remove"
+          (click)="removeImage(i)"
+        >
+          X
+        </button>
+      </div>
     </div>
+    <input
+      class="form-control form-control-sm"
+      id="formFileSm"
+      type="file"
+      multiple
+      (change)="onFileSelected($event)"
+    />
   </div>
-
-  <!-- Other form fields and buttons -->
-
-  <button (click)="uploadData(formData)" class="btn">Upload and Send Data</button>
+  <button (click)="uploadData()" class="btn">Upload and Send Data</button>
 </div>
