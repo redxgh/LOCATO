@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dialog.FormDialogFragment
 import java.time.LocalTime
+import com.example.locato.ItemsAdapter.Action
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var recyclerViewPopular: RecyclerView
@@ -23,19 +24,23 @@ class HomeActivity : AppCompatActivity() {
     private val itemsListPopular: ArrayList<ItemsDomaine> = ArrayList()
     private val itemsListNew: ArrayList<ItemsDomaine> = ArrayList()
 
-    private lateinit var postAdBtn : FloatingActionButton
+    private lateinit var postAdBtn: FloatingActionButton
+    private lateinit var filterButton: Button
+    private val baseUrl = "http://192.168.0.141:8081/getAds"
 
-    private lateinit var filterButton : Button
-    private val baseUrl = "http://192.168.1.19:8081/getAds"
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scroll_main)
-        // Initialisation du RecyclerView et ajout des éléments à la liste itemsListPopular
+
+        // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
         recyclerViewPopular = findViewById(R.id.viewPopular)
         recyclerViewNew = findViewById(R.id.viewNew)
 
-        // Ajout d'exemples d'éléments à la liste itemsListPopular
+        itemsAdapterPopular = ItemsAdapter(itemsListPopular, RECYCLER_VIEW_POPULAR)
+        recyclerViewPopular.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewPopular.adapter = itemsAdapterPopular
+// Ajout d'exemples d'éléments à la liste itemsListPopular
         val item1 = ItemsDomaine(
             id = "1",
             title = "House with a great view",
@@ -83,21 +88,10 @@ class HomeActivity : AppCompatActivity() {
 
         itemsListPopular.add(item1)
         itemsListPopular.add(item2)
+        // Appel de la fonction DeleteRecyclerView() pour configurer le recyclerViewNew
+        DeleteRecyclerView()
 
-
-
-
-
-        // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
-        itemsAdapterPopular = ItemsAdapter(itemsListPopular, RECYCLER_VIEW_POPULAR)
-        recyclerViewPopular.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerViewPopular.adapter = itemsAdapterPopular
-
-        itemsAdapterNew = ItemsAdapter(itemsListNew, RECYCLER_VIEW_NEW)
-        recyclerViewNew.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerViewNew.adapter = itemsAdapterNew
-
-       //volleyget
+        //volleyget
         MyVolleyRequest.getInstance(this).getRequest(baseUrl) { itemsList ->
             runOnUiThread {
                 if (itemsList != null) {
@@ -113,32 +107,49 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        //filter surch btn
-        // Create an instance of the dialog fragment
-        
-        filterButton = findViewById(R.id.filterBtn)
-        filterButton.setOnClickListener {
-            val dialog = FormDialogFragment()
-            // Show the dialog
-            dialog.show(supportFragmentManager, "FormDialogFragment")
-        }
+        // ... Autres configurations ...
+    }
+       //DeleteAd
+    private fun DeleteRecyclerView() {
+        // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
+        itemsAdapterNew = ItemsAdapter(itemsListNew, RECYCLER_VIEW_NEW, object : ItemsAdapter.OnItemClickListener {
+            override fun onItemClick(item: ItemsDomaine?, action: ItemsAdapter.Action) {
+                // L'interface est déjà mise en œuvre dans la méthode setupRecyclerView
+                when (action) {
+                    ItemsAdapter.Action.DELETE -> {
+                        // Action de suppression, appel de la méthode de suppression
+                        if (item != null) {
+                            val adId = item.id
+                            if (adId != null) {
+                                MyVolleyRequest.getInstance(this@HomeActivity).deleteAdById(adId) { response ->
+                                    // Handle the response, e.g., update UI or show a message
+                                    if (response != null) {
+                                        // Successful deletion
+                                        Log.d("DeleteAd", "Ad deleted successfully.")
+                                        // Mettez à jour votre RecyclerView ici si nécessaire
+                                        runOnUiThread {
+                                            itemsListNew.remove(item)
+                                            itemsAdapterNew.notifyDataSetChanged()
+                                        }
+                                    } else {
+                                        // Error during deletion
+                                        Log.e("DeleteAd", "Error deleting ad.")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
 
-        postAdBtn = findViewById(R.id.postAdBtn)
-        postAdBtn.setOnClickListener(){
-            val intent = Intent(this, PostActivity::class.java)
-            startActivity(intent)
-        }
-
+        recyclerViewNew.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewNew.adapter = itemsAdapterNew
     }
 
     companion object {
         const val RECYCLER_VIEW_POPULAR = 1
         const val RECYCLER_VIEW_NEW = 2
     }
-
-
-
-
-
 }
 

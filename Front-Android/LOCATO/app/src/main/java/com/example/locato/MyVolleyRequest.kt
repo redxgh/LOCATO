@@ -8,6 +8,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import multipartFiles.MultipartRequest
 import org.json.JSONArray
@@ -146,7 +147,7 @@ class MyVolleyRequest private constructor(private val context: Context) {
         gender: Int,
         callback: (NetworkResponse?) -> Unit
     ) {
-        val url = "http://192.168.1.19:8081/addAd"
+        val url = "http:// 192.168.0.141:8081/addAd"
         val fileParts = imagesArr.mapIndexed { index, file -> "imagesArr[$index]" to file }.toMap()
         val stringParts = mapOf(
             "title" to title,
@@ -174,6 +175,34 @@ class MyVolleyRequest private constructor(private val context: Context) {
         )
 
         requestQueue.add(multipartRequest)
+    }
+    //delete
+    fun deleteAdById(adId: String, callback: (String?) -> Unit) {
+        val url = "http://192.168.0.141:8081/deleteAd?id=$adId"
+
+        val deleteRequest = object : StringRequest(
+            Method.DELETE, url,
+            { response ->
+                // Handle successful response
+                callback(response)
+            },
+            { error ->
+                // Handle error
+                callback(null)
+                Log.e(
+                    "MyVolleyRequest",
+                    "Error: ${error.networkResponse?.statusCode}, ${error.localizedMessage}"
+                )
+            }
+        ) {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                // Add any headers needed for the request
+                return headers
+            }
+        }
+
+        requestQueue.add(deleteRequest)
     }
 }
 

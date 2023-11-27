@@ -13,8 +13,11 @@ import com.bumptech.glide.Glide
 import java.io.Serializable
 import java.text.DecimalFormat
 
-class ItemsAdapter(private val items: ArrayList<ItemsDomaine>, private val recyclerViewType: Int) :
-    RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+class ItemsAdapter(
+    private val items: ArrayList<ItemsDomaine>,
+    private val recyclerViewType: Int,
+    private val listener: OnItemClickListener? = null
+) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
     private val formatter = DecimalFormat("##,##,##,##,##")
 
@@ -53,6 +56,11 @@ class ItemsAdapter(private val items: ArrayList<ItemsDomaine>, private val recyc
             intent.putExtra("object", currentItem as Serializable)
             holder.itemView.context.startActivity(intent)
         }
+
+        holder.deleteButton.setOnClickListener {
+            listener?.onItemClick(currentItem, Action.DELETE)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -64,5 +72,20 @@ class ItemsAdapter(private val items: ArrayList<ItemsDomaine>, private val recyc
         val priceTextView: TextView = itemView.findViewById(R.id.price)
         val titleTextView: TextView = itemView.findViewById(R.id.titleTxt)
         val pic: ImageView = itemView.findViewById(R.id.pic1)
+        val deleteButton: ImageView = itemView.findViewById(R.id.deleteCard)
+        init {
+            deleteButton.setOnClickListener {
+                listener?.onItemClick(items[adapterPosition], Action.DELETE)
+            }
+        }
+
+    }
+    interface OnItemClickListener {
+        fun onItemClick(item: ItemsDomaine?, action: ItemsAdapter.Action)
+    }
+
+    enum class Action {
+        DELETE,
+
     }
 }
