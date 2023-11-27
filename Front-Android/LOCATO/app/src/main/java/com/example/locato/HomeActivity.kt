@@ -40,7 +40,8 @@ class HomeActivity : AppCompatActivity() {
         itemsAdapterPopular = ItemsAdapter(itemsListPopular, RECYCLER_VIEW_POPULAR)
         recyclerViewPopular.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewPopular.adapter = itemsAdapterPopular
-// Ajout d'exemples d'éléments à la liste itemsListPopular
+
+        // Ajout d'exemples d'éléments à la liste itemsListPopular
         val item1 = ItemsDomaine(
             id = "1",
             title = "House with a great view",
@@ -85,15 +86,16 @@ class HomeActivity : AppCompatActivity() {
             gender = null
         )
 
-
         itemsListPopular.add(item1)
         itemsListPopular.add(item2)
+
         //button post ad
         postAdBtn = findViewById(R.id.postAdBtn)
         postAdBtn.setOnClickListener(){
             val intent = Intent(this, PostActivity::class.java)
             startActivity(intent)
         }
+
         // Appel de la fonction DeleteRecyclerView() pour configurer le recyclerViewNew
         DeleteRecyclerView()
 
