@@ -87,6 +87,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
+                android:text="Category"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:hint="Select Category"
+                app:boxCornerRadiusBottomEnd="15dp"
+                app:boxCornerRadiusTopEnd="15dp"
+                app:boxCornerRadiusBottomStart="15dp"
+                app:boxCornerRadiusTopStart="15dp"
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/categorySelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:inputType="none"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
                 android:text="Type"
                 android:textAlignment="viewStart"
                 android:textStyle="bold" />
@@ -100,11 +129,10 @@
                 app:boxCornerRadiusTopEnd="15dp"
                 app:boxCornerRadiusBottomStart="15dp"
                 app:boxCornerRadiusTopStart="15dp"
-
                 >
 
                 <AutoCompleteTextView
-                    android:id="@+id/auto_complete_txt"
+                    android:id="@+id/typeSelect"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:inputType="none"
@@ -191,7 +219,7 @@
                 >
 
                 <AutoCompleteTextView
-                    android:id="@+id/auto_complete_txt1"
+                    android:id="@+id/locationSelect"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:inputType="none"
@@ -237,10 +265,10 @@
                 android:id="@+id/nextBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:backgroundTint="@color/disabled_color"
+                android:backgroundTint="@color/red"
                 android:text="Next"
                 app:cornerRadius="32dp"
-                android:enabled="false"/>
+                android:enabled="true"/>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />

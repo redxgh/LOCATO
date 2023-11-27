@@ -7,8 +7,10 @@ import android.os.Environment
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
@@ -33,7 +35,6 @@ class PostActivity : AppCompatActivity() {
     private lateinit var adPrice: EditText
     private lateinit var nextButton: MaterialButton
     private lateinit var adTypeRadioGroup: RadioGroup
-    private val baseUrl = "http://192.168.1.19:8081/addAd"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,12 +49,38 @@ class PostActivity : AppCompatActivity() {
         adTitle = findViewById(R.id.adTitle)
         adDesc = findViewById(R.id.adDesc)
         adPrice = findViewById(R.id.adPrice)
-        nextButton = findViewById(R.id.nextBtn)
-        nextButton.setOnClickListener() {
-            val intent = Intent(this, AcmdDetailsActivity::class.java)
-            startActivity(intent)
+
+
+        //displaying gender radio group if its colocation ad
+        val adTypeRadioGroup = findViewById<RadioGroup>(R.id.adType)
+        val adGenderRadioGroup = findViewById<RadioGroup>(R.id.adGender)
+        val genderTitle = findViewById<TextView>(R.id.GenderTitle)
+        var adGender = "-1"
+        adTypeRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.renting -> {
+                    adGenderRadioGroup.visibility = View.GONE
+                    genderTitle.visibility = View.GONE
+
+                }
+                R.id.colocation -> {
+                    adGenderRadioGroup.visibility = View.VISIBLE
+                    genderTitle.visibility = View.VISIBLE
+                }
+            }
         }
-        adTypeRadioGroup = findViewById(R.id.adType)
+
+        adGenderRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.female -> {
+                     adGender = "1"
+                }
+                R.id.male -> {
+                     adGender = "0"
+                }
+            }
+        }
+
 
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -69,6 +96,8 @@ class PostActivity : AppCompatActivity() {
         adTitle.addTextChangedListener(textWatcher)
         adDesc.addTextChangedListener(textWatcher)
         adPrice.addTextChangedListener(textWatcher)
+
+
 
         /*val myVolleyRequest = MyVolleyRequest.getInstance(this)
         myVolleyRequest.addAd(
@@ -98,63 +127,24 @@ class PostActivity : AppCompatActivity() {
         }*/
 
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.1.19:8081/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        //resume
 
-        val service = retrofit.create(AdService::class.java)
+        //nextButton
+        nextButton = findViewById(R.id.nextBtn)
+        nextButton.setOnClickListener() {
 
-        val title = "My Ad".toRequestBody("text/plain".toMediaTypeOrNull())
-        val description = "This is my ad description.".toRequestBody("text/plain".toMediaTypeOrNull())
-        val price = "1000".toRequestBody("text/plain".toMediaTypeOrNull())
-        val location = "New York".toRequestBody("text/plain".toMediaTypeOrNull())
-        val surface = "100".toRequestBody("text/plain".toMediaTypeOrNull())
-        val rooms = "3".toRequestBody("text/plain".toMediaTypeOrNull())
-        val bathrooms = "2".toRequestBody("text/plain".toMediaTypeOrNull())
-        val best = "1".toRequestBody("text/plain".toMediaTypeOrNull())
+            val intent = Intent(this, AcmdDetailsActivity::class.java)
+            intent.putExtra("adTitle", adTitle.text)
+            intent.putExtra("adDesc", adDesc.text)
+            intent.putExtra("adPrice", adPrice.text)
+            intent.putExtra("adGender",adGender)
+            Log.d("adTitle", adTitle.text.toString())
+            Log.d("adDesc", adPrice.text.toString())
+            Log.d("adPrice", adDesc.text.toString())
+            Log.d("adGender", adGender)
 
-
-        val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "BakiHanma.jpg")
-        val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-        val imagesArr = MultipartBody.Part.createFormData("imagesArr", file.name, requestFile)
-
-        val type = "Apartment".toRequestBody("text/plain".toMediaTypeOrNull())
-        val categoryId = "cat1".toRequestBody("text/plain".toMediaTypeOrNull())
-        val gender = "1".toRequestBody("text/plain".toMediaTypeOrNull())
-        val call = service.addAd(
-            title,
-            description,
-            price,
-            location,
-            surface,
-            rooms,
-            bathrooms,
-            best,
-            imagesArr,
-            type,
-            categoryId,
-            gender
-        )
-
-// Execute the call
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@PostActivity, "Request successful", Toast.LENGTH_SHORT).show()
-
-                } else {
-
-                    Toast.makeText(this@PostActivity, "Request failed", Toast.LENGTH_SHORT).show()
-
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@PostActivity, "on failure ! ", Toast.LENGTH_SHORT).show()
-                Log.e("error", t.message.toString())
-            }
-        })
+            startActivity(intent)
+        }
 
     }
     override fun onSupportNavigateUp(): Boolean {
