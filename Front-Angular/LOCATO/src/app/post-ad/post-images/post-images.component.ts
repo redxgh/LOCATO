@@ -9,8 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PostImagesComponent {
   imagesArr: any[] = [];
-  formData: any
+  formData: any;
   location: { lat: number; lng: number } | undefined;
+  hoveredIndex: number | null = null;
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) {
     this.route.queryParams.subscribe((params) => {
@@ -19,9 +20,15 @@ export class PostImagesComponent {
     });
   }
 
+  setHoveredIndex(index: number | null): void {
+    this.hoveredIndex = index;
+  }
+
+  removeImage(index: number): void {
+    this.imagesArr.splice(index, 1);}
+
   onFileSelected(event: any): void {
     const files = event.target.files;
-    this.imagesArr = [];
 
     if (files) {
       for (let i = 0; i < files.length; i++) {
@@ -31,18 +38,16 @@ export class PostImagesComponent {
         reader.onload = (e: any) => {
           this.imagesArr.push({ url: e.target.result, file });
         };
-
         reader.readAsDataURL(file);
       }
     }
   }
 
-  uploadData(formData: any): void {
+  uploadData(): void {
+    let fD = new FormData();
 
-    const fD = new FormData();
-
-    for (const image of this.imagesArr) {
-      fD.append('images', image.file, image.file.name);
+    for (let i = 0; i < this.imagesArr.length; i++) {
+      fD.append('imagesArr', this.imagesArr[i].file);
     }
 
     for (const key in this.formData) {
@@ -50,18 +55,20 @@ export class PostImagesComponent {
         fD.append(key, this.formData[key]);
       }
     }
-    this.http.post('http://localhost:8081/addAd', formData).subscribe({
+
+    this.http.post('http://localhost:8081/addAd', fD).subscribe({
       next: (response) => {
         console.log('Upload successful:', response);
-        // Handle success, e.g., navigate to a success page
       },
       error: (error) => {
         console.error('Upload failed:', error);
-        // Handle error, display error message, etc.
       },
       complete: () => {
-        // Optionally handle the complete event
       },
     });
   }
 }
+function removeImage(index: any, number: any) {
+  throw new Error('Function not implemented.');
+}
+

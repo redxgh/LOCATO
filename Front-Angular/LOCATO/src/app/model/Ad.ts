@@ -3,12 +3,15 @@ export interface Ad {
   title: string;
   description: string;
   price: number;
-  surface:number;
-  rooms:number
-  bathrooms:number
-  type:string
-  category:string
-  location:string
-  best:number
-  imagesArr:string[];
+  surface: number;
+  accomodation: {
+    rooms: number;
+    bathrooms: number;
+    type: string;
+    category: string;
+    location: string;
+    best: number;
+    images: string[];
+  }
 }
+

@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 })
 export class FormDataResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    const formData = route.data['formData']; // This assumes that the form data is passed directly in the route configuration
+    const formData = route.data['formData'];
     return of(formData);
   }
 }

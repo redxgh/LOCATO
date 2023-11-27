@@ -19,7 +19,7 @@ export class MapComponent implements AfterViewInit {
   }
 
   private initializeMap(): void {
-    this.map = L.map('map').setView([51.505, -0.09], 13);
+    this.map = L.map('map').setView([36.789216127009404,10.18], 10);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
@@ -30,11 +30,7 @@ export class MapComponent implements AfterViewInit {
         lat: event.latlng.lat,
         lng: event.latlng.lng,
       };
-
-      // Emit the selected location
       this.locationSelected.emit(selectedLocation);
-
-      // Add or move the marker to the selected location
       this.addOrUpdateMarker(selectedLocation);
     });
   }

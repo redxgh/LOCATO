@@ -1,40 +1,52 @@
 <h1 class="title">Complete post details</h1>
-<div class="content">
+<div class="container px-5 my-5">
+  <form [formGroup]="form" (submit)="goto()" id="contactForm" class="row g-3 needs-validation">
 
-  <form [formGroup]="form" (submit)="goto()" class="row g-3 needs-validation" novalidate>
-
-    <div class="col-md-4 position-relative">
-      <label for="validationTooltip01" class="form-label">Title</label>
-      <input formControlName="title" type="text" class="form-control" id="validationTooltip01" required>
-      <div class="valid-tooltip">
-        Looks good!
+    <div class="row g-3">
+      <div class="col-md-3 position-relative">
+        <label class="form-label" for="postTitle">Post Title</label>
+        <input formControlName="title" class="form-control" id="postTitle" type="text" placeholder="Post Title"
+          data-sb-validations="required" />
+        <div class="invalid-feedback" data-sb-feedback="postTitle:required">Post Title is required.</div>
+      </div>
+      <div class="col-md-3 position-relative">
+        <label class="form-label" for="price">Price</label>
+        <input formControlName="price" class="form-control" id="price" type="text" placeholder="Price"
+          data-sb-validations="required" />
+        <div class="invalid-feedback" data-sb-feedback="price:required">Price is required.</div>
       </div>
     </div>
-
-    <div class="col-md-4 position-relative">
-      <label for="validationTooltip02" class="form-label">Price</label>
-      <input formControlName="price" type="number" class="form-control" id="validationTooltip02" required>
-      <div class="valid-tooltip">
-        Looks good!
+    <div class="row g-3">
+      <div class="col-md-3 position-relative">
+        <label class="form-label" for="gender">Gender</label>
+        <select formControlName="best" class="form-select" id="gender" aria-label="Gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
       </div>
     </div>
-
-    <div class="col-md-4 position-relative">
-      <label for="validationTooltip02" class="form-label">Select Gender</label>
-      <select name="gender" formControlName="best" class="form-select" aria-label="Default select example">
-        <option selected></option>
-        <option value="1">Male</option>
-        <option value="2">Female</option>
-      </select>
+    <div class="col-md-6 position-relative">
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea formControlName="description" class="form-control" id="description" type="text"
+          placeholder="Description" style="height: 10rem;" data-sb-validations="required"></textarea>
+        <div class="invalid-feedback" data-sb-feedback="description:required">Description is required.</div>
+      </div>
     </div>
-
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-      <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div class="d-none" id="submitSuccessMessage">
+      <div class="text-center mb-3">
+        <div class="fw-bolder">Form submission successful!</div>
+      </div>
     </div>
-    <div class="col-lg-10">
-      <a href="/type-post" class="btn"> Return</a>
-      <button type="submit" class="btn"> Next</button>
+    <div class="d-none" id="submitErrorMessage">
+      <div class="text-center text-danger mb-3">Error sending message!</div>
+    </div>
+    <div class="d-grid">
+      <div class="col-lg-10">
+        <button routerLink="/type-post" class="btn"> Return</button>
+        <button type="submit" class="btn"> Next</button>
+      </div>
     </div>
   </form>
 </div>
+<!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->

@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AccomodationComponent {
   formData: any;
-  numbers: number[] = Array.from({ length: 11 }, (_, i) => i); // Array from 0 to 10
+  numbers: number[] = Array.from({ length: 11 }, (_, i) => i);
   categories: number[] = [1, 2, 3]
   types: string[] = ['villa', 'appartement', 'cave']
 
@@ -41,11 +41,9 @@ export class AccomodationComponent {
   }
   mergeForms() {
     if (this.form.valid) {
-      // Merge current form data with incoming form data
       this.formData = { ...this.formData, ...this.form.value };
 
       console.log('Merged Form Data:', this.formData);
-      // Pass merged form data in the route state
       this.router.navigate(['/location'], { queryParams: this.formData });
     }
   }
