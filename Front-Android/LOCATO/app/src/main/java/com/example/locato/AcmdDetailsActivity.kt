@@ -2,24 +2,24 @@ package com.example.locato
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ContentResolver
 import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.android.material.button.MaterialButton
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -38,6 +38,18 @@ import java.io.File
 
 @Suppress("DEPRECATION")
 class AcmdDetailsActivity : AppCompatActivity() {
+    //check for upload files
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                // Permission is granted, proceed with the file selection logic
+                onUploadButtonClick()
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
     //el items bch ywaliw yjiw ml entity(enum) category
     private val itemsCategory = arrayOf("cat1","cat2")
     private val itemsType = arrayOf("type1","type2","type3")
@@ -79,11 +91,13 @@ class AcmdDetailsActivity : AppCompatActivity() {
     private var position: String? = null
 
     private lateinit var nextButton: MaterialButton
-
+    private lateinit var selectedImageUri: Uri
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_acmd_details)
+
+
         //retrieve data from previous activity
 
 
@@ -175,7 +189,6 @@ class AcmdDetailsActivity : AppCompatActivity() {
         //nextButton
         nextButton = findViewById(R.id.nextBtn)
         nextButton.setOnClickListener() {
-
             val adTitle : CharSequence? = intent.getCharSequenceExtra("adTitle")
             val adDesc: CharSequence? = intent.getCharSequenceExtra("adDesc")
             val adPrice : CharSequence?= intent.getCharSequenceExtra("adPrice")
@@ -196,7 +209,6 @@ class AcmdDetailsActivity : AppCompatActivity() {
                 .build()
 
             val service = retrofit.create(AdService::class.java)
-
             val title = adTitle.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val description =  adDesc.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val price = adPrice.toString().toRequestBody("text/plain".toMediaTypeOrNull())
@@ -207,7 +219,9 @@ class AcmdDetailsActivity : AppCompatActivity() {
             val best = "1".toRequestBody("text/plain".toMediaTypeOrNull())
 
 
-            val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "BakiHanma.jpg")
+            //val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "BakiHanma.jpg")
+            val externalFilesDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            val file = getFileFromUri(contentResolver, selectedImageUri, externalFilesDir ?: filesDir)
             val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
             val imagesArr = MultipartBody.Part.createFormData("imagesArr", file.name, requestFile)
 
@@ -228,7 +242,6 @@ class AcmdDetailsActivity : AppCompatActivity() {
                 categoryId,
                 gender
             )
-
            // Execute the call
             call.enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
@@ -241,27 +254,42 @@ class AcmdDetailsActivity : AppCompatActivity() {
 
                     }
                 }
-
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Toast.makeText(this@AcmdDetailsActivity, "on failure ! ", Toast.LENGTH_SHORT).show()
                     Log.e("error", t.message.toString())
                 }
             })
-
         }
-
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed() // or navigate to the previous activity
         return true
     }
-    fun onUploadButtonClick(view: View) {
+    fun onUploadButtonClick() {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(intent, 1) // The "1" is a request code, you can use any unique number
-
+        startActivityForResult(intent, 1)
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            data?.data?.let { selectedImageUri = it }
+            // Now you can use this URI to get the image
+        }
+    }
+    private fun getFileFromUri(contentResolver: ContentResolver, uri: Uri, directory: File): File {
+        // Get the file extension from the content resolver
+        val extension = contentResolver.getType(uri)?.substringAfter('/') ?: "jpg"
+
+        val file = File(directory, "prefix_${System.currentTimeMillis()}.$extension")
+        file.outputStream().use { outputStream ->
+            contentResolver.openInputStream(uri)?.copyTo(outputStream)
+        }
+        return file
+    }
+
 
 
 }
