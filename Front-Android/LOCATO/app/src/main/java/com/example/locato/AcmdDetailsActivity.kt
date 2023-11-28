@@ -38,17 +38,6 @@ import java.io.File
 
 @Suppress("DEPRECATION")
 class AcmdDetailsActivity : AppCompatActivity() {
-    //check for upload files
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-            if (isGranted) {
-                // Permission is granted, proceed with the file selection logic
-                onUploadButtonClick()
-            } else {
-                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
-            }
-        }
-
 
     //el items bch ywaliw yjiw ml entity(enum) category
     private val itemsCategory = arrayOf("cat1","cat2")
@@ -265,12 +254,14 @@ class AcmdDetailsActivity : AppCompatActivity() {
         onBackPressed() // or navigate to the previous activity
         return true
     }
-    fun onUploadButtonClick() {
+
+    fun onUploadButtonClick(view:View) {
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(intent, 1)
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
