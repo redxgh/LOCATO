@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02dc5581-9495-4a06-94da-806dfb9e2842" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/.idea/deploymentTargetDropDown.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/AcmdDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/AcmdDetailsActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/HomeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/HomeActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/PostActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/PostActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/layout/activity_acmd_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/layout/activity_acmd_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/ImageService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +96,9 @@
       <workItem from="1701034462634" duration="739000" />
       <workItem from="1701080687694" duration="821000" />
       <workItem from="1701083513008" duration="18000" />
+      <workItem from="1701125363167" duration="304000" />
+      <workItem from="1701126224675" duration="1076000" />
+      <workItem from="1701161847269" duration="3447000" />
     </task>
     <servers />
   </component>
