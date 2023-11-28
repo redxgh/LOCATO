@@ -3,6 +3,7 @@ package com.example.locato
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -30,7 +31,14 @@ class DetailActivity : AppCompatActivity() {
 
         initView()
         setVariable()
+
+        val backButton: ImageView = findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            onBackPressed() // Cette ligne reviendra à la page précédente
+        }
     }
+
+
 
     private fun setVariable() {
         item = intent.getSerializableExtra("object") as ItemsDomaine

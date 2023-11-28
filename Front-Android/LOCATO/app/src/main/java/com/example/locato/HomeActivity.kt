@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var postAdBtn: FloatingActionButton
     private lateinit var filterButton: Button
-    private val baseUrl = "http://192.168.1.19:8081/getAds"
+    private val baseUrl = "http://192.168.0.141:8081/getAds"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,9 +85,18 @@ class HomeActivity : AppCompatActivity() {
             ),
             gender = null
         )
+        //filter surch btn
+        // Create an instance of the dialog fragment
 
         itemsListPopular.add(item1)
         itemsListPopular.add(item2)
+
+        filterButton = findViewById(R.id.filterBtn)
+        filterButton.setOnClickListener {
+            val dialog = FormDialogFragment()
+            // Show the dialog
+            dialog.show(supportFragmentManager, "FormDialogFragment")
+        }
 
         //button post ad
         postAdBtn = findViewById(R.id.postAdBtn)
