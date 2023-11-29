@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -26,12 +28,15 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var postAdBtn: FloatingActionButton
     private lateinit var filterButton: Button
-    private val baseUrl = "http://192.168.0.141:8081/getAds"
+    private val baseUrl = "http://192.168.1.15:8081/getAds"
 
+    private lateinit var searchEditText: EditText
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scroll_main)
+
+        searchEditText = findViewById(R.id.editTextText)
 
         // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
         recyclerViewPopular = findViewById(R.id.viewPopular)
@@ -168,6 +173,27 @@ class HomeActivity : AppCompatActivity() {
     companion object {
         const val RECYCLER_VIEW_POPULAR = 1
         const val RECYCLER_VIEW_NEW = 2
+    }
+
+    // Fonction appelée lors du clic sur l'icône de recherche
+    fun onSearchIconClick(view: View) {
+        val searchTerm = searchEditText.text.toString()
+        performSearch(searchTerm)
+    }
+
+    // Ajouter une fonction pour effectuer la recherche
+    private fun performSearch(searchTerm: String) {
+        // Faites quelque chose avec le terme de recherche (par exemple, filtrer la liste)
+        val filteredList = itemsListNew.filter { it.title.contains(searchTerm, true) }
+        val filteredList2 = itemsListPopular.filter { it.title.contains(searchTerm, true) }
+        // Mettez à jour le RecyclerView avec les résultats de la recherche
+        itemsListNew.clear()
+        itemsListNew.addAll(filteredList)
+        itemsAdapterNew.notifyDataSetChanged()
+        /////
+        itemsListPopular.clear()
+        itemsListPopular.addAll(filteredList2)
+        itemsAdapterPopular.notifyDataSetChanged()
     }
 }
 

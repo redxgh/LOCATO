@@ -147,7 +147,7 @@ class MyVolleyRequest private constructor(private val context: Context) {
         gender: Int,
         callback: (NetworkResponse?) -> Unit
     ) {
-        val url = "http:// 192.168.0.141:8081/addAd"
+        val url = "http:// 192.168.1.15:8081/addAd"
         val fileParts = imagesArr.mapIndexed { index, file -> "imagesArr[$index]" to file }.toMap()
         val stringParts = mapOf(
             "title" to title,
@@ -178,7 +178,7 @@ class MyVolleyRequest private constructor(private val context: Context) {
     }
     //delete
     fun deleteAdById(adId: String, callback: (String?) -> Unit) {
-        val url = "http://192.168.0.141:8081/deleteAd?id=$adId"
+        val url = "http://192.168.1.15:8081/deleteAd?id=$adId"
 
         val deleteRequest = object : StringRequest(
             Method.DELETE, url,
