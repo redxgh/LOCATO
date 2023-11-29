@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var postAdBtn: FloatingActionButton
     private lateinit var filterButton: Button
-    private val baseUrl = "http://192.168.1.19:8081/getAds"
+    private val baseUrl = "http://192.168.1.12:8081/getAds"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,7 +115,6 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-
         // ... Autres configurations ...
     }
 

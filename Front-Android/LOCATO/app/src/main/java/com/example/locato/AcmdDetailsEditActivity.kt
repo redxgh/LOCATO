@@ -37,7 +37,7 @@ import java.io.File
 
 
 @Suppress("DEPRECATION")
-class AcmdDetailsActivity : AppCompatActivity() {
+class AcmdDetailsEditActivity : AppCompatActivity() {
 
     //el items bch ywaliw yjiw ml entity(enum) category
     private val itemsCategory = arrayOf("cat1","cat2")
@@ -85,7 +85,10 @@ class AcmdDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_acmd_details)
-
+        val rms = intent.getIntExtra("rooms",0)
+        val bth = intent.getIntExtra("bathrooms",0)
+        val srf = intent.getDoubleExtra("surface",0.0)
+        val loc = intent.getStringExtra("location")
 
         //retrieve data from previous activity
 
@@ -132,12 +135,16 @@ class AcmdDetailsActivity : AppCompatActivity() {
         //----------------ACC DETAILS --------------
         //rooms
         EditTextRooms = findViewById(R.id.accRooms)
+        EditTextRooms.setText("$rms")
         val adRooms = EditTextRooms.text
+
         //bath
         EditTextBath = findViewById(R.id.accBath)
+        EditTextBath.setText("$bth")
         val adBath = EditTextBath.text
         //surface
         EditTextSur = findViewById(R.id.accSur)
+        EditTextSur.setText("$srf")
         val adSurface = EditTextSur.text
 
 
@@ -158,7 +165,7 @@ class AcmdDetailsActivity : AppCompatActivity() {
         }
 
         //location map
-        setlocationButton.setOnClickListener(){
+        /*setlocationButton.setOnClickListener(){
             val intent = Intent(this,LocationActivity::class.java)
             intent.putExtra("selectedCity", selectedCity)
             startActivity(intent)
@@ -171,10 +178,10 @@ class AcmdDetailsActivity : AppCompatActivity() {
             position= geoPoint.toString()
             setlocationButton.setText(position)
             Log.d("GeoPoint", geoPoint.toString())
-        }
-     //filled all form condtion missing !
+        }*/
+        //filled all form condtion missing !
 
-       //-----------------------Post request ---------------------------
+        //-----------------------Post request ---------------------------
         //nextButton
         nextButton = findViewById(R.id.nextBtn)
         nextButton.setOnClickListener() {
@@ -182,42 +189,32 @@ class AcmdDetailsActivity : AppCompatActivity() {
             val adDesc: CharSequence? = intent.getCharSequenceExtra("adDesc")
             val adPrice : CharSequence?= intent.getCharSequenceExtra("adPrice")
             val adGender : String?= intent.getStringExtra("adGender")
-            Log.d("adTitle", adTitle.toString())
-            Log.d("adDesc", adDesc.toString())
-            Log.d("adPrice", adPrice.toString())
-            Log.d("adGender", adGender.toString())
-            Log.d("adCategory", adCategory)
-            Log.d("adType", adType)
-            Log.d("adLocation", adLocation)
-            Log.d("adRooms", adRooms.toString())
-            Log.d("adBath", adBath.toString())
-            Log.d("adSurface", adSurface.toString())
+            val ida : String?= intent.getStringExtra("id")
             val retrofit = Retrofit.Builder()
                 .baseUrl("http://192.168.1.12:8081/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-
             val service = retrofit.create(AdService::class.java)
             val title = adTitle.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val description =  adDesc.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val price = adPrice.toString().toRequestBody("text/plain".toMediaTypeOrNull())
-            val location = adLocation.toRequestBody("text/plain".toMediaTypeOrNull())
+            val location = selectedCity.toRequestBody("text/plain".toMediaTypeOrNull())
             val surface = adSurface.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val rooms = adRooms.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val bathrooms = adRooms.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val best = "1".toRequestBody("text/plain".toMediaTypeOrNull())
-
+            val id = ida.toString().toRequestBody("text/plain".toMediaTypeOrNull())
 
             //val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "BakiHanma.jpg")
             val externalFilesDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
             val file = getFileFromUri(contentResolver, selectedImageUri, externalFilesDir ?: filesDir)
             val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
             val imagesArr = MultipartBody.Part.createFormData("imagesArr", file.name, requestFile)
-
+            val img = null
             val type = "Apartment".toRequestBody("text/plain".toMediaTypeOrNull())
             val categoryId = "cat1".toRequestBody("text/plain".toMediaTypeOrNull())
             val gender = "1".toRequestBody("text/plain".toMediaTypeOrNull())
-            val call = service.addAd(
+            val call = service.editAd(
                 title,
                 description,
                 price,
@@ -229,22 +226,23 @@ class AcmdDetailsActivity : AppCompatActivity() {
                 imagesArr,
                 type,
                 categoryId,
-                gender
+                gender,
+                id
             )
-           // Execute the call
+            // Execute the call
             call.enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@AcmdDetailsActivity, "Request successful", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AcmdDetailsEditActivity, "Request successful", Toast.LENGTH_SHORT).show()
 
                     } else {
 
-                        Toast.makeText(this@AcmdDetailsActivity, "Request failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AcmdDetailsEditActivity, "Request failed", Toast.LENGTH_SHORT).show()
 
                     }
                 }
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Toast.makeText(this@AcmdDetailsActivity, "on failure ! ", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AcmdDetailsEditActivity, "on failure ! ", Toast.LENGTH_SHORT).show()
                     Log.e("error", t.message.toString())
                 }
             })

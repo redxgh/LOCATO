@@ -60,7 +60,21 @@ class ItemsAdapter(
         holder.deleteButton.setOnClickListener {
             listener?.onItemClick(currentItem, Action.DELETE)
         }
+        holder.img.setOnClickListener {
+            val intent = Intent(holder.itemView.context,EditAdActivity::class.java)
+            intent.putExtra("id",currentItem.id)
+            intent.putExtra("price",currentItem.price)
+            intent.putExtra("title",currentItem.title)
+            intent.putExtra("desc",currentItem.description)
+            intent.putExtra("gender",currentItem.gender)
+            intent.putExtra("best", currentItem.accomodation?.best)
+            intent.putExtra("location",currentItem.accomodation?.location)
+            intent.putExtra("bathrooms",currentItem.accomodation?.bathrooms)
+            intent.putExtra("rooms",currentItem.accomodation?.rooms)
+            intent.putExtra("surface",currentItem.accomodation?.surface)
+            holder.itemView.context.startActivity(intent)
 
+        }
     }
 
     override fun getItemCount(): Int {
@@ -73,6 +87,8 @@ class ItemsAdapter(
         val titleTextView: TextView = itemView.findViewById(R.id.titleTxt)
         val pic: ImageView = itemView.findViewById(R.id.pic1)
         val deleteButton: ImageView = itemView.findViewById(R.id.deleteCard)
+        var img:ImageView = itemView.findViewById(R.id.picEd);
+
         init {
             deleteButton.setOnClickListener {
                 listener?.onItemClick(items[adapterPosition], Action.DELETE)

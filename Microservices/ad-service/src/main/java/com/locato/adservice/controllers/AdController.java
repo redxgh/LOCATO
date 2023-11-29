@@ -91,9 +91,33 @@ public class AdController {
         return ResponseEntity.status(HttpStatus.SC_OK).body(adService.deleteAd(id));
     }
     @PatchMapping("editAd")
-    public ResponseEntity<Ad> editAd(@RequestParam("ad")Ad ad){
-        return ResponseEntity.status(HttpStatus.SC_OK)
-                .body(adService.editAd(ad));
+    public ResponseEntity<Ad> editAd(
+            @RequestParam String id,
+            @RequestParam String title,
+            @RequestParam String description,
+            @RequestParam double price,
+            @RequestParam String location,
+            @RequestParam double surface,
+            @RequestParam int rooms,
+            @RequestParam int bathrooms,
+            @RequestParam int best,
+            @RequestParam("imagesArr") MultipartFile[] imagesArr,
+            @RequestParam String type,
+            @RequestParam String categoryId,
+            @RequestParam(value = "gender", defaultValue = "-1") int gender
+    ){
+        /*ArrayList<String> images = new ArrayList<>();
+        for(MultipartFile image : imagesArr){
+            images.add(imageService.uploadImageToFileSystem(image));
+        }*/
+        if(gender == -1){
+            Locationad ad = new Locationad(id,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,null,type,categoryService.getCategoryById(categoryId)));
+            return ResponseEntity.status(HttpStatus.SC_OK).body(locationAdRepository.save(ad));
+        }
+        else{
+            Roommatead ad = new Roommatead(id,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,null,type,categoryService.getCategoryById(categoryId)),gender);
+            return ResponseEntity.status(HttpStatus.SC_OK).body(roommateAdRepository.save(ad));
+        }
     }
     @GetMapping("categories")
     public ResponseEntity<List<Category>> getCategories(){

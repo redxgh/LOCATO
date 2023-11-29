@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02dc5581-9495-4a06-94da-806dfb9e2842" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/AcmdDetailsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/AcmdDetailsActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Android/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Android/.idea/Front-Android.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Android/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Android/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/HomeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/HomeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/MyVolleyRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/MyVolleyRequest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Microservices.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Microservices.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/services/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,23 +39,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -79,6 +90,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.AdServiceApplication" />
+      <item itemvalue="Spring Boot.DiscoveryServiceApplication" />
+      <item itemvalue="Spring Boot.GatewayServiceApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
