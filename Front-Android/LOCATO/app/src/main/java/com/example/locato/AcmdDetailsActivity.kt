@@ -193,7 +193,11 @@ class AcmdDetailsActivity : AppCompatActivity() {
             Log.d("adBath", adBath.toString())
             Log.d("adSurface", adSurface.toString())
             val retrofit = Retrofit.Builder()
+<<<<<<< HEAD
                 .baseUrl("http://192.168.1.12:8081/")
+=======
+                .baseUrl("http://192.168.1.15:8081/")
+>>>>>>> 935685b3d887276576dd8083e2f682789530e403
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

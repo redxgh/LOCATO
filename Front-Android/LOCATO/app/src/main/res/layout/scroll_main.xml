@@ -65,24 +65,41 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextText"
+            <RelativeLayout
                 android:layout_width="252dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="12dp"
-                android:background="@drawable/edittext_background"
-                android:drawableStart="@drawable/search_icon"
-                android:drawablePadding="8dp"
-                android:ems="10"
-                android:hint="@string/search"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:padding="8dp"
-                android:textColorHint="#8D6E63"
-                tools:ems="10"
-                tools:ignore="Autofill,TextContrastCheck" />
+                android:layout_marginEnd="12dp">
+
+                <EditText
+                    android:id="@+id/editTextText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_background"
+                    android:ems="10"
+                    android:hint="@string/search"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="8dp"
+                    android:textColorHint="#8D6E63"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/searchIcon"
+                    tools:ems="10"
+                    tools:ignore="Autofill,TextContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/searchIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/search_icon"
+                    android:clickable="true"
+                    android:onClick="onSearchIconClick"/>
+            </RelativeLayout>
+
 
             <Button
                 android:id="@+id/filterBtn"
