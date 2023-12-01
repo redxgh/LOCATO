@@ -180,7 +180,7 @@ class AcmdDetailsEditActivity : AppCompatActivity() {
             Log.d("GeoPoint", geoPoint.toString())
         }*/
         //filled all form condtion missing !
-
+        val ip:String = getString(R.string.ip)
         //-----------------------Post request ---------------------------
         //nextButton
         nextButton = findViewById(R.id.nextBtn)
@@ -191,7 +191,7 @@ class AcmdDetailsEditActivity : AppCompatActivity() {
             val adGender : String?= intent.getStringExtra("adGender")
             val ida : String?= intent.getStringExtra("id")
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.1.12:8081/")
+                .baseUrl("http://$ip:8081/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             val service = retrofit.create(AdService::class.java)

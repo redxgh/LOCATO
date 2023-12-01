@@ -2,6 +2,7 @@ package com.example.locato
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.util.Log
 import com.android.volley.NetworkResponse
 import com.android.volley.Request
@@ -131,62 +132,12 @@ class MyVolleyRequest private constructor(private val context: Context) {
         return result
     }
 
-    //post request ( create ad)
-    fun addAd(
-        title: String,
-        description: String,
-        price: Double,
-        location: String,
-        surface: Double,
-        rooms: Int,
-        bathrooms: Int,
-        best: Int,
-        imagesArr: List<File>,
-        type: String,
-        categoryId: String,
-        gender: Int,
-        callback: (NetworkResponse?) -> Unit
-    ) {
-<<<<<<< HEAD
-        val url = "http://192.168.1.12:8081/addAd"
-=======
-        val url = "http:// 192.168.1.15:8081/addAd"
->>>>>>> 935685b3d887276576dd8083e2f682789530e403
-        val fileParts = imagesArr.mapIndexed { index, file -> "imagesArr[$index]" to file }.toMap()
-        val stringParts = mapOf(
-            "title" to title,
-            "description" to description,
-            "price" to price.toString(),
-            "location" to location,
-            "surface" to surface.toString(),
-            "rooms" to rooms.toString(),
-            "bathrooms" to bathrooms.toString(),
-            "best" to best.toString(),
-            "type" to type,
-            "categoryId" to categoryId,
-            "gender" to gender.toString()
-        )
-        val multipartRequest = MultipartRequest(
-            Request.Method.POST, url, fileParts, stringParts,
-            { response ->
-                // Handle successful response
-                callback(response)
-            },
-            { error ->
-                // Handle error
-                callback(null)
-            }
-        )
 
-        requestQueue.add(multipartRequest)
-    }
     //delete
     fun deleteAdById(adId: String, callback: (String?) -> Unit) {
-<<<<<<< HEAD
-        val url = "http://192.168.1.12:8081/deleteAd?id=$adId"
-=======
-        val url = "http://192.168.1.15:8081/deleteAd?id=$adId"
->>>>>>> 935685b3d887276576dd8083e2f682789530e403
+
+        //val ip :String = Resources.getSystem().getString(R.string.ip)
+        val url = "http://192.168.1.19:8081/deleteAd?id=$adId"
 
         val deleteRequest = object : StringRequest(
             Method.DELETE, url,
@@ -212,5 +163,6 @@ class MyVolleyRequest private constructor(private val context: Context) {
 
         requestQueue.add(deleteRequest)
     }
+
 }
 

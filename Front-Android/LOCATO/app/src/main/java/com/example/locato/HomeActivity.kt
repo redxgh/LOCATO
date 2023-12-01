@@ -6,11 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-<<<<<<< HEAD
-import android.widget.ImageView
-=======
 import android.widget.EditText
->>>>>>> 935685b3d887276576dd8083e2f682789530e403
+
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,17 +29,18 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var postAdBtn: FloatingActionButton
     private lateinit var filterButton: Button
-<<<<<<< HEAD
-    private val baseUrl = "http://192.168.1.12:8081/getAds"
-=======
-    private val baseUrl = "http://192.168.1.15:8081/getAds"
->>>>>>> 935685b3d887276576dd8083e2f682789530e403
+
+    private  lateinit var baseUrl :String
+    private  lateinit var ip :String
+
 
     private lateinit var searchEditText: EditText
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scroll_main)
+        ip = getString(R.string.ip)
+        baseUrl ="http://$ip:8081/getAds"
 
         searchEditText = findViewById(R.id.editTextText)
 
