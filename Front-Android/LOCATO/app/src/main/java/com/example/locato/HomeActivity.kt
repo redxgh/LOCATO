@@ -13,6 +13,7 @@ import android.widget.EditText
 
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,12 +34,14 @@ class HomeActivity : AppCompatActivity(), FilterDialogListener {
     private val itemsListNew: ArrayList<ItemsDomaine> = ArrayList()
     private lateinit var originalItemsListNew: List<ItemsDomaine>
     private lateinit var originalItemsListPopular: List<ItemsDomaine>
-
+    private  var initialItemsListNew : ArrayList<ItemsDomaine> = ArrayList()
+    private  var initialItemsListPopular: ArrayList<ItemsDomaine> = ArrayList()
     private lateinit var postAdBtn: FloatingActionButton
     private lateinit var filterButton: Button
-
+    private lateinit var noResultsTextView: TextView
     private  lateinit var baseUrl :String
     private  lateinit var ip :String
+    private val activeFilters: MutableList<(ItemsDomaine) -> Boolean> = mutableListOf()
 
     private var selectedType: String? = null
     private var selectedCategory: String? = null
@@ -53,6 +56,7 @@ class HomeActivity : AppCompatActivity(), FilterDialogListener {
         baseUrl ="http://$ip:8081/getAds"
 
         searchEditText = findViewById(R.id.editTextText)
+
 
         // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
         recyclerViewPopular = findViewById(R.id.viewPopular)
@@ -113,6 +117,11 @@ class HomeActivity : AppCompatActivity(), FilterDialogListener {
         //refresh
         originalItemsListNew = ArrayList(itemsListNew)
         originalItemsListPopular = ArrayList(itemsListPopular)
+        // Sauvegarder les listes initiales
+        initialItemsListNew = ArrayList(itemsListNew)
+        initialItemsListPopular = ArrayList(itemsListPopular)
+        noResultsTextView = findViewById(R.id.noResultsTextView)
+        noResultsTextView.visibility = View.GONE
 
         //filter surch btn
         // Create an instance of the dialog fragment
@@ -152,42 +161,61 @@ class HomeActivity : AppCompatActivity(), FilterDialogListener {
     }
 
        //DeleteAd
-    private fun DeleteRecyclerView() {
-        // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
-        itemsAdapterNew = ItemsAdapter(itemsListNew, RECYCLER_VIEW_NEW, object : ItemsAdapter.OnItemClickListener {
-            override fun onItemClick(item: ItemsDomaine?, action: ItemsAdapter.Action) {
-                // L'interface est déjà mise en œuvre dans la méthode setupRecyclerView
-                when (action) {
-                    ItemsAdapter.Action.DELETE -> {
-                        // Action de suppression, appel de la méthode de suppression
-                        if (item != null) {
-                            val adId = item.id
-                            if (adId != null) {
-                                MyVolleyRequest.getInstance(this@HomeActivity).deleteAdById(adId) { response ->
-                                    // Handle the response, e.g., update UI or show a message
-                                    if (response != null) {
-                                        // Successful deletion
-                                        Log.d("DeleteAd", "Ad deleted successfully.")
-                                        // Mettez à jour votre RecyclerView ici si nécessaire
-                                        runOnUiThread {
-                                            itemsListNew.remove(item)
-                                            itemsAdapterNew.notifyDataSetChanged()
-                                        }
-                                    } else {
-                                        // Error during deletion
-                                        Log.e("DeleteAd", "Error deleting ad.")
-                                    }
-                                }
-                            }
+       private fun DeleteRecyclerView() {
+           // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
+           itemsAdapterNew = ItemsAdapter(itemsListNew, RECYCLER_VIEW_NEW, object : ItemsAdapter.OnItemClickListener {
+               override fun onItemClick(item: ItemsDomaine?, action: ItemsAdapter.Action) {
+                   // L'interface est déjà mise en œuvre dans la méthode setupRecyclerView
+                   when (action) {
+                       ItemsAdapter.Action.DELETE -> {
+                           // Action de suppression, appel de la méthode de suppression
+                           if (item != null) {
+                               // Show delete confirmation dialog
+                               showDeleteConfirmationDialog(item)
+                           }
+                       }
+                   }
+               }
+           })
+
+           recyclerViewNew.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+           recyclerViewNew.adapter = itemsAdapterNew
+       }
+
+    private fun showDeleteConfirmationDialog(item: ItemsDomaine) {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("Delete Ad")
+        alertDialogBuilder.setMessage("Do you want to delete this ad?")
+
+        alertDialogBuilder.setPositiveButton("OK") { _, _ ->
+            val adId = item.id
+            if (adId != null) {
+                MyVolleyRequest.getInstance(this@HomeActivity).deleteAdById(adId) { response ->
+                    if (response != null) {
+                        // Successful deletion
+                        Log.d("DeleteAd", "Ad deleted successfully.")
+                        // Mettez à jour votre RecyclerView ici si nécessaire
+                        runOnUiThread {
+                            itemsListNew.remove(item)
+                            itemsAdapterNew.notifyDataSetChanged()
                         }
+                    } else {
+                        // Error during deletion
+                        Log.e("DeleteAd", "Error deleting ad.")
                     }
                 }
             }
-        })
+        }
 
-        recyclerViewNew.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerViewNew.adapter = itemsAdapterNew
+        alertDialogBuilder.setNegativeButton("Cancel") { dialog, _ ->
+            // User clicked Cancel, do nothing or handle as needed
+            dialog.dismiss()
+        }
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
+
 
     companion object {
         const val RECYCLER_VIEW_POPULAR = 1
@@ -226,54 +254,101 @@ class HomeActivity : AppCompatActivity(), FilterDialogListener {
     }
 
 
-    override fun onFilterApplied(type: String, category: String, price: Double?) {
-        selectedType = type
-        selectedCategory = category
-        maxPrice = price
 
-        filterItems()
-    }
+
 
     override fun onCancelFilter() {
         // Reset filters or handle cancellation if needed
         selectedType = null
         selectedCategory = null
         maxPrice = null
+        // Clear all filters
+        clearFilters()
 
         // Refetch data or update RecyclerViews accordingly
-        itemsListNew.clear()
-        itemsListNew.addAll(allItemsListNew)
-        itemsAdapterNew.notifyDataSetChanged()
-
-        itemsListPopular.clear()
-        itemsListPopular.addAll(allItemsListPopular)
-        itemsAdapterPopular.notifyDataSetChanged()
+       filterItems()
     }
+
     private fun filterItems() {
-        val filteredListNew = itemsListNew.filter { item ->
-            (selectedType == null || item.accomodation?.type == selectedType) &&
-                    (selectedCategory == null || item.accomodation?.category?.name == selectedCategory) &&
-                    (maxPrice == null || item.price <= maxPrice!!)
+        if (initialItemsListNew.isEmpty()) {
+            initialItemsListNew = ArrayList(itemsListNew)
+        }
+
+        if (initialItemsListPopular.isEmpty()) {
+            initialItemsListPopular = ArrayList(itemsListPopular)
+        }
+
+
+        // Apply all active filters to itemsListNew
+        val filteredListNew = initialItemsListNew.filter { item ->
+            activeFilters.all { filter -> filter(item) }
         }
 
         itemsListNew.clear()
         itemsListNew.addAll(filteredListNew)
         itemsAdapterNew.notifyDataSetChanged()
-        // Filtrer la liste itemsListPopular de la même manière
-        val filteredListPopular = itemsListPopular.filter { item ->
+
+        // Apply all active filters to itemsListPopular
+        val filteredListPopular = initialItemsListPopular.filter { item ->
+            activeFilters.all { filter -> filter(item) }
+        }
+
+        itemsListPopular.clear()
+        itemsListPopular.addAll(filteredListPopular)
+        itemsAdapterPopular.notifyDataSetChanged()
+
+        if (itemsListNew.isEmpty() && itemsListPopular.isEmpty()) {
+            showNoResultsMessage()
+        } else {
+            hideNoResultsMessage()
+        }
+    }
+    private fun addFilter(filter: (ItemsDomaine) -> Boolean) {
+        activeFilters.add(filter)
+    }
+
+    private fun removeFilter(filter: (ItemsDomaine) -> Boolean) {
+        activeFilters.remove(filter)
+    }
+
+    private fun clearFilters() {
+        initialItemsListNew.clear()
+        initialItemsListNew.addAll(allItemsListNew)
+
+        initialItemsListPopular.clear()
+        initialItemsListPopular.addAll(allItemsListPopular)
+    }
+    override fun onFilterApplied(type: String, category: String, price: Double?) {
+        selectedType = type
+        selectedCategory = category
+        maxPrice = price
+
+        // Add filter based on selectedType, selectedCategory, maxPrice, etc.
+        addFilter { item ->
             (selectedType == null || item.accomodation?.type == selectedType) &&
                     (selectedCategory == null || item.accomodation?.category?.name == selectedCategory) &&
                     (maxPrice == null || item.price <= maxPrice!!)
         }
 
-        // Mettre à jour le RecyclerView avec les résultats filtrés
-        itemsListPopular.clear()
-        itemsListPopular.addAll(filteredListPopular)
-        itemsAdapterPopular.notifyDataSetChanged()
-
+        // Apply filters
+        filterItems()
     }
 
+
+    private fun showNoResultsMessage() {
+
+        val noResultsTextView: TextView = findViewById(R.id.noResultsTextView)
+        noResultsTextView.visibility = View.VISIBLE
+    }
+
+    private fun hideNoResultsMessage() {
+        // Masquer le message "No results found" s'il y a des résultats.
+        val noResultsTextView: TextView = findViewById(R.id.noResultsTextView)
+        noResultsTextView.visibility = View.GONE
+    }
 }
+
+
 
 
 
