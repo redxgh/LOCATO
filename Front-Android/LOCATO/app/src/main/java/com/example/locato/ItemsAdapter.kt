@@ -14,7 +14,7 @@ import java.io.Serializable
 import java.text.DecimalFormat
 
 class ItemsAdapter(
-    private val items: ArrayList<ItemsDomaine>,
+    private var items: ArrayList<ItemsDomaine>,
     private val recyclerViewType: Int,
     private val listener: OnItemClickListener? = null
 ) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
@@ -25,7 +25,10 @@ class ItemsAdapter(
         val inflate: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.itemslistview, parent, false)
         return ViewHolder(inflate)
+
     }
+
+
 
     @SuppressLint("DiscouragedApi")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -72,6 +75,9 @@ class ItemsAdapter(
             intent.putExtra("bathrooms",currentItem.accomodation?.bathrooms)
             intent.putExtra("rooms",currentItem.accomodation?.rooms)
             intent.putExtra("surface",currentItem.accomodation?.surface)
+            intent.putExtra("type",currentItem.accomodation?.type)
+            intent.putExtra("categorie",currentItem.accomodation?.categories?.name)
+
             holder.itemView.context.startActivity(intent)
 
         }
@@ -80,6 +86,7 @@ class ItemsAdapter(
     override fun getItemCount(): Int {
         return items.size
     }
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val addressTextView: TextView = itemView.findViewById(R.id.adress)
@@ -104,4 +111,5 @@ class ItemsAdapter(
         DELETE,
 
     }
+
 }

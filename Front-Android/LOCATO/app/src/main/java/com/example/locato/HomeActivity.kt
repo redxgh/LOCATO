@@ -4,13 +4,17 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,14 +22,17 @@ import dialog.FormDialogFragment
 import java.time.LocalTime
 import com.example.locato.ItemsAdapter.Action
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), FilterDialogListener {
     private lateinit var recyclerViewPopular: RecyclerView
     private lateinit var recyclerViewNew: RecyclerView
     private lateinit var itemsAdapterPopular: ItemsAdapter
     private lateinit var itemsAdapterNew: ItemsAdapter
-
+    private lateinit var allItemsListNew: List<ItemsDomaine>
+    private lateinit var allItemsListPopular: List<ItemsDomaine>
     private val itemsListPopular: ArrayList<ItemsDomaine> = ArrayList()
     private val itemsListNew: ArrayList<ItemsDomaine> = ArrayList()
+    private lateinit var originalItemsListNew: List<ItemsDomaine>
+    private lateinit var originalItemsListPopular: List<ItemsDomaine>
 
     private lateinit var postAdBtn: FloatingActionButton
     private lateinit var filterButton: Button
@@ -33,6 +40,9 @@ class HomeActivity : AppCompatActivity() {
     private  lateinit var baseUrl :String
     private  lateinit var ip :String
 
+    private var selectedType: String? = null
+    private var selectedCategory: String? = null
+    private var maxPrice: Double? = null
 
     private lateinit var searchEditText: EditText
     @SuppressLint("MissingInflatedId")
@@ -68,8 +78,8 @@ class HomeActivity : AppCompatActivity() {
                 bathrooms = 1,
                 best = 847456,
                 images = listOf("image1"),
-                type = "Type1",
-                category = ItemsDomaine.Category(id = "1", name = "villa", image = null),
+                type = "House",
+                category = ItemsDomaine.Category(id = "1", name = "cat1", image = null),
                 categories = null
             ),
             gender = null
@@ -90,22 +100,26 @@ class HomeActivity : AppCompatActivity() {
                 bathrooms = 1,
                 best = 847456,
                 images = listOf("image2"),
-                type = "Type1",
-                category = ItemsDomaine.Category(id = "1", name = "villa", image = null),
-                categories = null
+                type = "Apartment",
+                category = ItemsDomaine.Category(id = "1", name = "cat2", image = null),
+                categories = null,
             ),
             gender = null
         )
-        //filter surch btn
-        // Create an instance of the dialog fragment
+
 
         itemsListPopular.add(item1)
         itemsListPopular.add(item2)
+        //refresh
+        originalItemsListNew = ArrayList(itemsListNew)
+        originalItemsListPopular = ArrayList(itemsListPopular)
 
+        //filter surch btn
+        // Create an instance of the dialog fragment
         filterButton = findViewById(R.id.filterBtn)
         filterButton.setOnClickListener {
             val dialog = FormDialogFragment()
-            // Show the dialog
+            dialog.setFilterDialogListener(this)
             dialog.show(supportFragmentManager, "FormDialogFragment")
         }
 
@@ -200,5 +214,72 @@ class HomeActivity : AppCompatActivity() {
         itemsListPopular.addAll(filteredList2)
         itemsAdapterPopular.notifyDataSetChanged()
     }
+    //refreshList
+    private fun refreshLists() {
+        itemsListNew.clear()
+        itemsListNew.addAll(originalItemsListNew)
+        itemsAdapterNew.notifyDataSetChanged()
+
+        itemsListPopular.clear()
+        itemsListPopular.addAll(originalItemsListPopular)
+        itemsAdapterPopular.notifyDataSetChanged()
+    }
+
+
+    override fun onFilterApplied(type: String, category: String, price: Double?) {
+        selectedType = type
+        selectedCategory = category
+        maxPrice = price
+
+        filterItems()
+    }
+
+    override fun onCancelFilter() {
+        // Reset filters or handle cancellation if needed
+        selectedType = null
+        selectedCategory = null
+        maxPrice = null
+
+        // Refetch data or update RecyclerViews accordingly
+        itemsListNew.clear()
+        itemsListNew.addAll(allItemsListNew)
+        itemsAdapterNew.notifyDataSetChanged()
+
+        itemsListPopular.clear()
+        itemsListPopular.addAll(allItemsListPopular)
+        itemsAdapterPopular.notifyDataSetChanged()
+    }
+    private fun filterItems() {
+        val filteredListNew = itemsListNew.filter { item ->
+            (selectedType == null || item.accomodation?.type == selectedType) &&
+                    (selectedCategory == null || item.accomodation?.category?.name == selectedCategory) &&
+                    (maxPrice == null || item.price <= maxPrice!!)
+        }
+
+        itemsListNew.clear()
+        itemsListNew.addAll(filteredListNew)
+        itemsAdapterNew.notifyDataSetChanged()
+        // Filtrer la liste itemsListPopular de la même manière
+        val filteredListPopular = itemsListPopular.filter { item ->
+            (selectedType == null || item.accomodation?.type == selectedType) &&
+                    (selectedCategory == null || item.accomodation?.category?.name == selectedCategory) &&
+                    (maxPrice == null || item.price <= maxPrice!!)
+        }
+
+        // Mettre à jour le RecyclerView avec les résultats filtrés
+        itemsListPopular.clear()
+        itemsListPopular.addAll(filteredListPopular)
+        itemsAdapterPopular.notifyDataSetChanged()
+
+    }
+
 }
+
+
+
+
+
+
+
+
 
