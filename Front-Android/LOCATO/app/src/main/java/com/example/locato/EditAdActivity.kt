@@ -34,6 +34,8 @@ class EditAdActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val text:TextView = findViewById(R.id.postAdtxt)
+        text.setText("Edit Ad")
         ida = intent.getStringExtra("id")!!
         prc = intent.getDoubleExtra("price",0.0)
         ttl = intent.getStringExtra("title")!!

@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02dc5581-9495-4a06-94da-806dfb9e2842" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/.idea/Front-Android.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/HomeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/HomeActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/MyVolleyRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/java/com/example/locato/MyVolleyRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Front-Android/LOCATO/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Microservices.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Microservices.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/controllers/AdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/AdServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ad-service/src/main/java/com/locato/adservice/AdServiceApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +37,7 @@
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -115,6 +103,7 @@
       <workItem from="1701125363167" duration="304000" />
       <workItem from="1701126224675" duration="1076000" />
       <workItem from="1701161847269" duration="4051000" />
+      <workItem from="1701476425960" duration="608000" />
     </task>
     <servers />
   </component>
