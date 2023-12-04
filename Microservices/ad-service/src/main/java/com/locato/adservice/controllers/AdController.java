@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 @CrossOrigin("*")
 @RestController
@@ -34,6 +35,18 @@ public class AdController {
     public List<Ad> getAds(){
         return adService.getAds();
     }
+
+    @GetMapping("/getAdById/{id}")
+    public ResponseEntity<Optional<Ad>> getAdById(@PathVariable String id) {
+        Optional<Ad> ad = adService.getAdById(id);
+        if (ad == null) {
+            return ResponseEntity.status(HttpStatus.SC_NOT_FOUND).build();
+        } else {
+            return ResponseEntity.status(HttpStatus.SC_OK).body(ad);
+
+        }
+    }
+
     @PostMapping("/addAd")
     public ResponseEntity<? extends Ad> addAd(
                     @RequestParam String title,
