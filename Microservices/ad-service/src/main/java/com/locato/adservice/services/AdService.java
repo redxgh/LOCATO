@@ -27,5 +27,7 @@ public class AdService {
     public Ad editAd(Ad ad){
         return adRepository.save(ad);
     }
-
+    public Ad getAdById(String id){
+        return adRepository.findById(id).get();
+    }
 }
