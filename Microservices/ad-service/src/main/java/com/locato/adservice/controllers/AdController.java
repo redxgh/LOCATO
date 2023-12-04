@@ -137,4 +137,9 @@ public class AdController {
         return ResponseEntity.status(HttpStatus.SC_OK)
                 .body(categoryService.getCategories());
     }
+    @GetMapping("/ads/{id}")
+    public ResponseEntity<Ad> getAdById(@PathVariable String id){
+        return ResponseEntity.status(HttpStatus.SC_OK)
+                .body(adService.getAdById(id));
+    }
 }
