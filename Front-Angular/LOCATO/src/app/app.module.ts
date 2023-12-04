@@ -17,6 +17,7 @@ import { LocationComponent } from './post-ad/location/location.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './post-ad/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     PostImagesComponent,
     LocationComponent,
     MapComponent,
+    AdDetailComponent,
   ],
   imports: [
     BrowserModule,

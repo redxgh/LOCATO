@@ -114,7 +114,7 @@
 
               <div class="main-ads" data-aos="fade-left" data-aos-duration="1000">
                 <section class="results" *ngFor="let ad of filteredAdList" >
-                  <app-ad-card [ad]="ad" id="ad"></app-ad-card>
+                  <app-ad-card routerLink="/ad-detail/{{ ad.id }}" [ad]="ad" id="ad"></app-ad-card>
                 </section>
                 </div>
           </div>
