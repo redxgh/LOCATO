@@ -7,11 +7,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdService {
-  private apiUrl = 'http://medtvherghvzel:8081/getAds';
+  private apiUrl = 'http://localhost:8081/getAds';
 
   constructor(private http: HttpClient) { }
 
   getAds(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  getAdById(adId: string): Observable<any> {
+    const adUrl = `http://localhost:8081/getAdById/${adId}`;
+    return this.http.get<any>(adUrl);
+  }
+
 }

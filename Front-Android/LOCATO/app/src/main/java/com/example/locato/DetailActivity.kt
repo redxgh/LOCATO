@@ -22,6 +22,10 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var item: ItemsDomaine
     private lateinit var pic: ImageView
     private lateinit var priceTxt: TextView
+    private lateinit var typeTxt: TextView
+    private lateinit var categorieTxt: TextView
+
+
 
     private val formatter = DecimalFormat("##,##,##,##,##")
 
@@ -50,6 +54,8 @@ class DetailActivity : AppCompatActivity() {
             surfaceTxt.text = "${item?.accomodation?.surface} m²"
             descriptionTxt.text = item?.description ?: ""
             priceTxt.text = "${formatter.format(item?.price)} DT"
+            typeTxt.text = item?.accomodation?.type
+            categorieTxt.text = item?.accomodation?.categories?.name
 
             if (item.accomodation?.images?.isNotEmpty() == true) {
                 val imageName = item.accomodation!!.images?.get(0)
@@ -86,6 +92,10 @@ class DetailActivity : AppCompatActivity() {
         descriptionTxt = findViewById(R.id.descriptionTxt)
         pic = findViewById(R.id.pic)
         priceTxt=findViewById(R.id.priceTxt)
+        typeTxt=findViewById(R.id.typeTxt)
+        categorieTxt=findViewById(R.id.categorieTxt)
+
+
     }
 
 }

@@ -36,7 +36,6 @@
             android:layout_height="42dp"
             android:src="@drawable/baseline_add_home_24" />
         <TextView
-            android:id="@+id/postAdtxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"

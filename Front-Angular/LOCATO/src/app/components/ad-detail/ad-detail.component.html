@@ -1,0 +1,59 @@
+
+<main class="container">
+
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+
+<!-- Your Angular Component Template -->
+<main>
+  <div class="carousel-container" *ngFor="let image of ad.accomodation.images">
+    <div class="carousel-slide">1</div>
+
+  </div>
+</main>
+
+
+      <!-- Slider controls -->
+      <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+          <!-- Previous button content -->
+      </button>
+      <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+          <!-- Next button content -->
+      </button>
+  </div>
+
+  <div class="right-column">
+
+    <div class="accommodation-description">
+      <span>{{ad.accomodation.type}}</span>
+      <h1>{{ad.title}}</h1>
+      <p>{{ ad.description }}</p>
+    </div>
+
+    <div class="accommodation-configuration">
+
+      <div class="cable-config">
+        <span>Surface</span>
+        <div class="cable-choose">
+          <button>{{ad.surface}} aa</button>
+        </div>
+      </div>
+      <div class="cable-config">
+        <span>Rooms</span>
+        <div class="cable-choose">
+          <button>{{ad.accomodation.rooms}}</button>
+        </div>
+      </div>
+      <div class="cable-config">
+        <span>Bathrooms</span>
+        <div class="cable-choose">
+          <button>{{ad.accomodation.bathrooms}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="accommodation-price">
+      <span>{{ad.price}}dt</span>
+      <a href="#" class="cart-btn">Reserve</a>
+    </div>
+  </div>
+</main>

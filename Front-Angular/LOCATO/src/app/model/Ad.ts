@@ -3,7 +3,7 @@ export interface Ad {
   title: string;
   description: string;
   price: number;
-  surface: number;
+  surface: Number;
   accomodation: {
     rooms: number;
     bathrooms: number;

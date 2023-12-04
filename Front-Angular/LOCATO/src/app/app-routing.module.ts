@@ -8,6 +8,7 @@ import { RoommateAdComponent } from './post-ad/roommate-ad/roommate-ad.component
 import { AccomodationComponent } from './post-ad/accomodation/accomodation.component';
 import { PostImagesComponent } from './post-ad/post-images/post-images.component';
 import { LocationComponent } from './post-ad/location/location.component';
+import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
 
 const routes: Routes = [
   { path: '', component: ListAdsComponent },
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'accomodation', component:AccomodationComponent},
   { path: 'location', component:LocationComponent},
   { path: 'post-images', component:PostImagesComponent},
+  { path: 'ad-detail/:id', component:AdDetailComponent},
+
 
 ];
 
