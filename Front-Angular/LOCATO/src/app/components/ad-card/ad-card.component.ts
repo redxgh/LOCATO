@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Ad } from '../../model/Ad';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -11,8 +11,7 @@ import { SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./ad-card.component.scss']
 })
 export class AdCardComponent {
-  
-  
+
   @Input() ad: Ad = {
     id: 0,
     title: "",
@@ -29,6 +28,7 @@ export class AdCardComponent {
       best: 0,
     }
   }
+
 
   extractFileName(filePath: string): string {
     const lastSlashIndex = Math.max(filePath.lastIndexOf('/'));
@@ -52,8 +52,6 @@ export class AdCardComponent {
     observer.complete();
   });
 }
-
-
 
 
 }
