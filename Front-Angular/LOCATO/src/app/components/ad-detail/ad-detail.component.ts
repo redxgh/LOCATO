@@ -1,7 +1,11 @@
 import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 import { Ad } from 'src/app/model/Ad';
 import { AdService } from 'src/app/services/ad.service';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ad-detail',
@@ -15,9 +19,7 @@ export class AdDetailComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
 
 
-
-
-  constructor(private adService: AdService) {
+  constructor(private adService: AdService,private http: HttpClient, private sanitizer: DomSanitizer) {
     this.AdId = this.route.snapshot.params['id'];
     console.log('Ad id is :' + this.AdId);
   }
@@ -37,6 +39,7 @@ export class AdDetailComponent {
     );
   }
 
+
   extractFileName(filePath: string): string {
     const lastSlashIndex = Math.max(filePath.lastIndexOf('/'));
     if (lastSlashIndex !== -1) {
@@ -46,4 +49,18 @@ export class AdDetailComponent {
       return filePath;
     }
   }
+  
+//testing
+imagePathPrefix = 'D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
+imageUrlPrefix = 'http://localhost:8081/images/';
+
+getImage(imagePath: string): Observable<SafeUrl> {
+ const imageName = imagePath.replace(this.imagePathPrefix, '');
+ const imageUrl = `${this.imageUrlPrefix}${imageName.startsWith('/') ? imageName.substring(1) : imageName}`;
+ return new Observable<SafeUrl>((observer) => {
+   observer.next(imageUrl as SafeUrl);
+   observer.complete();
+ });
+}
+
 }

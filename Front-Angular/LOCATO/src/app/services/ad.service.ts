@@ -16,7 +16,7 @@ export class AdService {
   }
 
   getAdById(adId: string): Observable<any> {
-    const adUrl = `http://localhost:8081/getAdById/${adId}`;
+    const adUrl = `http://localhost:8081/ads/${adId}`;
     return this.http.get<any>(adUrl);
   }
 
