@@ -1,25 +1,25 @@
 package com.locato.adservice.services;
 
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @Service
+@CrossOrigin("*")
 @RestController
 public class ImageService {
     @PostMapping("test")
@@ -27,7 +27,7 @@ public class ImageService {
         LocalDateTime dateTime = LocalDateTime.now();
         String fileName = getString(image, dateTime);
         try{
-            String path = "A:/Integration project/LOCATO/Microservices/ad-service/src/main/resources/static/images";
+            String path = "D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/";
             image.transferTo(new File(path,fileName));
             System.out.println(path+fileName);
             return path +fileName;
@@ -36,6 +36,7 @@ public class ImageService {
             return null;
         }
     }
+
     public byte[] downloadImageFromFileSystem(String path) {
         try{
                 return Files.readAllBytes(new File(path).toPath());
@@ -53,6 +54,8 @@ public class ImageService {
             return false;
         }
     }
+
+
     private static String getString(MultipartFile image, LocalDateTime dateTime) {
         String year = String.valueOf(dateTime.getYear());
         String month = String.valueOf(dateTime.getMonthValue());
@@ -64,4 +67,21 @@ public class ImageService {
         String combinedString = year + month + day + hour + minute + second + millisecond;
         return combinedString + image.getOriginalFilename();
     }
+    //testing
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/images/{imageName}")
+    public ResponseEntity<ByteArrayResource> getImage(@PathVariable String imageName) throws IOException {
+        Path filename = Paths.get("ad-service", "src", "main", "resources", "static", "images", imageName);
+        byte[] buffer = Files.readAllBytes(filename);
+        ByteArrayResource byteArrayResource = new ByteArrayResource(buffer);
+        return ResponseEntity
+                .ok()
+                .contentLength(buffer.length)
+                .contentType(MediaType.parseMediaType("image/jpeg"))
+                .body(byteArrayResource);
+    }
+
+
+
+
 }
