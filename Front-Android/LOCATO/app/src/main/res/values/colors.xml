@@ -12,6 +12,7 @@
     <color name="greywhite">#DDDDDD</color>
         <color name="colorPrimary">#4285F4</color>
         <color name="textColor">#333333</color>
+    <color name="lavender">#8692f7</color>
 
 
 </resources>
