@@ -1,13 +1,17 @@
 package com.example.locato
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import dialog.ConfirmReportFragment
+import dialog.ReportFragment
 import java.text.DecimalFormat
 
 @Suppress("DEPRECATION")
@@ -29,6 +33,7 @@ class DetailActivity : AppCompatActivity() {
 
     private val formatter = DecimalFormat("##,##,##,##,##")
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -40,6 +45,18 @@ class DetailActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             onBackPressed() // Cette ligne reviendra à la page précédente
         }
+        val reportButton = findViewById<Button>(R.id.reportButton)
+        // Set an OnClickListener for the button
+        reportButton.setOnClickListener {
+            // Show the ReportFragment when the button is clicked
+            showReportFragment()
+        }
+
+
+
+
+
+
     }
 
 
@@ -97,5 +114,15 @@ class DetailActivity : AppCompatActivity() {
 
 
     }
+    private fun showReportFragment() {
+        // Create an instance of the ReportFragment
+        val reportFragment = ReportFragment()
+
+        // Show the ReportFragment using the FragmentManager
+        val fragmentManager = supportFragmentManager
+        reportFragment.show(fragmentManager, "report_fragment_tag")
+    }
+
+
 
 }

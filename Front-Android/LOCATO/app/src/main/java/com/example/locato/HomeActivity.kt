@@ -4,22 +4,21 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.AutoCompleteTextView
+
 import android.widget.Button
 import android.widget.EditText
-
+import androidx.fragment.app.FragmentManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dialog.FormDialogFragment
+import dialog.ReportFragment
+
 import java.time.LocalTime
 import com.example.locato.ItemsAdapter.Action
 
@@ -56,6 +55,8 @@ class HomeActivity : AppCompatActivity(), FilterDialogListener {
         baseUrl ="http://$ip:8081/getAds"
 
         searchEditText = findViewById(R.id.editTextText)
+        // Get the button reference
+
 
 
         // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
@@ -157,7 +158,7 @@ class HomeActivity : AppCompatActivity(), FilterDialogListener {
                 }
             }
         }
-        // ... Autres configurations ...
+
     }
 
        //DeleteAd
@@ -346,6 +347,8 @@ class HomeActivity : AppCompatActivity(), FilterDialogListener {
         val noResultsTextView: TextView = findViewById(R.id.noResultsTextView)
         noResultsTextView.visibility = View.GONE
     }
+
+
 }
 
 

@@ -76,21 +76,7 @@ public class AdController {
         }
 
     }
-    @GetMapping("image/{path}")
-    public ResponseEntity<?> getImage(@PathVariable("path") String path){
-        byte[] image = imageService.downloadImageFromFileSystem(path);
-        if (image == null) {
-            return ResponseEntity.status(HttpStatus.SC_NOT_FOUND).build();
-        }
-        else {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setCacheControl(CacheControl.maxAge(1, TimeUnit.DAYS).cachePublic());
-            return ResponseEntity.status(HttpStatus.SC_OK)
-                    .headers(headers)
-                    .contentType(MediaType.IMAGE_JPEG)
-                    .body(image);
-        }
-    }
+
     @PutMapping("addCategory")
     public Category addCategory(@RequestParam("image")MultipartFile image,
                                          @RequestParam("name") String name

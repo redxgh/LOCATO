@@ -1,0 +1,86 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context=".PostActivity"
+    android:layout_width="wrap_content"
+    android:layout_height="580dp"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp">
+
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:src="@drawable/check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+
+        android:layout_width="411dp"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        android:padding="28dp"
+        tools:context=".PostActivity"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="113dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="1"
+            android:text="Don't want to see this?"
+            android:textColor="@color/blue"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="263dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:text="Thanks for letting us know about something that might go against our Community Standars . Reports like yours help keep Locato safe and welcoming for everyone. "
+            android:textAlignment="viewStart"
+            android:textStyle="normal|bold" />
+
+        <!-- RadioGroup for report reasons -->
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="22dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/DoneBtn"
+            android:layout_width="259dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/greywhite"
+            android:enabled="false"
+            android:text="Done"
+            android:textColor="@color/black"
+            app:cornerRadius="32dp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

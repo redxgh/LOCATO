@@ -54,6 +54,8 @@ class ItemsAdapter(
             Log.e("ImageLoading", "Image name is null or empty.")
         }
 
+
+
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
             intent.putExtra("object", currentItem as Serializable)
