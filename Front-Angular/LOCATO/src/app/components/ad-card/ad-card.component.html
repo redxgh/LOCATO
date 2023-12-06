@@ -1,21 +1,14 @@
-
 <div class="card product-item">
   <div class="slider">
     <a class="control_next">></a>
     <a class="control_prev"><</a>
    <ul>
-     <li *ngFor="let image of ad.accomodation.images" >
-      <img [src]="'../../../assets/ads/'+extractFileName(image)" alt="rrrrrr">
-    </li>
-    <!-- <li *ngFor="let image of ad.accomodation.images"
-    style="background-image: url('../../../assets/ads/+{{ extractFileName(image) }}');
-           width: 300px;
-           height: 300px;"></li> -->
+     <li *ngFor="let image of ad.accomodation.images">
+      <img [src]="getImage(image) | async">
+     </li>
     </ul>
   </div>
-
   <span class="product-category">Category</span>
-
   <div class="product-item-desc px-2 py-2">
       <div class="product-item-city">
         <span style="display: inline-block;">
