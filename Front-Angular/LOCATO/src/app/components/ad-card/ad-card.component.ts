@@ -41,7 +41,7 @@ export class AdCardComponent {
   }
 
 //testing
- imagePathPrefix = 'D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
+ imagePathPrefix = 'A:/Integration project/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
  imageUrlPrefix = 'http://localhost:8081/images/';
 
  getImage(imagePath: string): Observable<SafeUrl> {

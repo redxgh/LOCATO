@@ -25,11 +25,6 @@ public class AdService {
     public List<Ad> getAds(){
         return adRepository.findAll();
     }
-    public Optional<Ad> getAdById(String id){
-        return adRepository.findById(id);
-    }
-
-
 
     public boolean deleteAd(String id){
         adRepository.deleteById(id);

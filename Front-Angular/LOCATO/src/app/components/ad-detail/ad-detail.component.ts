@@ -23,13 +23,13 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
   count = 0;
   itemCount!: number;
 
-  //for ad 
+  //for ad
   @Input()
   ad!: Ad;
   AdId: string;
   route: ActivatedRoute = inject(ActivatedRoute);
 
-  
+
   constructor(private adService: AdService,private http: HttpClient, private sanitizer: DomSanitizer) {
     this.AdId = this.route.snapshot.params['id'];
     console.log('Ad id is :' + this.AdId);
@@ -37,7 +37,7 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
   ngOnInit(): void {
     this.findAdById();
   }
-  
+
   ngAfterViewInit() {
     this.itemCount = this.items.nativeElement.children.length;
     this.nextItem.nativeElement.addEventListener('click', this.showNextItem.bind(this));
@@ -46,7 +46,7 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
 
    showNextItem() {
     this.items.nativeElement.children[this.count].querySelector('img').classList.remove('active');
-   
+
     if(this.count < this.itemCount - 1) {
       this.count++;
     } else {
@@ -55,21 +55,21 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
     this.items.nativeElement.children[this.count].querySelector('img').classList.add('active');
     console.log(this.count);
    }
-   
+
    showPreviousItem() {
     this.items.nativeElement.children[this.count].querySelector('img').classList.remove('active');
-   
+
     if(this.count > 0) {
       this.count--;
     } else {
       this.count = this.itemCount - 1;
     }
-   
+
     this.items.nativeElement.children[this.count].querySelector('img').classList.add('active');
     console.log(this.count);
    }
-   
-  //get ad 
+
+  //get ad
   findAdById(): void {
     this.adService.getAdById(this.AdId).subscribe(
       (ad: Ad) => {
@@ -82,9 +82,9 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
     );
   }
 
-//get image 
+//get image
 //testing
-imagePathPrefix = 'D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
+imagePathPrefix = 'A:/Integration project/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
 imageUrlPrefix = 'http://localhost:8081/images/';
 
 getImage(imagePath: string): Observable<SafeUrl> {
