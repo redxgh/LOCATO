@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.locato.HomeActivity
 import com.example.locato.R
 
 class LoginActivity : AppCompatActivity() {
@@ -32,8 +33,10 @@ class LoginActivity : AppCompatActivity() {
             if (!validateUsername() || !validatePassword()) {
                 Toast.makeText(this@LoginActivity, "All fields must be filled", Toast.LENGTH_SHORT)
                     .show()
+
             } else {
-                null
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
             }
         }
     }

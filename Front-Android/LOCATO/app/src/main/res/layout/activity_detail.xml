@@ -305,7 +305,7 @@ coffered ceilings."
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button"
+                android:id="@+id/rentbutton"
                 style="@android:style/Widget.Button"
                 android:layout_margin="32dp"
                 android:layout_width="match_parent"

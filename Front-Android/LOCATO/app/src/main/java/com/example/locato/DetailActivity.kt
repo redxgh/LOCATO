@@ -1,6 +1,7 @@
 package com.example.locato
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.locato.Authetication.LoginActivity
 import dialog.ConfirmReportFragment
 import dialog.ReportFragment
 import java.text.DecimalFormat
@@ -28,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var priceTxt: TextView
     private lateinit var typeTxt: TextView
     private lateinit var categorieTxt: TextView
-
+    private lateinit var rentButton: Button
 
 
     private val formatter = DecimalFormat("##,##,##,##,##")
@@ -37,6 +39,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        rentButton = findViewById(R.id.rentbutton)
 
         initView()
         setVariable()
@@ -52,11 +55,10 @@ class DetailActivity : AppCompatActivity() {
             showReportFragment()
         }
 
-
-
-
-
-
+        rentButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
@@ -112,7 +114,6 @@ class DetailActivity : AppCompatActivity() {
         typeTxt=findViewById(R.id.typeTxt)
         categorieTxt=findViewById(R.id.categorieTxt)
 
-
     }
     private fun showReportFragment() {
         // Create an instance of the ReportFragment
@@ -122,7 +123,4 @@ class DetailActivity : AppCompatActivity() {
         val fragmentManager = supportFragmentManager
         reportFragment.show(fragmentManager, "report_fragment_tag")
     }
-
-
-
 }
