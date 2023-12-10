@@ -11,8 +11,8 @@ import java.time.LocalTime;
 @Setter
 public class Roommatead extends Ad{
     int gender;
-    public Roommatead(String id, String title, String description, double price, LocalTime timeStamp, Accomodation accomodation, int gender) {
-        super(id, title, description, price, timeStamp, accomodation);
+    public Roommatead(String id,String userId, String title, String description, double price, LocalTime timeStamp, Accomodation accomodation, int gender) {
+        super(id, userId, title, description, price, timeStamp, accomodation);
         this.gender = gender;
     }
 

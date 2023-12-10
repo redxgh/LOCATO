@@ -1,6 +1,6 @@
 package com.locato.adservice.entities;
 
-import com.locato.adservice.AdServiceApplication;
+import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -9,8 +9,11 @@ import java.time.LocalTime;
 
 @Document(collection = "ads")
 public class Ad{
+    @Getter
     @Id
     private String id;
+    private String userId;
+    @Getter
     private String title;
     private String description;
     private double price;
@@ -22,8 +25,9 @@ public class Ad{
         return this.title+" "+this.description+" "+this.price;
     }
 
-    public Ad(String id, String title, String description, double price, LocalTime timeStamp, Accomodation accomodation) {
+    public Ad(String id, String userId, String title, String description, double price, LocalTime timeStamp, Accomodation accomodation) {
         this.id = id;
+        this.userId = userId;
         this.title = title;
         this.description = description;
         this.price = price;
@@ -31,48 +35,24 @@ public class Ad{
         this.accomodation = accomodation;
     }
 
-    public String getId() {
-        return id;
-    }
-
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public double getPrice() {
-        return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public LocalTime getTimeStamp() {
-        return timeStamp;
-    }
-
     public void setTimeStamp(LocalTime timeStamp) {
         this.timeStamp = timeStamp;
-    }
-
-    public Accomodation getAccomodation() {
-        return accomodation;
     }
 
     public void setAccomodation(Accomodation accomodation) {

@@ -37,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
         } else {
             Handler().postDelayed({
                 if (isLoggedIn) {
-                    startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
+                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 } else {
                     startActivity(Intent(this@SplashActivity, LoginPhoneNumberActivity::class.java))
                 }
