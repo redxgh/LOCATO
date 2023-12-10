@@ -56,7 +56,6 @@ class LoginOtpActivity : AppCompatActivity() {
             )
         })
     }
-
     fun sendOtp(phoneNumber: String?, isResend: Boolean) {
         startResendTimer()
         setInProgress(true)
