@@ -10,5 +10,20 @@
     <color name="red">#F05454</color>
     <color name="grey">#808080</color>
     <color name="greywhite">#DDDDDD</color>
+        <color name="colorPrimary">#4285F4</color>
+        <color name="textColor">#333333</color>
+    <color name="lavender">#8692f7</color>
+
+
+    <color name="my_primary">#FF5964</color>
+    <color name="my_secondary">#FFE74C</color>
+
+
+
+    <color name="off_white">#FAFAFA</color>
+    <color name="light_gray">#C3C3C3</color>
+
+    <color name="chat_color_sender">#1E88E5</color>
+    <color name="chat_color_receiver">#7CB342</color>
 
 </resources>

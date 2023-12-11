@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Ad } from '../../model/Ad';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -8,6 +11,7 @@ import { Ad } from '../../model/Ad';
   styleUrls: ['./ad-card.component.scss']
 })
 export class AdCardComponent {
+
   @Input() ad: Ad = {
     id: 0,
     title: "",
@@ -25,6 +29,7 @@ export class AdCardComponent {
     }
   }
 
+
   extractFileName(filePath: string): string {
     const lastSlashIndex = Math.max(filePath.lastIndexOf('/'));
     if (lastSlashIndex !== -1) {
@@ -34,5 +39,19 @@ export class AdCardComponent {
       return filePath;
     }
   }
+
+//testing
+ imagePathPrefix = 'A:/Integration project/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
+ imageUrlPrefix = 'http://localhost:8081/images/';
+
+ getImage(imagePath: string): Observable<SafeUrl> {
+  const imageName = imagePath.replace(this.imagePathPrefix, '');
+  const imageUrl = `${this.imageUrlPrefix}${imageName.startsWith('/') ? imageName.substring(1) : imageName}`;
+  return new Observable<SafeUrl>((observer) => {
+    observer.next(imageUrl as SafeUrl);
+    observer.complete();
+  });
+}
+
 
 }

@@ -33,7 +33,7 @@ class EditAdActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_post)
         ida = intent.getStringExtra("id")!!
         prc = intent.getDoubleExtra("price",0.0)
         ttl = intent.getStringExtra("title")!!

@@ -36,19 +36,9 @@ public class AdController {
         return adService.getAds();
     }
 
-    @GetMapping("/getAdById/{id}")
-    public ResponseEntity<Optional<Ad>> getAdById(@PathVariable String id) {
-        Optional<Ad> ad = adService.getAdById(id);
-        if (ad == null) {
-            return ResponseEntity.status(HttpStatus.SC_NOT_FOUND).build();
-        } else {
-            return ResponseEntity.status(HttpStatus.SC_OK).body(ad);
-
-        }
-    }
-
     @PostMapping("/addAd")
     public ResponseEntity<? extends Ad> addAd(
+                    @RequestParam String userId,
                     @RequestParam String title,
                     @RequestParam String description,
                     @RequestParam double price,
@@ -71,26 +61,12 @@ public class AdController {
             return ResponseEntity.status(HttpStatus.SC_OK).body(locationAdRepository.save(ad));
         }
         else{
-            Roommatead ad = new Roommatead(null,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,images,type,categoryService.getCategoryById(categoryId)),gender);
+            Roommatead ad = new Roommatead(null,userId,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,images,type,categoryService.getCategoryById(categoryId)),gender);
             return ResponseEntity.status(HttpStatus.SC_OK).body(roommateAdRepository.save(ad));
         }
 
     }
-    @GetMapping("image/{path}")
-    public ResponseEntity<?> getImage(@PathVariable("path") String path){
-        byte[] image = imageService.downloadImageFromFileSystem(path);
-        if (image == null) {
-            return ResponseEntity.status(HttpStatus.SC_NOT_FOUND).build();
-        }
-        else {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setCacheControl(CacheControl.maxAge(1, TimeUnit.DAYS).cachePublic());
-            return ResponseEntity.status(HttpStatus.SC_OK)
-                    .headers(headers)
-                    .contentType(MediaType.IMAGE_JPEG)
-                    .body(image);
-        }
-    }
+
     @PutMapping("addCategory")
     public Category addCategory(@RequestParam("image")MultipartFile image,
                                          @RequestParam("name") String name
@@ -105,6 +81,7 @@ public class AdController {
     }
     @PatchMapping("editAd")
     public ResponseEntity<Ad> editAd(
+            @RequestParam String userId,
             @RequestParam String id,
             @RequestParam String title,
             @RequestParam String description,
@@ -124,11 +101,11 @@ public class AdController {
             images.add(imageService.uploadImageToFileSystem(image));
         }*/
         if(gender == -1){
-            Locationad ad = new Locationad(id,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,null,type,categoryService.getCategoryById(categoryId)));
+            Locationad ad = new Locationad(id,userId,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,null,type,categoryService.getCategoryById(categoryId)));
             return ResponseEntity.status(HttpStatus.SC_OK).body(locationAdRepository.save(ad));
         }
         else{
-            Roommatead ad = new Roommatead(id,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,null,type,categoryService.getCategoryById(categoryId)),gender);
+            Roommatead ad = new Roommatead(id,userId,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,null,type,categoryService.getCategoryById(categoryId)),gender);
             return ResponseEntity.status(HttpStatus.SC_OK).body(roommateAdRepository.save(ad));
         }
     }

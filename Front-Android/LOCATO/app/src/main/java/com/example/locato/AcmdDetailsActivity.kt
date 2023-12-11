@@ -139,8 +139,6 @@ class AcmdDetailsActivity : AppCompatActivity() {
         //surface
         EditTextSur = findViewById(R.id.accSur)
         val adSurface = EditTextSur.text
-
-
         //----------------ACC City --------------
 
         //city

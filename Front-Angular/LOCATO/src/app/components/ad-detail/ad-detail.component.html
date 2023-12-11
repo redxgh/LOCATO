@@ -1,59 +1,81 @@
-
 <main class="container">
 
   <!-- Left Column / Headphones Image -->
   <div class="left-column">
-
-<!-- Your Angular Component Template -->
-<main>
-  <div class="carousel-container" *ngFor="let image of ad.accomodation.images">
-    <div class="carousel-slide">1</div>
-
+    <div class="slider" #items>
+      <div *ngFor="let image of ad.accomodation.images; let i = index">
+        <img class="active" [src]="getImage(image) | async" #imgRef>
+      </div>
+    </div>
+    <nav class="slider-nav">
+      <ul>
+        <li class="arrow">
+          <button class="previous" #previousItem>
+            <span>Previous</span>
+          </button>
+        </li>
+        <li class="arrow">
+          <button class="next" #nextItem>
+            <span>NEXT</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
-</main>
 
 
-      <!-- Slider controls -->
-      <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-          <!-- Previous button content -->
-      </button>
-      <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-          <!-- Next button content -->
-      </button>
-  </div>
-
+  <!-- Right Column -->
   <div class="right-column">
 
-    <div class="accommodation-description">
+    <!-- Product Description -->
+    <div class="product-description">
       <span>{{ad.accomodation.type}}</span>
       <h1>{{ad.title}}</h1>
       <p>{{ ad.description }}</p>
+      <p>Surface : {{ad.surface}}</p>
     </div>
 
-    <div class="accommodation-configuration">
+    <!-- Product Configuration -->
+    <div class="product-configuration">
 
-      <div class="cable-config">
-        <span>Surface</span>
-        <div class="cable-choose">
-          <button>{{ad.surface}} aa</button>
+      <!-- Product Color -->
+      <!-- <div class="product-color">
+        <span>Color</span>
+
+        <div class="color-choose">
+          <div>
+            <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+            <label for="red"><span></span></label>
+          </div>
+          <div>
+            <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+            <label for="blue"><span></span></label>
+          </div>
+          <div>
+            <input data-image="black" type="radio" id="black" name="color" value="black">
+            <label for="black"><span></span></label>
+          </div>
         </div>
-      </div>
+
+      </div> -->
+
+      <!-- Cable Configuration -->
       <div class="cable-config">
-        <span>Rooms</span>
+        <span>House inside</span>
+
         <div class="cable-choose">
-          <button>{{ad.accomodation.rooms}}</button>
+          <button> Rooms : {{ad.accomodation.rooms}} </button>
+          <button>Bathrooms : {{ad.accomodation.bathrooms}}</button>
         </div>
-      </div>
-      <div class="cable-config">
-        <span>Bathrooms</span>
-        <div class="cable-choose">
-          <button>{{ad.accomodation.bathrooms}}</button>
-        </div>
+
+        <a href="#">About Location</a>
       </div>
     </div>
-    <div class="accommodation-price">
+
+    <!-- Product Pricing -->
+    <div class="product-price">
       <span>{{ad.price}}dt</span>
-      <a href="#" class="cart-btn">Reserve</a>
+      <a href="#" class="cart-btn">Reserve now</a>
     </div>
   </div>
 </main>

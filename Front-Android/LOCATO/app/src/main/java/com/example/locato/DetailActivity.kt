@@ -1,13 +1,19 @@
 package com.example.locato
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.locato.Authetication.LoginActivity
+import dialog.ConfirmReportFragment
+import dialog.ReportFragment
 import java.text.DecimalFormat
 
 @Suppress("DEPRECATION")
@@ -24,14 +30,16 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var priceTxt: TextView
     private lateinit var typeTxt: TextView
     private lateinit var categorieTxt: TextView
-
+    private lateinit var rentButton: Button
 
 
     private val formatter = DecimalFormat("##,##,##,##,##")
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        rentButton = findViewById(R.id.rentbutton)
 
         initView()
         setVariable()
@@ -39,6 +47,17 @@ class DetailActivity : AppCompatActivity() {
         val backButton: ImageView = findViewById(R.id.backButton)
         backButton.setOnClickListener {
             onBackPressed() // Cette ligne reviendra à la page précédente
+        }
+        val reportButton = findViewById<Button>(R.id.reportButton)
+        // Set an OnClickListener for the button
+        reportButton.setOnClickListener {
+            // Show the ReportFragment when the button is clicked
+            showReportFragment()
+        }
+
+        rentButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -95,7 +114,13 @@ class DetailActivity : AppCompatActivity() {
         typeTxt=findViewById(R.id.typeTxt)
         categorieTxt=findViewById(R.id.categorieTxt)
 
-
     }
+    private fun showReportFragment() {
+        // Create an instance of the ReportFragment
+        val reportFragment = ReportFragment()
 
+        // Show the ReportFragment using the FragmentManager
+        val fragmentManager = supportFragmentManager
+        reportFragment.show(fragmentManager, "report_fragment_tag")
+    }
 }

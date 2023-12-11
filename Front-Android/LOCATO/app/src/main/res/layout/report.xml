@@ -1,0 +1,148 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context=".PostActivity"
+    android:layout_width="wrap_content"
+    android:layout_height="580dp"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="100dp"
+            android:layout_height="37dp"
+            android:gravity="center"
+            android:text="Report"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="32dp" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="65dp"
+            android:layout_height="35dp"
+            android:src="@drawable/report"
+            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            app:layout_constraintEnd_toStartOf="@+id/textView11"
+            app:layout_constraintTop_toTopOf="@+id/textView11" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+
+        android:layout_width="411dp"
+        android:layout_height="550dp"
+        android:orientation="vertical"
+        android:padding="28dp"
+        tools:context=".PostActivity"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="113dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="1"
+            android:text="why do you want this ad?"
+            android:textColor="@color/blue"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="263dp"
+            android:layout_height="52dp"
+            android:alpha="0.7"
+            android:text="Your report will be verified by our team. If it is found to be valid, the ad will be removed.  "
+            android:textAlignment="viewStart"
+            android:textStyle="normal|bold" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="22dp" />
+        <!-- RadioGroup for report reasons -->
+        <LinearLayout
+            android:id="@+id/reportReasonsGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/checkBoxSpam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spam"
+                />
+
+            <CheckBox
+                android:id="@+id/checkBoxInappropriate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inappropriate Content" />
+
+            <CheckBox
+                android:id="@+id/checkBoxUnderAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="They may be under the age of 13" />
+
+            <CheckBox
+                android:id="@+id/checkBoxSomethingElse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Something else" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:text="Description"
+            android:textStyle="bold"
+            android:paddingBottom="5dp"/>
+
+        <EditText
+            android:id="@+id/adDesc"
+            android:layout_width="256dp"
+            android:layout_height="91dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableEnd="@drawable/baseline_description_24"
+            android:inputType="textMultiLine"
+            android:paddingStart="8dp"
+            android:paddingEnd="5dp"
+            android:scrollbars="vertical" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="22dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reportBtn"
+            android:layout_width="259dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/greywhite"
+            android:enabled="true"
+            android:text="Confirm"
+            android:textColor="@color/black"
+            app:cornerRadius="32dp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
