@@ -1,9 +1,12 @@
 package com.example.locato.Chat.utils
 
+import android.util.Log
+import com.google.android.gms.tasks.Task
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -15,6 +18,9 @@ object FirebaseUtil {
         return FirebaseAuth.getInstance().uid
     }
 
+
+
+
     @JvmStatic
     val isLoggedIn: Boolean
         get() = if (currentUserId() != null) {
@@ -25,6 +31,13 @@ object FirebaseUtil {
     fun currentUserDetails(): DocumentReference {
         return FirebaseFirestore.getInstance().collection("users").document(currentUserId()!!)
     }
+
+    @JvmStatic
+    fun getUsernameById(userId: String): Task<DocumentSnapshot> {
+        val db = FirebaseFirestore.getInstance()
+        return db.collection("users").document(userId).get()
+    }
+
 
     @JvmStatic
     fun allUserCollectionReference(): CollectionReference {
@@ -80,4 +93,8 @@ object FirebaseUtil {
         return FirebaseStorage.getInstance().reference.child("profile_pic")
             .child(otherUserId!!)
     }
+
+
+
 }
+

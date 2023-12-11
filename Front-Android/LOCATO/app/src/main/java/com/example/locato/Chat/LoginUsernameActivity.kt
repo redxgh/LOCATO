@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.locato.Chat.model.UserModel
 import com.example.locato.Chat.utils.FirebaseUtil.currentUserDetails
 import com.example.locato.Chat.utils.FirebaseUtil.currentUserId
+import com.example.locato.HomeActivity
 import com.example.locato.R
 import com.google.firebase.Timestamp
 
@@ -45,7 +46,9 @@ class LoginUsernameActivity : AppCompatActivity() {
         currentUserDetails().set(userModel!!).addOnCompleteListener { task ->
             setInProgress(false)
             if (task.isSuccessful) {
-                val intent = Intent(this@LoginUsernameActivity, MainActivity::class.java)
+
+                //netdhakarha
+                val intent = Intent(this@LoginUsernameActivity, HomeActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }

@@ -65,6 +65,7 @@ class ChatActivity : AppCompatActivity() {
         otherUsername = findViewById(R.id.other_username)
         recyclerView = findViewById(R.id.chat_recycler_view)
         imageView = findViewById(R.id.profile_pic_image_view)
+
         getOtherProfilePicStorageRef(otherUser!!.userId).downloadUrl
             .addOnCompleteListener { t: Task<Uri?> ->
                 if (t.isSuccessful) {
@@ -72,6 +73,7 @@ class ChatActivity : AppCompatActivity() {
                     setProfilePic(this, uri, imageView)
                 }
             }
+
         backBtn.setOnClickListener(View.OnClickListener { v: View? -> onBackPressed() })
         otherUsername.setText(otherUser!!.username)
         sendMessageBtn.setOnClickListener(View.OnClickListener { v: View? ->
@@ -106,8 +108,10 @@ class ChatActivity : AppCompatActivity() {
         chatroomModel!!.lastMessageTimestamp = Timestamp.now()
         chatroomModel!!.lastMessageSenderId = currentUserId()
         chatroomModel!!.lastMessage = message
+
         getChatroomReference(chatroomId).set(chatroomModel!!)
         val chatMessageModel = ChatMessageModel(message, currentUserId(), Timestamp.now())
+
         getChatroomMessageReference(chatroomId).add(chatMessageModel)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -116,6 +120,8 @@ class ChatActivity : AppCompatActivity() {
                 }
             }
     }
+
+
 
     val orCreateChatroomModel: Unit
         get() {
@@ -135,7 +141,11 @@ class ChatActivity : AppCompatActivity() {
                         }
                     }
                 }
+
         }
+
+
+
 
     fun sendNotification(message: String?) {
         currentUserDetails().get().addOnCompleteListener { task: Task<DocumentSnapshot> ->

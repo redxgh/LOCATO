@@ -86,32 +86,6 @@ class PostActivity : AppCompatActivity() {
 
 
 
-        /*val myVolleyRequest = MyVolleyRequest.getInstance(this)
-        myVolleyRequest.addAd(
-            "Your Title",
-            "Your Description",
-            100.0,
-            "Your Location",
-            100.0,
-            2,
-            1,
-            1,
-            listOf(File(""), File("")),
-            "Your Type",
-            "cat1",
-            -1
-        ) { response ->
-            runOnUiThread {
-                if (response != null) {
-                    // Handle successful response
-                    Toast.makeText(this, "Ad added successfully", Toast.LENGTH_SHORT).show()
-                } else {
-                    // Handle the case where the request failed or the response is null
-                    Toast.makeText(this, "Failed to add ad", Toast.LENGTH_SHORT).show()
-                    Log.e("MyVolleyRequest", "Failed to add ad")
-                }
-            }
-        }*/
 
 
         //resume

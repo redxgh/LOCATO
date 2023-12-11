@@ -17,6 +17,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
         if (intent.extras != null) {
             //from notification
             val userId = intent.extras!!.getString("userId")
@@ -37,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
         } else {
             Handler().postDelayed({
                 if (isLoggedIn) {
-                    startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
+                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
                 } else {
                     startActivity(Intent(this@SplashActivity, LoginPhoneNumberActivity::class.java))
                 }

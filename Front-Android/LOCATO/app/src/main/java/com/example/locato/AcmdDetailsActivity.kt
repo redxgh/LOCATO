@@ -20,6 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.locato.Chat.utils.FirebaseUtil
 import com.google.android.material.button.MaterialButton
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -81,6 +82,8 @@ class AcmdDetailsActivity : AppCompatActivity() {
 
     private lateinit var nextButton: MaterialButton
     private lateinit var selectedImageUri: Uri
+
+    private lateinit var firebaseUtil :FirebaseUtil
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -180,6 +183,8 @@ class AcmdDetailsActivity : AppCompatActivity() {
             val adDesc: CharSequence? = intent.getCharSequenceExtra("adDesc")
             val adPrice : CharSequence?= intent.getCharSequenceExtra("adPrice")
             val adGender : String?= intent.getStringExtra("adGender")
+            firebaseUtil = FirebaseUtil
+            val adUserId : String? = firebaseUtil.currentUserId()
             Log.d("adTitle", adTitle.toString())
             Log.d("adDesc", adDesc.toString())
             Log.d("adPrice", adPrice.toString())
@@ -204,7 +209,7 @@ class AcmdDetailsActivity : AppCompatActivity() {
             val rooms = adRooms.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val bathrooms = adRooms.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val best = "1".toRequestBody("text/plain".toMediaTypeOrNull())
-
+            val userId = adUserId.toString().toRequestBody("text/plain".toMediaTypeOrNull())
 
             //val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "BakiHanma.jpg")
             val externalFilesDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
@@ -227,7 +232,8 @@ class AcmdDetailsActivity : AppCompatActivity() {
                 imagesArr,
                 type,
                 categoryId,
-                gender
+                gender,
+                userId
             )
            // Execute the call
             call.enqueue(object : Callback<ResponseBody> {
