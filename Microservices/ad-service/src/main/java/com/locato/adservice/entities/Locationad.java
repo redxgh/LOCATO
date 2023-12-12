@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @Getter
 @Setter
 public class Locationad extends Ad {
-    public Locationad(String id, String title, String description, double price, LocalTime timeStamp, Accomodation accomodation) {
-        super(id, title, description, price, timeStamp, accomodation);
+    public Locationad(String id,String userId, String title, String description, double price, LocalTime timeStamp, Accomodation accomodation) {
+        super(id, userId, title, description, price, timeStamp, accomodation);
     }
 }
