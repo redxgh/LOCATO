@@ -187,14 +187,12 @@ class DetailActivity : AppCompatActivity() {
         }
 
     }
-
     private fun getResourceId(imageName: String?): Int {
         // Assuming that the images are in the res/drawable folder
         val resId = resources.getIdentifier(imageName, "drawable", packageName)
         Log.d("ImageLoading", "Resource ID for $imageName: $resId")
         return if (resId != 0) resId else R.drawable.image2
     }
-
     private fun initView() {
         titleTxt = findViewById(R.id.titleTxt)
         addressTxt = findViewById(R.id.addressTxt) // Adjusted to match the XML layout
@@ -206,8 +204,6 @@ class DetailActivity : AppCompatActivity() {
         priceTxt=findViewById(R.id.priceTxt)
         typeTxt=findViewById(R.id.typeTxt)
         categorieTxt=findViewById(R.id.categorieTxt)
-
-
     }
     private fun showReportFragment() {
         // Create an instance of the ReportFragment
