@@ -119,9 +119,9 @@ public class AdController {
         return ResponseEntity.status(HttpStatus.SC_OK)
                 .body(adService.getAdById(id));
     }
-    @GetMapping("/ads/user/{userid}")
-    public ResponseEntity<List<Ad>> getAdsByUserId(@PathVariable String userid){
+    @GetMapping("/ads/user/{id}")
+    public ResponseEntity<List<Ad>> getAdsByUserId(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.SC_OK)
-                .body(adService.getAdsByUserId(userid));
+                .body(adService.getAdsByUserId(id));
     }
 }

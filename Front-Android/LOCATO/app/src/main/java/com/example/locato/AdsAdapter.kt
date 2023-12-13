@@ -1,6 +1,5 @@
 package com.example.locato
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,24 +12,15 @@ import com.bumptech.glide.Glide
 import java.io.Serializable
 import java.text.DecimalFormat
 
-class ItemsAdapter(
-    private var items: ArrayList<ItemsDomaine>,
-    private val recyclerViewType: Int=0,
-    private val listener: OnItemClickListener? = null
-) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
+class AdsAdapter(private var items: ArrayList<ItemsDomaine>, private val listener: OnItemClickListener? = null) : RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
 
     private val formatter = DecimalFormat("##,##,##,##,##")
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflate: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.itemslistview, parent, false)
-        return ViewHolder(inflate)
-
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_ad, parent, false)
+        return ViewHolder(itemView)
     }
 
-
-
-    @SuppressLint("DiscouragedApi")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = items[position]
 
@@ -54,64 +44,46 @@ class ItemsAdapter(
             Log.e("ImageLoading", "Image name is null or empty.")
         }
 
-
-
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailActivity::class.java)
             intent.putExtra("object", currentItem as Serializable)
             holder.itemView.context.startActivity(intent)
         }
 
-//        holder.deleteButton.setOnClickListener {
-//            listener?.onItemClick(currentItem, Action.DELETE)
-//        }
-//        holder.img.setOnClickListener {
-//            val intent = Intent(holder.itemView.context,EditAdActivity::class.java)
-//            intent.putExtra("id",currentItem.id)
-//            intent.putExtra("price",currentItem.price)
-//            intent.putExtra("title",currentItem.title)
-//            intent.putExtra("desc",currentItem.description)
-//            intent.putExtra("gender",currentItem.gender)
-//            intent.putExtra("best", currentItem.accomodation?.best)
-//            intent.putExtra("location",currentItem.accomodation?.location)
-//            intent.putExtra("bathrooms",currentItem.accomodation?.bathrooms)
-//            intent.putExtra("rooms",currentItem.accomodation?.rooms)
-//            intent.putExtra("surface",currentItem.accomodation?.surface)
-//            intent.putExtra("type",currentItem.accomodation?.type)
-//            intent.putExtra("categorie",currentItem.accomodation?.categories?.name)
-//
-//            holder.itemView.context.startActivity(intent)
-//
-//        }
+        holder.deleteButton.setOnClickListener {
+            listener?.onItemClick(currentItem, Action.DELETE)
+        }
+        holder.img.setOnClickListener {
+            val intent = Intent(holder.itemView.context, EditAdActivity::class.java)
+            // Set other intent extras
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val addressTextView: TextView = itemView.findViewById(R.id.adress)
         val priceTextView: TextView = itemView.findViewById(R.id.price)
         val titleTextView: TextView = itemView.findViewById(R.id.titleTxt)
         val pic: ImageView = itemView.findViewById(R.id.pic1)
-//        val deleteButton: ImageView = itemView.findViewById(R.id.deleteCard)
-//        var img:ImageView = itemView.findViewById(R.id.picEd);
+        val deleteButton: ImageView = itemView.findViewById(R.id.deleteCard)
+        var img: ImageView = itemView.findViewById(R.id.picEd)
 
-//        init {
-//            deleteButton.setOnClickListener {
-//                listener?.onItemClick(items[adapterPosition], Action.DELETE)
-//            }
-//        }
-
+        init {
+            deleteButton.setOnClickListener {
+                listener?.onItemClick(items[adapterPosition], Action.DELETE)
+            }
+        }
     }
+
     interface OnItemClickListener {
-        fun onItemClick(item: ItemsDomaine?, action: ItemsAdapter.Action)
+        fun onItemClick(item: ItemsDomaine?, action: Action)
     }
 
     enum class Action {
         DELETE,
-
     }
-
 }

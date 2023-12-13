@@ -114,6 +114,20 @@ class HomeActivity : AppCompatActivity() {
 
         }
 
+        val imageView3 = findViewById<ImageView>(R.id.imageView10)
+        imageView3.setOnClickListener {
+            if(isLoggedIn) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.home_fragment_view, AdManagerFragment())
+                    .commit()
+            }
+            else{
+                startActivity(Intent(this, LoginPhoneNumberActivity::class.java))
+
+            }
+
+        }
+
 
 
 
