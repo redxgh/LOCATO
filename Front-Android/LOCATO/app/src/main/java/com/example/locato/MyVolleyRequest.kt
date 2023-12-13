@@ -132,7 +132,7 @@ class MyVolleyRequest private constructor(private val context: Context) {
     fun deleteAdById(adId: String, callback: (String?) -> Unit) {
 
         //val ip :String = Resources.getSystem().getString(R.string.ip)
-        val url = "http://192.168.1.19:8081/deleteAd?id=$adId"
+        val url = "http://192.168.134.165:8081/deleteAd?id=$adId"
 
         val deleteRequest = object : StringRequest(
             Method.DELETE, url,
