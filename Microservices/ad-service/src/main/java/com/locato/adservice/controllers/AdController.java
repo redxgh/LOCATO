@@ -57,7 +57,7 @@ public class AdController {
             images.add(imageService.uploadImageToFileSystem(image));
         }
         if(gender == -1){
-            Locationad ad = new Locationad(null,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,images,type,categoryService.getCategoryById(categoryId)));
+            Locationad ad = new Locationad(null,userId,title,description,price, LocalTime.now(),new Accomodation(location,surface,rooms,bathrooms,best,images,type,categoryService.getCategoryById(categoryId)));
             return ResponseEntity.status(HttpStatus.SC_OK).body(locationAdRepository.save(ad));
         }
         else{
@@ -118,5 +118,10 @@ public class AdController {
     public ResponseEntity<Ad> getAdById(@PathVariable String id){
         return ResponseEntity.status(HttpStatus.SC_OK)
                 .body(adService.getAdById(id));
+    }
+    @GetMapping("/ads/user/{userid}")
+    public ResponseEntity<List<Ad>> getAdsByUserId(@PathVariable String userid){
+        return ResponseEntity.status(HttpStatus.SC_OK)
+                .body(adService.getAdsByUserId(userid));
     }
 }
