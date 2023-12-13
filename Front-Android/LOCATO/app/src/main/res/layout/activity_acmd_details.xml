@@ -32,10 +32,6 @@
         android:orientation="vertical"
         android:padding="28dp">
 
-        <ImageView
-            android:layout_width="59dp"
-            android:layout_height="42dp"
-            android:src="@drawable/baseline_add_home_24" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +40,6 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
-
 
     </LinearLayout>
 
@@ -56,7 +51,7 @@
         android:layout_marginBottom="-20dp"
         android:id="@+id/card_view"
         >
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -78,7 +73,51 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="30dp" />
+                android:layout_height="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:text="Location"
+                android:textStyle="bold"
+                android:paddingBottom="5dp"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:hint="Select City"
+                app:boxCornerRadiusBottomEnd="15dp"
+                app:boxCornerRadiusTopEnd="15dp"
+                app:boxCornerRadiusBottomStart="15dp"
+                app:boxCornerRadiusTopStart="15dp"
+
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/locationSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:inputType="none"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+
+
+            <Button
+                android:id="@+id/setlocationBtn"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_location_on_24"
+                android:enabled="false"
+                android:text="Set location" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -139,7 +178,7 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="20dp" />
+                android:layout_height="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -194,46 +233,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.7"
-                android:text="Location"
-                android:textStyle="bold"
-                android:paddingBottom="5dp"/>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="51dp"
-                android:hint="Select City"
-                app:boxCornerRadiusBottomEnd="15dp"
-                app:boxCornerRadiusTopEnd="15dp"
-                app:boxCornerRadiusBottomStart="15dp"
-                app:boxCornerRadiusTopStart="15dp"
-
-                >
-
-                <AutoCompleteTextView
-                    android:id="@+id/locationSelect"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:inputType="none"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp" />
-
-
-            <Button
-                android:id="@+id/setlocationBtn"
-                android:layout_width="355dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_location_on_24"
-                android:enabled="false"
-                android:text="Set location" />
 
 
             <TextView
@@ -246,13 +245,13 @@
 
             <Button
                 android:id="@+id/uploadImagesBtn"
-                android:layout_width="356dp"
+                android:layout_width="205dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
                 android:drawableLeft="@drawable/baseline_image_24"
-                android:text="Upload Images"
                 android:onClick="onUploadButtonClick"
-                />
+                android:text="Upload Images"
+             />
 
             <View
                 android:layout_width="wrap_content"
@@ -263,7 +262,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:backgroundTint="@color/red"
-                android:text="Next"
+                android:text="POST ADVERTISMENT "
                 app:cornerRadius="32dp"
                 android:enabled="true"/>
             <View

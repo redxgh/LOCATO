@@ -2,7 +2,9 @@ package com.example.locato
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -150,6 +152,13 @@ class AcmdDetailsActivity : AppCompatActivity() {
         adapterItems = ArrayAdapter(this, R.layout.list_item, itemsCity)
         locationSelect.setAdapter(adapterItems)
         locationSelect.dropDownAnchor = locationSelect.id
+
+        val sharedPreference = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+        if(sharedPreference!=null){
+            val defaultCity = sharedPreference.getString("location", "")
+            locationSelect.setText(defaultCity, false)
+            adLocation = defaultCity.toString()
+        }
         locationSelect.setOnItemClickListener { parent, view, position, id ->
             val selectedItem = parent.getItemAtPosition(position).toString()
             //enabled setlocation btn
@@ -161,6 +170,10 @@ class AcmdDetailsActivity : AppCompatActivity() {
         //location map
         setlocationButton.setOnClickListener(){
             val intent = Intent(this,LocationActivity::class.java)
+            val sharedPreference = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+            val editor = sharedPreference.edit()
+            editor.putString("location", selectedCity)
+            editor.apply()
             intent.putExtra("selectedCity", selectedCity)
             startActivity(intent)
         }
@@ -170,19 +183,26 @@ class AcmdDetailsActivity : AppCompatActivity() {
         if (latitude != null && longitude != null) {
             val geoPoint = GeoPoint(latitude.toDouble(), longitude.toDouble())
             position= geoPoint.toString()
-            setlocationButton.setText(position)
+            setlocationButton.setText("Position Select Success !")
             Log.d("GeoPoint", geoPoint.toString())
         }
      //filled all form condtion missing !
         val ip:String = getString(R.string.ip)
        //-----------------------Post request ---------------------------
         //nextButton
+
         nextButton = findViewById(R.id.nextBtn)
         nextButton.setOnClickListener() {
-            val adTitle : CharSequence? = intent.getCharSequenceExtra("adTitle")
-            val adDesc: CharSequence? = intent.getCharSequenceExtra("adDesc")
-            val adPrice : CharSequence?= intent.getCharSequenceExtra("adPrice")
-            val adGender : String?= intent.getStringExtra("adGender")
+            val progressDialog = ProgressDialog(this)
+            progressDialog.setMessage("Loading...")
+            progressDialog.setCancelable(false)
+            progressDialog.show()
+
+
+            val adTitle = sharedPreference.getString("adTitle", "")
+            val adDesc = sharedPreference.getString("adDesc", "")
+            val adPrice = sharedPreference.getString("adPrice", "")
+            val adGender = sharedPreference.getString("adGender", "")
             firebaseUtil = FirebaseUtil
             val adUserId : String? = firebaseUtil.currentUserId()
             Log.d("adTitle", adTitle.toString())
@@ -199,7 +219,6 @@ class AcmdDetailsActivity : AppCompatActivity() {
                 .baseUrl("http://$ip:8081/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-
             val service = retrofit.create(AdService::class.java)
             val title = adTitle.toString().toRequestBody("text/plain".toMediaTypeOrNull())
             val description =  adDesc.toString().toRequestBody("text/plain".toMediaTypeOrNull())
@@ -237,14 +256,12 @@ class AcmdDetailsActivity : AppCompatActivity() {
             )
            // Execute the call
             call.enqueue(object : Callback<ResponseBody> {
+
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@AcmdDetailsActivity, "Request successful", Toast.LENGTH_SHORT).show()
-
+                        Toast.makeText(this@AcmdDetailsActivity, "Post added successfully", Toast.LENGTH_SHORT).show()
                     } else {
-
                         Toast.makeText(this@AcmdDetailsActivity, "Request failed", Toast.LENGTH_SHORT).show()
-
                     }
                 }
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -252,7 +269,16 @@ class AcmdDetailsActivity : AppCompatActivity() {
                     Log.e("error", t.message.toString())
                 }
             })
+            val intent = Intent(this,HomeActivity::class.java)
+            startActivity(intent)
+            val sharedPreference = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+            val editor = sharedPreference.edit()
+            editor.clear()
+            editor.apply()
+            progressDialog.dismiss()
+
         }
+
     }
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed() // or navigate to the previous activity

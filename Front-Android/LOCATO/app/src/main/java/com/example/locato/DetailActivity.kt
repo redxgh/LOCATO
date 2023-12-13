@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.locato.Chat.adapter.ChatRecyclerAdapter
@@ -181,9 +182,20 @@ class DetailActivity : AppCompatActivity() {
         }.addOnFailureListener { exception ->
             Log.d("erorr", "get failed with ", exception)
         }
+
       //rentttt
         rentButton.setOnClickListener {
-            sendMessageToUser(userId, "hellooooo aaaaaaaniiiiiiil enaaaaaaaaaaa ")
+            val alertDialog = AlertDialog.Builder(this)
+            alertDialog.setTitle("Contact Owner")
+            alertDialog.setMessage("Do you want to send a message to this property owner ? ")
+            alertDialog.setCancelable(false)
+            alertDialog.setPositiveButton("OK") { dialog, which ->
+                sendMessageToUser(userId, "Hello , I want to discuss with you about renting/colocation advertisement")
+                Toast.makeText(this, "Check your Recent chat ", Toast.LENGTH_SHORT).show()
+            }
+            alertDialog.setNegativeButton("Cancel", null)
+            alertDialog.show()
+
         }
 
     }
