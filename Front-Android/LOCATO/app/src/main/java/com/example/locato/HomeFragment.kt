@@ -22,24 +22,17 @@ import java.time.LocalTime
 
 class HomeFragment : Fragment(), FilterDialogListener {
 
-    private lateinit var recyclerViewPopular: RecyclerView
     private lateinit var recyclerViewNew: RecyclerView
-    private lateinit var itemsAdapterPopular: ItemsAdapter
     private lateinit var itemsAdapterNew: ItemsAdapter
     private lateinit var allItemsListNew: List<ItemsDomaine>
-    private lateinit var allItemsListPopular: List<ItemsDomaine>
-    private val itemsListPopular: ArrayList<ItemsDomaine> = ArrayList()
     private val itemsListNew: ArrayList<ItemsDomaine> = ArrayList()
     private lateinit var originalItemsListNew: List<ItemsDomaine>
-    private lateinit var originalItemsListPopular: List<ItemsDomaine>
     private var initialItemsListNew: ArrayList<ItemsDomaine> = ArrayList()
-    private var initialItemsListPopular: ArrayList<ItemsDomaine> = ArrayList()
     private lateinit var filterButton: Button
     private lateinit var noResultsTextView: TextView
     private lateinit var baseUrl: String
     private lateinit var ip: String
     private val activeFilters: MutableList<(ItemsDomaine) -> Boolean> = mutableListOf()
-    private lateinit var profileBtn: ImageView
     private var selectedType: String? = null
     private var selectedCategory: String? = null
     private var maxPrice: Double? = null
@@ -54,73 +47,22 @@ class HomeFragment : Fragment(), FilterDialogListener {
         baseUrl = "http://$ip:8081/getAds"
 
         searchEditText = view.findViewById(R.id.editTextText)
+        //Config category recycler
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = layoutManager
+
+        val itemList = listOf("Hotel", "Home", "Apartment", "Villa","Studio","Office","Condo","Farm","")
+        val adapter = HorizontalTextAdapter(itemList)
+        recyclerView.adapter = adapter
 
         // Configuration du RecyclerView avec un LayoutManager et l'adaptateur
-        recyclerViewPopular = view.findViewById(R.id.viewPopular)
         recyclerViewNew = view.findViewById(R.id.viewNew)
-
-        itemsAdapterPopular = ItemsAdapter(itemsListPopular, RECYCLER_VIEW_POPULAR)
-        recyclerViewPopular.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recyclerViewPopular.adapter = itemsAdapterPopular
-
-        // Ajout d'exemples d'éléments à la liste itemsListPopular
-        val item1 = ItemsDomaine(
-            id = "1",
-            title = "House with a great view",
-            description = "This 2 bed /1 bath home boasts an enormous open-living plan, " +
-                    "accented by striking architectural features and high-end finishes." +
-                    " Feel inspired by open sight lines that embrace the outdoors crowned by stunning coffered ceilings",
-            price = 200.0,
-            timeStamp = LocalTime.now().toString(),
-            userId ="1",
-            accomodation = ItemsDomaine.Accomodation(
-                location = "Sousse, Tunisie",
-                surface = 0.0,
-                rooms = 2,
-                bathrooms = 1,
-                best = 847456,
-                images = listOf("image1"),
-                type = "House",
-                category = ItemsDomaine.Category(id = "1", name = "cat1", image = null),
-                categories = null
-            ),
-            gender = null
-        )
-
-        val item2 = ItemsDomaine(
-            id = "2",
-            title = "House with a great view",
-            description = "This 2 bed /1 bath home boasts an enormous open-living plan, " +
-                    "accented by striking architectural features and high-end finishes." +
-                    " Feel inspired by open sight lines that embrace the outdoors crowned by stunning coffered ceilings",
-            price = 200.0,
-            userId ="1",
-            timeStamp = LocalTime.now().toString(),
-            accomodation = ItemsDomaine.Accomodation(
-                location = "Sousse, Tunisie",
-                surface = 0.0,
-                rooms = 2,
-                bathrooms = 1,
-                best = 847456,
-                images = listOf("image2"),
-                type = "Apartment",
-                category = ItemsDomaine.Category(id = "1", name = "cat2", image = null),
-                categories = null,
-            ),
-            gender = null
-        )
-
-        itemsListPopular.add(item1)
-        itemsListPopular.add(item2)
-
         //refresh
         originalItemsListNew = ArrayList(itemsListNew)
-        originalItemsListPopular = ArrayList(itemsListPopular)
 
         // Sauvegarder les listes initiales
         initialItemsListNew = ArrayList(itemsListNew)
-        initialItemsListPopular = ArrayList(itemsListPopular)
 
         noResultsTextView = view.findViewById(R.id.noResultsTextView)
         noResultsTextView.visibility = View.GONE
@@ -177,7 +119,7 @@ class HomeFragment : Fragment(), FilterDialogListener {
             })
 
         recyclerViewNew.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerViewNew.adapter = itemsAdapterNew
     }
 
@@ -217,7 +159,6 @@ class HomeFragment : Fragment(), FilterDialogListener {
 
 
     companion object {
-        const val RECYCLER_VIEW_POPULAR = 1
         const val RECYCLER_VIEW_NEW = 2
     }
 
@@ -231,15 +172,10 @@ class HomeFragment : Fragment(), FilterDialogListener {
     private fun performSearch(searchTerm: String) {
         // Faites quelque chose avec le terme de recherche (par exemple, filtrer la liste)
         val filteredList = itemsListNew.filter { it.title.contains(searchTerm, true) }
-        val filteredList2 = itemsListPopular.filter { it.title.contains(searchTerm, true) }
         // Mettez à jour le RecyclerView avec les résultats de la recherche
         itemsListNew.clear()
         itemsListNew.addAll(filteredList)
-        itemsAdapterNew.notifyDataSetChanged()
         /////
-        itemsListPopular.clear()
-        itemsListPopular.addAll(filteredList2)
-        itemsAdapterPopular.notifyDataSetChanged()
     }
     //refreshList
     private fun refreshLists() {
@@ -247,13 +183,8 @@ class HomeFragment : Fragment(), FilterDialogListener {
         itemsListNew.addAll(originalItemsListNew)
         itemsAdapterNew.notifyDataSetChanged()
 
-        itemsListPopular.clear()
-        itemsListPopular.addAll(originalItemsListPopular)
-        itemsAdapterPopular.notifyDataSetChanged()
+
     }
-
-
-
 
 
     override fun onCancelFilter() {
@@ -273,10 +204,6 @@ class HomeFragment : Fragment(), FilterDialogListener {
             initialItemsListNew = ArrayList(itemsListNew)
         }
 
-        if (initialItemsListPopular.isEmpty()) {
-            initialItemsListPopular = ArrayList(itemsListPopular)
-        }
-
 
         // Apply all active filters to itemsListNew
         val filteredListNew = initialItemsListNew.filter { item ->
@@ -287,23 +214,6 @@ class HomeFragment : Fragment(), FilterDialogListener {
         itemsListNew.addAll(filteredListNew)
         itemsAdapterNew.notifyDataSetChanged()
 
-        // Apply all active filters to itemsListPopular
-        val filteredListPopular = initialItemsListPopular.filter { item ->
-            activeFilters.all { filter -> filter(item) }
-        }
-
-        itemsListPopular.clear()
-        itemsListPopular.addAll(filteredListPopular)
-        itemsAdapterPopular.notifyDataSetChanged()
-
-        if (itemsListNew.isEmpty() && itemsListPopular.isEmpty()) {
-            val noResultsTextView: TextView = requireView().findViewById(R.id.noResultsTextView)
-            noResultsTextView.visibility = View.VISIBLE
-        } else {
-            // Masquer le message "No results found" s'il y a des résultats.
-            val noResultsTextView: TextView = requireView().findViewById(R.id.noResultsTextView)
-            noResultsTextView.visibility = View.GONE
-        }
     }
     private fun addFilter(filter: (ItemsDomaine) -> Boolean) {
         activeFilters.add(filter)
@@ -316,9 +226,6 @@ class HomeFragment : Fragment(), FilterDialogListener {
     private fun clearFilters() {
         initialItemsListNew.clear()
         initialItemsListNew.addAll(allItemsListNew)
-
-        initialItemsListPopular.clear()
-        initialItemsListPopular.addAll(allItemsListPopular)
     }
     override fun onFilterApplied(type: String, category: String, price: Double?) {
         selectedType = type
@@ -334,16 +241,6 @@ class HomeFragment : Fragment(), FilterDialogListener {
 
         // Apply filters
         filterItems()
-    }
-
-
-    private fun showNoResultsMessage() {
-
-
-    }
-
-    private fun hideNoResultsMessage() {
-
     }
 
 }

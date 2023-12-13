@@ -99,7 +99,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/like" />
+                        app:srcCompat="@drawable/baseline_chat_24" />
                 </LinearLayout>
 
                 <LinearLayout

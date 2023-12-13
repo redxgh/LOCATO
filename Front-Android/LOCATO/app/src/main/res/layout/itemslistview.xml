@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="250dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="10dp"
-    android:layout_height="wrap_content">
+    app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,22 +13,23 @@
 
         <ImageView
             android:id="@+id/pic1"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
             android:src="@drawable/house1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="ContentDescription,MissingConstraints" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
             android:id="@+id/ConstraintLayout"
+            android:layout_width="match_parent"
             android:layout_height="33dp"
             android:background="#70000000"
-            app:layout_constraintBottom_toTopOf="@+id/ConstraintLayout2"
-            >
+            app:layout_constraintBottom_toTopOf="@+id/ConstraintLayout2">
 
             <TextView
                 android:id="@+id/titleTxt"
@@ -46,7 +47,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ConstraintLayout2"
-            android:layout_width="250dp"
+            android:layout_width="300dp"
             android:layout_height="70dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/pic1"

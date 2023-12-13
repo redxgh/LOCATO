@@ -17,10 +17,6 @@ object FirebaseUtil {
     fun currentUserId(): String? {
         return FirebaseAuth.getInstance().uid
     }
-
-
-
-
     @JvmStatic
     val isLoggedIn: Boolean
         get() = if (currentUserId() != null) {
@@ -37,8 +33,6 @@ object FirebaseUtil {
         val db = FirebaseFirestore.getInstance()
         return db.collection("users").document(userId).get()
     }
-
-
     @JvmStatic
     fun allUserCollectionReference(): CollectionReference {
         return FirebaseFirestore.getInstance().collection("users")
@@ -93,8 +87,5 @@ object FirebaseUtil {
         return FirebaseStorage.getInstance().reference.child("profile_pic")
             .child(otherUserId!!)
     }
-
-
-
 }
 
