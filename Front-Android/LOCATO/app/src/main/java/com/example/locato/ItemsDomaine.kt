@@ -10,7 +10,8 @@ data class ItemsDomaine(
     val price: Double,
     val timeStamp: String?,
     val accomodation: Accomodation?,
-    val gender: Int?
+    val gender: Int?,
+    val userId : String?
 ) : Serializable {
     data class Accomodation(
         val location: String?,

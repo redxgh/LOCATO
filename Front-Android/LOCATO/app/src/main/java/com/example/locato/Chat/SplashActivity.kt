@@ -17,6 +17,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
         if (intent.extras != null) {
             //from notification
             val userId = intent.extras!!.getString("userId")

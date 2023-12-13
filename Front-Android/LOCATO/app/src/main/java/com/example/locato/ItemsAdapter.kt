@@ -27,9 +27,6 @@ class ItemsAdapter(
         return ViewHolder(inflate)
 
     }
-
-
-
     @SuppressLint("DiscouragedApi")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = items[position]

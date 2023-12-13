@@ -145,4 +145,5 @@ class ProfileFragment : Fragment() {
             updateProfileBtn!!.visibility = View.VISIBLE
         }
     }
+    
 }

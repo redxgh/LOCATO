@@ -36,4 +36,7 @@ public class AdService {
     public Ad getAdById(String id){
         return adRepository.findById(id).get();
     }
+    public List<Ad> getAdsByUserId(String userid){
+        return adRepository.getAdByUserId(userid);
+    }
 }

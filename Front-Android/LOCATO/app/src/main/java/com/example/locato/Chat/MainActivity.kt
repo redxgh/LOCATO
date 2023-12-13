@@ -14,24 +14,20 @@ import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
     lateinit  var bottomNavigationView: BottomNavigationView
-    lateinit var searchButton: ImageButton
     var chatFragment: ChatFragment? = null
     var profileFragment: ProfileFragment? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         chatFragment = ChatFragment()
         profileFragment = ProfileFragment()
+
         bottomNavigationView = findViewById(R.id.bottom_navigation)
-        searchButton = findViewById(R.id.main_search_btn)
-        searchButton.setOnClickListener(View.OnClickListener { v: View? ->
-            startActivity(
-                Intent(
-                    this@MainActivity,
-                    SearchUserActivity::class.java
-                )
-            )
-        })
+
+
+
         bottomNavigationView.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item ->
             if (item.itemId == R.id.menu_chat) {
                 supportFragmentManager.beginTransaction()
@@ -56,4 +52,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
 }

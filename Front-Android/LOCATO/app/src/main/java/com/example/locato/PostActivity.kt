@@ -1,5 +1,6 @@
 package com.example.locato
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -86,32 +87,6 @@ class PostActivity : AppCompatActivity() {
 
 
 
-        /*val myVolleyRequest = MyVolleyRequest.getInstance(this)
-        myVolleyRequest.addAd(
-            "Your Title",
-            "Your Description",
-            100.0,
-            "Your Location",
-            100.0,
-            2,
-            1,
-            1,
-            listOf(File(""), File("")),
-            "Your Type",
-            "cat1",
-            -1
-        ) { response ->
-            runOnUiThread {
-                if (response != null) {
-                    // Handle successful response
-                    Toast.makeText(this, "Ad added successfully", Toast.LENGTH_SHORT).show()
-                } else {
-                    // Handle the case where the request failed or the response is null
-                    Toast.makeText(this, "Failed to add ad", Toast.LENGTH_SHORT).show()
-                    Log.e("MyVolleyRequest", "Failed to add ad")
-                }
-            }
-        }*/
 
 
         //resume
@@ -121,15 +96,19 @@ class PostActivity : AppCompatActivity() {
         nextButton.setOnClickListener() {
 
             val intent = Intent(this, AcmdDetailsActivity::class.java)
-            intent.putExtra("adTitle", adTitle.text)
-            intent.putExtra("adDesc", adDesc.text)
-            intent.putExtra("adPrice", adPrice.text)
-            intent.putExtra("adGender",adGender)
+            val sharedPreference = getSharedPreferences("myPref", Context.MODE_PRIVATE)
+            val editor = sharedPreference.edit()
+            editor.putString("adTitle", adTitle.text.toString())
+            editor.putString("adDesc", adDesc.text.toString())
+            editor.putString("adPrice", adPrice.text.toString())
+            editor.putString("adGender", adGender)
+            editor.apply()
+            startActivity(intent)
+
             Log.d("adTitle", adTitle.text.toString())
             Log.d("adDesc", adPrice.text.toString())
             Log.d("adPrice", adDesc.text.toString())
             Log.d("adGender", adGender)
-
             startActivity(intent)
         }
 

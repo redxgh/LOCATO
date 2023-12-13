@@ -1,9 +1,12 @@
 package com.example.locato.Chat
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +21,8 @@ import com.google.firebase.firestore.Query
 class ChatFragment : Fragment() {
     var recyclerView: RecyclerView? = null
     var adapter: RecentChatRecyclerAdapter? = null
+    lateinit var searchButton: Button
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,6 +30,11 @@ class ChatFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_chat, container, false)
         recyclerView = view.findViewById(R.id.recyler_view)
         setupRecyclerView()
+        searchButton = view.findViewById(R.id.search_user_btn)
+      searchButton.setOnClickListener(){
+          val intent = Intent(context, SearchUserActivity::class.java)
+          startActivity(intent)
+      }
         return view
     }
 

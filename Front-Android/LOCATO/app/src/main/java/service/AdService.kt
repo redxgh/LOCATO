@@ -24,7 +24,8 @@ interface AdService {
         @Part imagesArr: MultipartBody.Part,
         @Part("type") type: RequestBody,
         @Part("categoryId") categoryId: RequestBody,
-        @Part("gender") gender: RequestBody
+        @Part("gender") gender: RequestBody,
+        @Part("userId") userId :RequestBody
     ): Call<ResponseBody>
     @Multipart
     @PATCH("editAd")

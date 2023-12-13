@@ -22,7 +22,6 @@ object AndroidUtil {
         intent.putExtra("userId", model.userId)
         intent.putExtra("fcmToken", model.fcmToken)
     }
-
     @JvmStatic
     fun getUserModelFromIntent(intent: Intent): UserModel {
         val userModel = UserModel()

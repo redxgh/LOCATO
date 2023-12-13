@@ -2,22 +2,17 @@ package com.example.locato
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.Resources
 import android.util.Log
-import com.android.volley.NetworkResponse
 import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import multipartFiles.MultipartRequest
 import org.json.JSONArray
 import org.json.JSONObject
-import java.io.File
 
 class MyVolleyRequest private constructor(private val context: Context) {
-    private val requestQueue: RequestQueue by lazy {
+    private val requestQueue: RequestQueue by lazy(LazyThreadSafetyMode.NONE) {
         Volley.newRequestQueue(context.applicationContext)
     }
 
@@ -51,7 +46,6 @@ class MyVolleyRequest private constructor(private val context: Context) {
                 )
             }
         )
-
         requestQueue.add(jsonArrayRequest)
     }
 
@@ -63,6 +57,7 @@ class MyVolleyRequest private constructor(private val context: Context) {
             val item = createItemFromJsonObject(adObject)
             itemsList.add(item)
         }
+        Log.d("MyVolleyRequest", "Parsed itemsList: $itemsList")
 
         return itemsList
     }
@@ -78,8 +73,9 @@ class MyVolleyRequest private constructor(private val context: Context) {
         val accomodation =
             if (accomodationObject != null) createAccomodationFromJsonObject(accomodationObject) else null
         val gender = adObject.optInt("gender", -1)
+        val userId = adObject.optString("userId")
 
-        return ItemsDomaine(id, title, description, price, timeStamp, accomodation, gender)
+        return ItemsDomaine(id, title, description, price, timeStamp, accomodation, gender,userId)
     }
 
     private fun createAccomodationFromJsonObject(accomodationObject: JSONObject): ItemsDomaine.Accomodation {
