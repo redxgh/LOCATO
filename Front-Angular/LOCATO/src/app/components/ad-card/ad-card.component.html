@@ -1,5 +1,5 @@
- <div class="card-container">
-  <div class="card-image-container" #cardImageContainer>
+ <div class="card-container" >
+  <div class="card-image-container" #cardImageContainer   >
       <div class="card-image-above-elements">
           <div class="card-image-swiper-container">
               <button #cardImageSwiperBefore class="card-image-swiper card-image-swiper-before card-image-swiper-inactive">
@@ -17,11 +17,11 @@
             <span class="card-image-indicator"></span>
         </div>
       </div>
-      <div class="card-image-group" #cardImageGroup>
-          <img class="card-image"  *ngFor="let image of ad.accomodation.images" [src]="getImage(image) | async"  >
+        <div class="card-image-group" #cardImageGroup routerLink="/ad-detail/{{ ad.id }}" style="cursor: pointer;">
+        <img class="card-image"  *ngFor="let image of ad.accomodation.images" [src]="getImage(image) | async" >
       </div>
   </div>
-  <div class="card-content-container">
+  <div class="card-content-container" >
       <span>{{ ad.accomodation.location }}</span>
       <span> {{ad.title}}</span>
       <span>{{ad.accomodation.category}}</span>

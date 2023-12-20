@@ -1,4 +1,4 @@
-import { Component, Input, inject , ViewChild, ElementRef, AfterViewInit, OnInit} from '@angular/core';
+import { Component, Input, inject , ViewChild, ElementRef, AfterViewInit, OnInit, HostListener} from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Ad } from 'src/app/model/Ad';
@@ -28,9 +28,10 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
   ad!: Ad;
   AdId: string;
   route: ActivatedRoute = inject(ActivatedRoute);
+  private imgId = 1;
 
 
-  constructor(private adService: AdService,private http: HttpClient, private sanitizer: DomSanitizer) {
+  constructor(private adService: AdService,private http: HttpClient, private sanitizer: DomSanitizer,private elRef: ElementRef) {
     this.AdId = this.route.snapshot.params['id'];
     console.log('Ad id is :' + this.AdId);
   }
@@ -39,36 +40,25 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
   }
 
   ngAfterViewInit() {
-    this.itemCount = this.items.nativeElement.children.length;
-    this.nextItem.nativeElement.addEventListener('click', this.showNextItem.bind(this));
-    this.previousItem.nativeElement.addEventListener('click', this.showPreviousItem.bind(this));
-   }
+    const imgBtns = this.elRef.nativeElement.querySelectorAll('.img-select a');
+    imgBtns.forEach((imgItem: HTMLElement, index: number) => {
+      imgItem.addEventListener('click', (event) => {
+        event.preventDefault();
+        this.imgId = index + 1; // Adjust index to start from 1
+        this.slideImage();
+      });
+    });
+  }
+  slideImage() {
+    const displayWidth = this.elRef.nativeElement.querySelector('.img-showcase img:first-child').clientWidth;
+    this.elRef.nativeElement.querySelector('.img-showcase').style.transform = `translateX(${- (this.imgId - 1) * displayWidth}px)`;
+  }
 
-   showNextItem() {
-    this.items.nativeElement.children[this.count].querySelector('img').classList.remove('active');
-
-    if(this.count < this.itemCount - 1) {
-      this.count++;
-    } else {
-      this.count = 0;
-    }
-    this.items.nativeElement.children[this.count].querySelector('img').classList.add('active');
-    console.log(this.count);
-   }
-
-   showPreviousItem() {
-    this.items.nativeElement.children[this.count].querySelector('img').classList.remove('active');
-
-    if(this.count > 0) {
-      this.count--;
-    } else {
-      this.count = this.itemCount - 1;
-    }
-
-    this.items.nativeElement.children[this.count].querySelector('img').classList.add('active');
-    console.log(this.count);
-   }
-
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.slideImage();
+  }
+  
   //get ad
   findAdById(): void {
     this.adService.getAdById(this.AdId).subscribe(

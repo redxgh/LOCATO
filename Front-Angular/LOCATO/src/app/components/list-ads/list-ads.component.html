@@ -1,7 +1,7 @@
 
 <div>
   <section>
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div class=" flex flex-wrap items-start justify-between mx-auto p-2">
 
   <div class="flex md:order-2">
     <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
@@ -51,27 +51,11 @@
         </div>
     </div>
     </div>
+
   </div>
 
       <div class="row">
-          <div class="col-md-2" data-aos="fade-right">
-              <h3 class="side-title">Cities</h3>
-              <ul class="products-category">
-                  <li>
-                      <a href="" class="active">All</a>
-                  </li>
-                  <li><a href="">Bizerte</a></li>
-                  <li><a href="">Tunis</a></li>
-                  <li><a href="">Nabeul</a></li>
-                  <li><a href="">Gafsa</a></li>
-                  <li><a href="">Gasserine</a></li>
-                  <li><a href="">Tozeur</a></li>
-                  <li><a href="">Kairaoane</a></li>
-                  <li><a href=""></a></li>
-                  <li><a href="">Sale</a></li>
-              </ul>
-          </div>
-          <div class="col-md-10" data-aos="fade-left" data-aos-duration="1000">
+          <div class="col" data-aos="fade-left" data-aos-duration="1000">
               <div class="row">
                   <div class="col-md-8">
                       <div class="main-hero-slider" style="background-image: url('../../../assets/hotel.jpg');">
@@ -98,13 +82,11 @@
                       </div>
                   </div>
               </div>
-
-              <div class="main-ads" data-aos="fade-left" data-aos-duration="1000">
-                <section class="results" *ngFor="let ad of filteredAdList" >
-                  <!-- <app-ad-card routerLink="/ad-detail/{{ ad.id }}" [ad]="ad" id="ad"></app-ad-card> -->
-                  <app-ad-card  [ad]="ad" id="ad"></app-ad-card>
-                </section>
-                </div>
+                <div class="row" >
+                  <div class="col" style="height: 380px;padding: 6px;" *ngFor="let ad of ads; let i = index" >
+                    <app-ad-card [ad]="ad" id="ad" ></app-ad-card>
+                  </div>
+                 </div>
           </div>
       </div>
   </section>
