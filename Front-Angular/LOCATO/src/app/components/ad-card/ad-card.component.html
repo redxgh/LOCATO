@@ -1,41 +1,31 @@
-<div class="card product-item">
-  <div class="slider">
-    <a class="control_next">></a>
-    <a class="control_prev"><</a>
-   <ul>
-     <li *ngFor="let image of ad.accomodation.images">
-      <img [src]="getImage(image) | async">
-     </li>
-    </ul>
+ <div class="card-container">
+  <div class="card-image-container" #cardImageContainer>
+      <div class="card-image-above-elements">
+          <div class="card-image-swiper-container">
+              <button #cardImageSwiperBefore class="card-image-swiper card-image-swiper-before card-image-swiper-inactive">
+                  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;fill:none;height:12px;width:12px;stroke:currentcolor;stroke-width:4;overflow:visible"><path d="M20 28 8.7 16.7a1 1 0 0 1 0-1.4L20 4"/></svg>
+              </button>
+              <button #cardImageSwiperAfter class="card-image-swiper card-image-swiper-after">
+                  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;fill:none;height:12px;width:12px;stroke:currentcolor;stroke-width:4;overflow:visible"><path d="m12 4 11.3 11.3c.4.4.4 1 0 1.4L12 28"/></svg>
+              </button>
+          </div>
+          <div class="card-image-indicator-container" #cardImageIndicator>
+            <span class="card-image-indicator card-image-indicator-active"></span>
+            <span class="card-image-indicator"></span>
+            <span class="card-image-indicator"></span>
+            <span class="card-image-indicator"></span>
+            <span class="card-image-indicator"></span>
+        </div>
+      </div>
+      <div class="card-image-group" #cardImageGroup>
+          <img class="card-image"  *ngFor="let image of ad.accomodation.images" [src]="getImage(image) | async"  >
+      </div>
   </div>
-  <span class="product-category">Category</span>
-  <div class="product-item-desc px-2 py-2">
-      <div class="product-item-city">
-        <span style="display: inline-block;">
-          <svg height="13px" width="13px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 512 512"  xml:space="preserve" style="display: inline-block; vertical-align: middle;">
-       <g>
-         <path class="st0" d="M255.996,0C145.058,0,55.138,89.929,55.138,200.866c0,68.454,34.648,128.363,86.55,165.174
-           c47.356,33.594,57.811,41.609,74.462,73.4c13.174,25.147,34.541,69.279,34.541,69.279c1.004,2.008,3.052,3.281,5.306,3.281
-           c2.244,0,4.31-1.274,5.313-3.281c0,0,21.368-44.132,34.541-69.279c16.642-31.791,27.106-39.806,74.454-73.4
-           c51.91-36.811,86.558-96.72,86.558-165.174C456.862,89.929,366.925,0,255.996,0z M255.996,335.473
-           c-74.331,0-134.599-60.268-134.599-134.608c0-74.339,60.268-134.607,134.599-134.607c74.339,0,134.606,60.268,134.606,134.607
-           C390.602,275.205,330.335,335.473,255.996,335.473z"/>
-       </g>
-      </svg>
-      <span style="display: inline-block; vertical-align: middle;">City Name</span>
-    </span>
+  <div class="card-content-container">
+      <span>{{ ad.accomodation.location }}</span>
+      <span> {{ad.title}}</span>
+      <span>{{ad.accomodation.category}}</span>
+      <span>{{ ad.price }} DT </span>
   </div>
-  <div class="product-item-title">{{ ad.title }} </div>
-  <!-- <div class="product-item-user">
-    User
-  </div> -->
-      <div class="product-item-price">
-      <span>
-        {{ ad.price }} DT
-      </span>
-    </div>
-
-  </div>
-
- </div>
+</div>
+ 

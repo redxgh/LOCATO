@@ -84,7 +84,7 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
 
 //get image
 //testing
-imagePathPrefix = 'A:/Integration project/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
+imagePathPrefix = 'D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
 imageUrlPrefix = 'http://localhost:8081/images/';
 
 getImage(imagePath: string): Observable<SafeUrl> {
