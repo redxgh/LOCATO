@@ -36,7 +36,6 @@ public class ImageService {
             return null;
         }
     }
-
     public byte[] downloadImageFromFileSystem(String path) {
         try{
                 return Files.readAllBytes(new File(path).toPath());
@@ -54,8 +53,6 @@ public class ImageService {
             return false;
         }
     }
-
-
     private static String getString(MultipartFile image, LocalDateTime dateTime) {
         String year = String.valueOf(dateTime.getYear());
         String month = String.valueOf(dateTime.getMonthValue());
@@ -68,6 +65,7 @@ public class ImageService {
         return combinedString + image.getOriginalFilename();
     }
     //testing
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/images/{imageName}")
     public ResponseEntity<ByteArrayResource> getImage(@PathVariable String imageName) throws IOException {
@@ -80,8 +78,6 @@ public class ImageService {
                 .contentType(MediaType.parseMediaType("image/jpeg"))
                 .body(byteArrayResource);
     }
-
-
 
 
 }
