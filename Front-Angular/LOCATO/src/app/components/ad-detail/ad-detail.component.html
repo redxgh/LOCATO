@@ -1,81 +1,64 @@
-<main class="container">
-
-  <!-- Left Column / Headphones Image -->
-  <div class="left-column">
-    <div class="slider" #items>
-      <div *ngFor="let image of ad.accomodation.images; let i = index">
-        <img class="active" [src]="getImage(image) | async" #imgRef>
+<div class="card-wrapper">
+  <div class="card">
+    <!-- card left -->
+    <div class="product-imgs">
+      <div class="img-display">
+        <div class="img-showcase">
+          <img *ngFor="let image of ad.accomodation.images" [src]="getImage(image)|async">
+        </div>
+      </div>
+      <div class="img-select">
+        <div class="img-item" *ngFor="let image of ad.accomodation.images">
+          <a href="#" data-id="1">
+            <img [src]="getImage(image)|async">
+          </a>
+        </div>
       </div>
     </div>
-    <nav class="slider-nav">
-      <ul>
-        <li class="arrow">
-          <button class="previous" #previousItem>
-            <span>Previous</span>
-          </button>
-        </li>
-        <li class="arrow">
-          <button class="next" #nextItem>
-            <span>NEXT</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </div>
+    <!-- card right -->
+    <div class="product-content">
+      <h2 class="product-title">{{ad.title}}</h2>
+      <a href="#" class="product-link">Location : {{ad.accomodation.location}}</a>
+      <div class="product-rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+        <span>4.7(21)</span>
+      </div>
 
+      <div class="product-price">
+        <p class="new-price">Price <span>{{ad.price}} DT</span></p>
+      </div>
 
-  <!-- Right Column -->
-  <div class="right-column">
+      <div class="product-detail">
+        <h2>about this Property: </h2>
+        <p>{{ad.description}}</p>
+        <ul>
+          <li>Rooms: <span>{{ad.accomodation.rooms}}</span></li>
+          <li>Bathrooms: <span>{{ad.accomodation.bathrooms}}</span></li>
+          <li>Best: <span>{{ad.accomodation.best}}</span></li>
+          <li>Category: <span>{{ad.accomodation.category}}</span></li>
+          <li>Best: <span>{{ad.accomodation.best}}</span></li>
 
-    <!-- Product Description -->
-    <div class="product-description">
-      <span>{{ad.accomodation.type}}</span>
-      <h1>{{ad.title}}</h1>
-      <p>{{ ad.description }}</p>
-      <p>Surface : {{ad.surface}}</p>
-    </div>
+        </ul>
+      </div>
+      <div class="purchase-info">
+        <a class="fancy" href="#" style="border: 1px solid #d12828a8;background-color: #d12828a8;">
+          <span class="top-key"></span>
+          <span class="text">Rent Now </span>
+          <span class="bottom-key-1"></span>
+          <span class="bottom-key-2"></span>
+        </a>
 
-    <!-- Product Configuration -->
-    <div class="product-configuration">
-
-      <!-- Product Color -->
-      <!-- <div class="product-color">
-        <span>Color</span>
-
-        <div class="color-choose">
-          <div>
-            <input data-image="red" type="radio" id="red" name="color" value="red" checked>
-            <label for="red"><span></span></label>
-          </div>
-          <div>
-            <input data-image="blue" type="radio" id="blue" name="color" value="blue">
-            <label for="blue"><span></span></label>
-          </div>
-          <div>
-            <input data-image="black" type="radio" id="black" name="color" value="black">
-            <label for="black"><span></span></label>
-          </div>
-        </div>
-
-      </div> -->
-
-      <!-- Cable Configuration -->
-      <div class="cable-config">
-        <span>House inside</span>
-
-        <div class="cable-choose">
-          <button> Rooms : {{ad.accomodation.rooms}} </button>
-          <button>Bathrooms : {{ad.accomodation.bathrooms}}</button>
-        </div>
-
-        <a href="#">About Location</a>
+        <a class="fancy" href="#">
+          <span class="top-key"></span>
+          <span class="text">Contact Owner </span>
+          <span class="bottom-key-1"></span>
+          <span class="bottom-key-2"></span>
+        </a>
       </div>
     </div>
-
-    <!-- Product Pricing -->
-    <div class="product-price">
-      <span>{{ad.price}}dt</span>
-      <a href="#" class="cart-btn">Reserve now</a>
-    </div>
   </div>
-</main>
+</div>

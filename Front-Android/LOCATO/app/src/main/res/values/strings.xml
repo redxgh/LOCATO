@@ -11,9 +11,9 @@
     <string name="villa">Villa</string>
     <string name="locato">LOCATO</string>
     <string name="villa1">Villa</string>
-    <string name="popular">Advertisements</string>
+    <string name="popular">Popular</string>
     <string name="see_all">See All</string>
-    <string name="new1">New</string>
+    <string name="new1">Advertisements</string>
     <string name="see_all1">See All</string>
     <string name="apartment1">Apartment</string>
     <string name="office1">Hotel</string>
@@ -25,5 +25,5 @@
     <string name="dar_colibri1">Dar Colibri</string>
     <string name="sousse1">Sousse</string>
     <string name="_000_000_dt1">000.000 DT</string>
-    <string name="ip">192.168.1.19</string>
+    <string name="ip">192.168.134.165</string>
 </resources>
