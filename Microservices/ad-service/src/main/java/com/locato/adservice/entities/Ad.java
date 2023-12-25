@@ -12,13 +12,17 @@ public class Ad{
     @Getter
     @Id
     private String id;
+    @Getter
     private String userId;
     @Getter
     private String title;
+    @Getter
     private String description;
+    @Getter
     private double price;
     @Field("creationTime")
     private LocalTime timeStamp;
+    @Getter
     private Accomodation accomodation;
     @Override
     public String toString(){
