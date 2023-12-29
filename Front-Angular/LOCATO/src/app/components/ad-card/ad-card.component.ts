@@ -21,7 +21,7 @@ export class AdCardComponent implements AfterViewInit {
   cardImageContainers!: QueryList<ElementRef>;
   @ViewChildren('cardImageIndicator')
   cardImageIndicators!: QueryList<ElementRef>;
-
+  
   @Input() ad: Ad = {
     id: 0,
     title: "",
@@ -49,14 +49,16 @@ export class AdCardComponent implements AfterViewInit {
       return filePath;
     }
   }
-
+  imageLink = "";
+ngOnInit(): void {
+  this.imageLink = `http://127.0.0.1:8081/images/${this.ad.accomodation.images[0]}`;
+  console.log(this.ad.accomodation.images[0])
+}
 //testing
- imagePathPrefix = 'D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
- imageUrlPrefix = 'http://localhost:8081/images/';
-
+ 
  getImage(imagePath: string): Observable<SafeUrl> {
-  const imageName = imagePath.replace(this.imagePathPrefix, '');
-  const imageUrl = `${this.imageUrlPrefix}${imageName.startsWith('/') ? imageName.substring(1) : imageName}`;
+  const imageName = imagePath.replace(this.imageLink, '');
+  const imageUrl = `${this.imageLink}${imageName.startsWith('/') ? imageName.substring(1) : imageName}`;
   return new Observable<SafeUrl>((observer) => {
     observer.next(imageUrl as SafeUrl);
     observer.complete();

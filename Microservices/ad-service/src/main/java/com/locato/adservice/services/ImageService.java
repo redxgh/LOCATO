@@ -27,10 +27,10 @@ public class ImageService {
         LocalDateTime dateTime = LocalDateTime.now();
         String fileName = getString(image, dateTime);
         try{
-            String path = "D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/";
+            String path = "C:/Users/raed ghanmi/Desktop/integration/LOCATO/Microservices/ad-service/src/main/resources/static/images/";
             image.transferTo(new File(path,fileName));
             System.out.println(path+fileName);
-            return path +fileName;
+            return fileName;
         } catch (IOException e) {
             System.out.println(e.getMessage()+"\n"+e.getCause()+"\n"+ Arrays.toString(e.getStackTrace()));
             return null;
@@ -64,20 +64,4 @@ public class ImageService {
         String combinedString = year + month + day + hour + minute + second + millisecond;
         return combinedString + image.getOriginalFilename();
     }
-    //testing
-
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/images/{imageName}")
-    public ResponseEntity<ByteArrayResource> getImage(@PathVariable String imageName) throws IOException {
-        Path filename = Paths.get("ad-service", "src", "main", "resources", "static", "images", imageName);
-        byte[] buffer = Files.readAllBytes(filename);
-        ByteArrayResource byteArrayResource = new ByteArrayResource(buffer);
-        return ResponseEntity
-                .ok()
-                .contentLength(buffer.length)
-                .contentType(MediaType.parseMediaType("image/jpeg"))
-                .body(byteArrayResource);
-    }
-
-
 }
