@@ -58,7 +58,7 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
   onResize() {
     this.slideImage();
   }
-  
+
   //get ad
   findAdById(): void {
     this.adService.getAdById(this.AdId).subscribe(
@@ -74,7 +74,7 @@ export class AdDetailComponent implements AfterViewInit,OnInit{
 
 //get image
 //testing
-imagePathPrefix = 'D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
+imagePathPrefix = 'C:/Users/LENOVO/projetintegration/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
 imageUrlPrefix = 'http://localhost:8081/images/';
 
 getImage(imagePath: string): Observable<SafeUrl> {

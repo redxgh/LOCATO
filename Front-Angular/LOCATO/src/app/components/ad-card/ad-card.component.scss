@@ -1,109 +1,533 @@
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+.property-list .card-image-container {
+  border-radius: 10px;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+  background: #eee;
+}
+
+.property-list .card-container:hover .card-image-swiper{
+  visibility: visible;
+  opacity: 1;
+}
+.property-list .card-image-swiper-container button {
+  background: #dddddd;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+
+}
+.property-list .card-image-swiper-container:hover button {
+  opacity: 1;
+  background: #ffffff;
+}
+
+.property-list .card-image-swiper-container .card-image-swiper-before {
+  float: left;
+  margin-right: 200%;
+
+}
+
+.property-list .card-image-swiper-container .card-image-swiper-after {
+  float: right;
+  margin-left: 200px;
+  margin-top: -30px;
+}
+
+.property-list .card-image-group {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 320ms ease-in-out;
+}
+
+.property-list .card-image-swiper {
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 160ms ease-in-out;
+  cursor: pointer;
+}
+.property-list .card-image-swiper:hover {
+  box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgb(0 0 0 / 12%) 0px 6px 16px;
+  transform: scale(1.1);
+}
+
+.property-list .card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.property-list .card-image-above-elements {
+  height: calc(50% + 32px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+  padding-bottom: 16px;
+  z-index: 1;
+}
+
+.property-list .card-image-indicator-container {
+  display: flex;
+  gap: 4px;
+}
+
+.property-list .card-image-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255);
+  opacity: 0.6;
+}
+
+.property-list .card-image-indicator-active {
+  opacity: 1;
 }
 
 
-.card-container{
-    max-width:260px;
-    margin:40px auto;
+.property-list .card-image-swiper-inactive {
+  visibility: hidden;
 }
 
-.card-container:hover .card-image-swiper-container{
-    visibility: visible;
-    opacity:1;
+
+/*-----------------------------------*\
+  #style.css
+\*-----------------------------------*/
+
+/**
+ * copyright 2022 codewithsadee
+ */
+
+
+
+
+
+/*-----------------------------------*\
+  #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+:root {
+
+  /**
+   * colors
+   */
+
+  --dark-jungle-green: hsl(188, 63%, 7%);
+  --prussian-blue: hsl(200, 69%, 14%);
+  --raisin-black-1: hsl(227, 29%, 13%);
+  --raisin-black-2: hsl(229, 17%, 19%);
+  --yellow-green: hsl(89, 72%, 45%);
+  --orange-soda: hsl(9, 100%, 62%);
+  --cultured-1: hsl(0, 0%, 93%);
+  --cultured-2: hsl(192, 24%, 96%);
+  --misty-rose: hsl(7, 56%, 91%);
+  --alice-blue: hsl(210, 100%, 97%);
+  --seashell: hsl(8, 100%, 97%);
+  --cadet: hsl(200, 15%, 43%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --opal: hsl(180, 20%, 62%);
+
+  /**
+   * typography
+   */
+
+  --ff-nunito-sans: "Nunito Sans", sans-serif;
+  --ff-poppins: "Poppins", sans-serif;
+
+  --fs-1: 1.875rem;
+  --fs-2: 1.5rem;
+  --fs-3: 1.375rem;
+  --fs-4: 1.125rem;
+  --fs-5: 0.875rem;
+  --fs-6: 0.813rem;
+  --fs-7: 0.75rem;
+
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+
+  /**
+   * transition
+   */
+
+  --transition: 0.25s ease;
+
+  /**
+   * spacing
+   */
+
+  --section-padding: 100px;
+
+  /**
+   * shadow
+   */
+
+  --shadow-1: 0 5px 20px 0 hsla(219, 56%, 21%, 0.1);
+  --shadow-2: 0 16px 32px hsla(188, 63%, 7%, 0.1);
+
 }
 
-.card-image-container{
-    border-radius: 20px;
-    width: 260px;
-    height:260px;
-    overflow: hidden;
-    position: relative;
-    background: #eee;
+
+
+
+
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.card-content-container{
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap:4px;
+li { list-style: none; }
+
+a { text-decoration: none; }
+
+a,
+img,
+span,
+button,
+ion-icon { display: block; }
+
+button {
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
-.card-image-swiper-container{
-    opacity:0;
-    transition: opacity 240ms ease;
-    visibility: hidden;
-    display: flex;
-    justify-content: space-between;
-    padding: 12px;
-    align-items: center;
-    width:100%;
+address { font-style: normal; }
+
+ion-icon { pointer-events: none; }
+
+html {
+  font-family: var(--ff-nunito-sans);
+  scroll-behavior: smooth;
 }
 
-.card-image-swiper{
-    border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 160ms ease-in-out;
-    cursor: pointer;
+body {
+  background: var(--white);
+  overflow-x: hidden;
 }
 
-.card-image-swiper:hover{
-    box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgb(0 0 0 / 12%) 0px 6px 16px;
-    transform: scale(1.1);
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
 }
 
-.card-image-group{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 320ms ease-in-out;
+::-webkit-scrollbar-track { background: var(--white); }
+
+::-webkit-scrollbar-thumb {
+  background: var(--cadet);
+  border-left: 2px solid var(--white);
 }
 
-.card-image{
-    width: 100%;
-    height: 100%;
-    object-fit:cover;  
+
+
+
+
+/*-----------------------------------*\
+  #REUSED STYLE
+\*-----------------------------------*/
+
+.container { padding-inline: 15px; }
+
+button, a { transition: var(--transition); }
+
+.h1,
+.h2,
+.h3 {
+  color: var(--dark-jungle-green);
+  font-family: var(--ff-poppins);
+  line-height: 1.3;
 }
 
-.card-image-above-elements{
-    height: calc(50% + 32px);;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: absolute;
-    bottom: 0;
-    align-items: center;
-    padding-bottom: 16px;
-    z-index: 1;
+.h1 {
+  font-size: var(--fs-1);
+  line-height: 1;
 }
 
-.card-image-indicator-container{
-    display: flex;
-    gap:4px;
+.h2 { font-size: var(--fs-2); }
+
+.h3 {
+  font-size: var(--fs-4);
+  font-weight: var(--font-weight, 700);
 }
 
-.card-image-indicator{
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255);
-    opacity: 0.6;
+.h3 > a { color: inherit; }
+
+.btn {
+  position: relative;
+  background: var(--orange-soda);
+  color: var(--white);
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-5);
+  text-transform: var(--text-transform, capitalize);
+  border: 1px solid var(--orange-soda);
+  padding: 10px 20px;
+  z-index: 1;
 }
 
-.card-image-indicator-active{
-    opacity: 1;
+
+/*-----------------------------------*\
+  #PROPERTY
+\*-----------------------------------*/
+
+.property { padding-block: 200px }
+
+.property-card {
+  border: 1px solid  hsl(210, 100%, 97%);
+  box-shadow:0 16px 32px hsla(188, 63%, 7%, 0.1);
 }
 
-.card-image-swiper-inactive{
-    visibility: hidden;
+.property-card .card-banner {
+  position: relative;
+  aspect-ratio: 2 / 1.5;
+  overflow: hidden;
+}
+
+.property-card .card-banner a { height: 100%; }
+
+.property-card .card-banner img {
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+.property-card:hover .card-banner img { transform: scale(1.1); }
+
+.property-card .card-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.95), transparent 30%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.property-card .banner-actions {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  gap: 15px 10px;
+  z-index: 1;
+}
+
+.banner-actions-btn {
+  color:hsl(0, 0%, 100%);
+  font-size:  0.813rem;
+  line-height: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.banner-actions-btn ion-icon { font-size: 16px; }
+
+.banner-actions-btn:first-child { margin-right: auto; }
+
+.banner-actions-btn:is(:hover, :focus) { color: #f05454; }
+
+.property-card .card-content {
+  padding: 30px 15px 15px;
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+}
+
+.card-price {
+  color: #f05454;
+  font-family: "Poppins", sans-serif;
+  font-size:  0.875rem;
+  margin-bottom: 5px;
+}
+
+.card-price strong {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.property-card .card-title {
+  --font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.property-card .card-title > a:is(:hover, :focus) { color: var(--orange-soda); }
+
+.property-card .card-text {
+  color: hsl(200, 15%, 43%);
+  font-size: 0.875rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.property-card .card-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 15px;
+}
+
+.property-card .card-item {
+  padding-block: 5px;
+  color:  hsl(200, 15%, 43%);
+  font-size: 0.875rem;
+}
+
+.property-card .card-item:not(:last-child) {
+  padding-right: 15px;
+  border-right: 1px solid hsla(0, 0%, 0%, 0.2);
+  margin-right: 20px;
+}
+
+.property-card .card-item :is(strong, ion-icon) { display: inline-block; }
+
+.property-card .card-item ion-icon {
+  margin-left: 2px;
+  margin-bottom: -2px;
+}
+
+.property-card .card-item span { margin-top: 5px; }
+
+.card-footer {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.author-name > a {
+  color: var(--dark-jungle-green);
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  margin-bottom: 3px;
+}
+
+.author-name > a:is(:hover, :focus) { color: var(--orange-soda); }
+
+.author-title {
+  color: var(--cadet);
+  font-size: var(--fs-7);
+}
+
+.card-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-footer-actions-btn {
+  background: var(--cultured-2);
+  color: var(--cadet);
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.card-footer-actions-btn:is(:hover, :focus) {
+  background: var(--orange-soda);
+  color: var(--white);
+}
+
+
+
+
+
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+ * responsive for larger than 600px screen
+ */
+
+
+ @media screen and (max-width: 768px) {
+  .property-list .card-image-container {
+    height: 100%; /* Adjust height as needed for smaller screens */
+  }
+
+  .property-card {
+    /* Adjust card styles for smaller screens */
+    border: 1px solid hsl(210, 100%, 97%);
+    box-shadow: 0 8px 16px hsla(188, 63%, 7%, 0.1);
+  }
+
+  .property-card .card-banner img {
+    transform: none; /* Remove scaling effect on image hover */
+  }
+
+  .property-card .card-content {
+    padding: 15px; /* Adjust padding for content on smaller screens */
+  }
+
+  /* Add additional styles as needed for smaller screens */
+}
+@media screen and (min-width: 900px) {
+  .property-list .card-image-container {
+    height: 260px; /* Restore height for larger screens */
+  }
+  .property-list .card-image-container {
+    height: 100%; /* Adjust height as needed for smaller screens */
+  }
+}
+@media screen and (min-width: 1200px) {
+  .property-list .card-image-container {
+    height: 260px; /* Restore height for larger screens */
+  }
+  .property-list .card-image-container {
+    height: 100%; /* Adjust height as needed for smaller screens */
+  }
+}
+@media only screen and (min-width: 600px) {
+  .property-card {
+    /* Adjust styles for smaller screens */
+    /* For example, you can reduce padding or font sizes */
+    padding: 15px;
+
+  }
+
+  .card-banner img {
+    /* Adjust image styles for smaller screens */
+    /* For example, you can set a max-width */
+    max-width: 100%;
+  }
+
+  /* Add more styles as needed for responsive design */
 }

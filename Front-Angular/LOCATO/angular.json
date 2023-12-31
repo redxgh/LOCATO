@@ -97,10 +97,14 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/aos/dist/aos.css"
+              "node_modules/aos/dist/aos.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
 
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/ionicons/dist/ionicons/ionicons.js"
+            ]
           }
         }
       }

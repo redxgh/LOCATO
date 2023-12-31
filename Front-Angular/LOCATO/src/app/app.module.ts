@@ -18,6 +18,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './post-ad/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
+import { IonicModule } from '@ionic/angular';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,9 @@ import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
     LocationComponent,
     MapComponent,
     AdDetailComponent,
+    WelcomePageComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,7 @@ import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
     FormsModule,
     LeafletModule,
     HttpClientModule,
+    IonicModule.forRoot()
 
 
   ],

@@ -38,6 +38,7 @@ export class AdCardComponent implements AfterViewInit {
       best: 0,
     }
   }
+ads: any;
 
 
   extractFileName(filePath: string): string {
@@ -51,7 +52,7 @@ export class AdCardComponent implements AfterViewInit {
   }
 
 //testing
- imagePathPrefix = 'D:/SpringProjects/Locato main/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
+ imagePathPrefix = 'C:/Users/LENOVO/projetintegration/LOCATO/Microservices/ad-service/src/main/resources/static/images/';
  imageUrlPrefix = 'http://localhost:8081/images/';
 
  getImage(imagePath: string): Observable<SafeUrl> {

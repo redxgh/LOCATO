@@ -1,17 +1,18 @@
 
 body #wrapper{
 	margin: 0;
+
    }
-  
+
 	  #wrapper {
 	  background-color: var(--color-extra);
 	  padding: 30px 50px;
 	  border-radius: 22px;
 	  height: 100vh;
-	  
+
 	  }
-  
-  
+
+
   .logo {
 	  display: block;
 	  position: absolute;
@@ -25,8 +26,15 @@ body #wrapper{
 	  background: url(https://logoipsum.com/logo/logo-10.svg) center center no-repeat;
 	  background-size: 80%;
   }
-  
+  .custom-card-column {
+    margin-bottom: 20px;
+  }
+
   section {
+    padding-block: 125px;
+    background-color: hsl(192, 24%, 96%);
+    margin-top: -30px;
+    height: 5000px;
 	  h3 {
 		  font-family: var(--font-secondary);
 		  color: var(--color-dark);
@@ -57,7 +65,7 @@ body #wrapper{
 		  margin-bottom: 50px;
 		  li {
 			  display: flex;
-  
+
 			  a {
 				  padding: 16px 20px;
 				  border-radius: 18px;
@@ -256,4 +264,50 @@ body #wrapper{
 	  }
 
   }
-  
+  @media  (max-width: 1000px) {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+  .row > .col-md-3 {
+    width: 50%;
+    box-sizing: border-box;
+  }
+
+    .brand-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; /* Adjust the gap between list items as needed */
+    }
+
+    .brand-list li {
+      width: calc(15% - 10px); /* Set the width for each item in a column */
+      box-sizing: border-box; /* Ensure padding is included in the width calculation */
+    }
+
+  }
+    @media  (max-width: 700px) {
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+    .row > .col-md-3 {
+      width: 75%;
+      box-sizing: border-box;
+      width: 500px;
+    }
+
+      .brand-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Adjust the gap between list items as needed */
+      }
+
+      .brand-list li {
+        width: calc(25% - 20px); /* Set the width for each item in a column */
+        box-sizing: border-box; /* Ensure padding is included in the width calculation */
+      }
+
+  }

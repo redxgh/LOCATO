@@ -16,7 +16,7 @@ export class ListAdsComponent implements AfterViewInit {
   searchText: string = '';
   adsSubscription: Subscription | undefined;
 
-  
+
   constructor(private adService: AdService) {
     this.adsSubscription = this.adService.getAds().subscribe({
       next: (ads) => {
@@ -57,6 +57,6 @@ export class ListAdsComponent implements AfterViewInit {
   ngAfterViewInit() {
     Aos.init();
   }
-    
+
   }
 
