@@ -13,9 +13,9 @@
                 <li>
                     <a (click)="login()">Login</a>
                 </li>
-                <li>
-                  <a (click)="logout()">Logout</a>
-              </li>
+                <li *ngIf="secService.isAuthenticated()">
+                    <a (click)="logout()">Logout</a>
+                  </li>
                 <li>
                     <a routerLink="/post-ad">
                         <b>Post ad</b>

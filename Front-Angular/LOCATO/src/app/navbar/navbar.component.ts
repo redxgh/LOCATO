@@ -8,6 +8,7 @@ import { initFlowbite } from 'flowbite';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
 
   constructor(public secService: SecurityService, private keycloak: KeycloakService){}

@@ -25,4 +25,7 @@ export class SecurityService {
       if (userRoles.includes(role)) return true;
     } return false;
   }
+
+  public isAuthenticated(): boolean {
+    return this.kcService.isLoggedIn();  }
 }
