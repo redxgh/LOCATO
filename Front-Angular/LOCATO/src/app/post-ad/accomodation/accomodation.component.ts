@@ -37,6 +37,7 @@ export class AccomodationComponent {
       categoryId: [null, Validators.required],
       type: ['', Validators.required],
       best: [1, Validators.required],
+      userId: ['ghazazkejhazkej', Validators.required],
     });
   }
   mergeForms() {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,24 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './post-ad/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://localhost:8080',
+        realm: 'revision',
+        clientId: 'angular-client'
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html'
+      }
+    });
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,10 +61,16 @@ import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
     FormsModule,
     LeafletModule,
     HttpClientModule,
-
-
+    KeycloakAngularModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

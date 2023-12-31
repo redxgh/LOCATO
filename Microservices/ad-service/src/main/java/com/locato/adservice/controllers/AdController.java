@@ -23,7 +23,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
+
 @CrossOrigin("*")
 @RestController
 public class AdController {
@@ -134,7 +134,7 @@ public class AdController {
     @GetMapping("/images/{name}")
     public ResponseEntity<byte[]> getImage(@PathVariable String name) throws IOException {
 
-        Path filename = Paths.get("C:/Users/raed ghanmi/Desktop/integration/LOCATO/Microservices/ad-service/src/main/resources/static/images/"+name);
+        Path filename = Paths.get("A:/Integration project/LOCATO/Microservices/ad-service/src/main/resources/static/images/"+name);
         byte[] buffer = Files.readAllBytes(filename);
         return ResponseEntity
                 .ok()
