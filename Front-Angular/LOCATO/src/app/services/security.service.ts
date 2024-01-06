@@ -19,9 +19,10 @@ export class SecurityService {
       }
     });
   }
-  public getAuthenticatedUserId(): string | undefined {
+public getAuthenticatedUsername(): string | undefined {
     // Renvoie l'ID de l'utilisateur authentifié s'il est disponible
-    return this.profile?.id;
+    console.log(this.profile?.username)
+    return this.profile?.username;
   }
   public hasRoleIn(roles:string[]):boolean{
     let userRoles = this.kcService.getUserRoles();
