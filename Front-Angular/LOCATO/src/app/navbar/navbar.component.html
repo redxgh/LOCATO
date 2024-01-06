@@ -1,31 +1,42 @@
-<header>
-    <div class="row">
-        <div class="col-md-3" routerLink="/">
-            <img src="../../../assets/logo.png" width="70px" alt="">
-        </div>
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-3">
-            <ul class="top-menu">
-                <li>
-                    <a href="">US</a>
-                </li>
-                <li>
-                    <a (click)="login()">Login</a>
-                </li>
-                <li *ngIf="secService.isAuthenticated()">
-                    <a (click)="logout()">Logout</a>
-                  </li>
-                <li>
-                    <a routerLink="/post-ad">
-                        <b>Post ad</b>
-                    </a>
-                </li>
+<header class="header" data-header>
+  <div class="overlay" data-overlay></div>
+  <div class="header-bottom">
+    <div class="container">
+      <!-- Header Bottom Content -->
+      <a href="#" class="logo">
+        <img src="./assets/logo.png" alt="locato logo">
+      </a>
 
-                <li>
-                    <a href="">Support</a>
-                </li>
-            </ul>
+      <nav class="navbar" data-navbar>
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="./assets/logo.png" alt="locato logo">
+          </a>
+          <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
         </div>
+        <div class="navbar-bottom">
+          <!-- Navbar Links -->
+          <ul class="navbar-list">
+            <li>
+              <a routerLink="/list-ads" class="navbar-link" data-nav-link>Home</a>
+            </li>
+            <li>
+              <a href="#about" class="navbar-link" data-nav-link  (click)="login()">Login</a>
+            </li>
+            <li *ngIf="secService.isAuthenticated()">
+              <a (click)="logout()" href="#property" class="navbar-link" data-nav-link>Logout</a>
+            </li>
+            <li>
+              <a  routerLink="/post-ad" class="navbar-link" data-nav-link>PostAd</a>
+            </li>
+            <li>
+              <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
+  </div>
 </header>

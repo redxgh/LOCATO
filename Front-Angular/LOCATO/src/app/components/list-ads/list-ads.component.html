@@ -1,10 +1,13 @@
 
 <div>
   <section>
-  <div class=" flex flex-wrap items-start justify-between mx-auto p-2">
+  <div class=" flex flex-wrap items-start justify-between mx-auto " style="margin-top: -100px; padding: 10px;">
 
   <div class="flex md:order-2">
-    <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
+    <button data-collapse-toggle="navbar-search" type="button"
+     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden
+     hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+     aria-controls="navbar-search" aria-expanded="false">
         <!-- <span class="sr-only">Open main menu</span> -->
         <h3 class="side-title">Types</h3>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -14,7 +17,7 @@
   </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
       <div class="row"  >
-        <div class="col-md-18" data-aos="fade-right">
+        <div class="col-md-18" data-aos="fade-right" >
             <ul class="brand-list">
                 <li>
                     <a href="" class="active">Types</a>
@@ -41,20 +44,24 @@
                 <li>
                     <a href="">Villa</a>
                 </li>
-              </ul>
-              <div class="col-md-3 search-top" data-aos="fade-left" data-aos-duration="1000">
+
+
+                    <div class="col-md-3  order-md-1 search-top" data-aos="fade-left" data-aos-duration="1000">
                 <form  class="input-wrapper">
                   <input type="text" name="searchText" placeholder="Filter by name" [(ngModel)]="searchText" (ngModelChange)="filterResults()" class="input">
 
                 </form>
             </div>
+
+              </ul>
+
         </div>
     </div>
     </div>
 
   </div>
 
-      <div class="row">
+      <div class="row" style=" padding: 20px; margin-bottom: 50px;">
           <div class="col" data-aos="fade-left" data-aos-duration="1000">
               <div class="row">
                   <div class="col-md-8">
@@ -63,7 +70,6 @@
                           <div class="content-cta">
                               <button>Buy now</button>
                               <button class="dark">See review</button>
-
                           </div>
                       </div>
                   </div>
@@ -82,8 +88,8 @@
                       </div>
                   </div>
               </div>
-                <div class="row" >
-                  <div class="col" style="height: 380px;padding: 6px;" *ngFor="let ad of ads; let i = index" >
+                <div class="row " style="margin-top: 200px; ">
+                  <div class="col-md-3 mb-1 " style="margin-top: -350px; "  *ngFor="let ad of ads; let i = index" >
                     <app-ad-card [ad]="ad" id="ad" ></app-ad-card>
                   </div>
                  </div>

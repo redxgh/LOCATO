@@ -135,6 +135,7 @@ public class AdController {
     public ResponseEntity<byte[]> getImage(@PathVariable String name) throws IOException {
 
         Path filename = Paths.get("C:/Users/LENOVO/projectlocato/LOCATO/Microservices/ad-service/src/main/resources/static/images/"+name);
+
         byte[] buffer = Files.readAllBytes(filename);
         return ResponseEntity
                 .ok()

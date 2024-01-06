@@ -19,6 +19,7 @@ export class SecurityService {
       }
     });
   }
+
   public hasRoleIn(roles:string[]):boolean{
     let userRoles = this.kcService.getUserRoles();
     for(let role of roles){
