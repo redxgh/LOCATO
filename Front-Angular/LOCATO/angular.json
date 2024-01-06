@@ -103,7 +103,9 @@
 
             ],
             "scripts": [
-              "node_modules/ionicons/dist/ionicons/ionicons.js"
+              "node_modules/ionicons/dist/ionicons/ionicons.js",
+              "node_modules/ionicons/dist/ionicons/ionicons.esm.js"
+
             ]
           }
         }

@@ -30,8 +30,8 @@
 
                 </div>
               </div>
-              <div class="card-image-group" #cardImageGroup [routerLink]="'/ad-detail/' + ad.id" >
-                <img class="card-image"  *ngFor="let image of ad.accomodation.images" [src]="getImage(image) | async">
+              <div class="card-image-group" #cardImageGroup [routerLink]="'/ad-detail/' + ad.id" style="cursor: pointer;">
+                <img class="card-image"  *ngFor="let image of ad.accomodation.images" [src]="imageLink" >
               </div>
             </div>
 
@@ -69,7 +69,8 @@
 
               <li class="card-item">
                 <strong>{{ ad.accomodation.bathrooms }}</strong>
-                <ion-icon name="water-outline"></ion-icon>                <span>Bathrooms</span>
+                <ion-icon name="water-outline"></ion-icon>
+                <span>Bathrooms</span>
               </li>
 
               <li class="card-item">
@@ -77,13 +78,10 @@
                 <ion-icon name="star-outline"></ion-icon>
                 <span>Best</span>
               </li>
-
-
             </ul>
-
           </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+         </div>
+        </li>
+      </ul>
+    </div>
 </section>

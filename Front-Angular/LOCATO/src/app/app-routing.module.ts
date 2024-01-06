@@ -9,10 +9,14 @@ import { AccomodationComponent } from './post-ad/accomodation/accomodation.compo
 import { PostImagesComponent } from './post-ad/post-images/post-images.component';
 import { LocationComponent } from './post-ad/location/location.component';
 import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
-import {WelcomePageComponent } from './welcome-page/welcome-page.component'
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
+  { path: '', component: WelcomePageComponent},
   { path: 'list-ads', component: ListAdsComponent },
-  { path: 'post-ad', component: PostAdComponent },
+  { path: 'post-ad', component: PostAdComponent , canActivate : [AuthGuard], data : { roles : []}},
   { path: 'type-post', component: TypePostComponent },
   { path: 'renting-ad', component: RentingAdComponent },
   { path: 'roommate-ad', component: RoommateAdComponent },
@@ -20,7 +24,6 @@ const routes: Routes = [
   { path: 'location', component:LocationComponent},
   { path: 'post-images', component:PostImagesComponent},
   { path: 'ad-detail/:id', component:AdDetailComponent},
-  { path: '', component: WelcomePageComponent },
 
 
 ];

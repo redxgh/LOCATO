@@ -23,13 +23,13 @@
               <a routerLink="/list-ads" class="navbar-link" data-nav-link>Home</a>
             </li>
             <li>
-              <a href="#about" class="navbar-link" data-nav-link>Login</a>
+              <a href="#about" class="navbar-link" data-nav-link  (click)="login()">Login</a>
+            </li>
+            <li *ngIf="secService.isAuthenticated()">
+              <a (click)="logout()" href="#property" class="navbar-link" data-nav-link>Logout</a>
             </li>
             <li>
               <a  routerLink="/post-ad" class="navbar-link" data-nav-link>PostAd</a>
-            </li>
-            <li>
-              <a href="#property" class="navbar-link" data-nav-link>Support</a>
             </li>
             <li>
               <a href="#contact" class="navbar-link" data-nav-link>Contact</a>

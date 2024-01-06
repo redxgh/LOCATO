@@ -7,17 +7,23 @@ import com.locato.adservice.services.CategoryService;
 import com.locato.adservice.services.ImageService;
 import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
+
 @CrossOrigin("*")
 @RestController
 public class AdController {
@@ -123,5 +129,17 @@ public class AdController {
     public ResponseEntity<List<Ad>> getAdsByUserId(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.SC_OK)
                 .body(adService.getAdsByUserId(id));
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/images/{name}")
+    public ResponseEntity<byte[]> getImage(@PathVariable String name) throws IOException {
+
+        Path filename = Paths.get("C:/Users/LENOVO/projetintegration/LOCATO/Microservices/ad-service/src/main/resources/static/images/"+name);
+        byte[] buffer = Files.readAllBytes(filename);
+        return ResponseEntity
+                .ok()
+                .contentLength(buffer.length)
+                .contentType(MediaType.parseMediaType("image/jpeg"))
+                .body(buffer);
     }
 }

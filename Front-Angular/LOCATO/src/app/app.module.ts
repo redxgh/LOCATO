@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,8 +18,25 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './post-ad/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
-import { IonicModule } from '@ionic/angular';
-import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { IonicModule } from '@ionic/angular'
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://localhost:8080',
+        realm: 'my-realm',
+        clientId: 'locato_client'
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html'
+      }
+    });
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +54,6 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
     LocationComponent,
     MapComponent,
     AdDetailComponent,
-    WelcomePageComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -48,11 +62,17 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
     FormsModule,
     LeafletModule,
     HttpClientModule,
+    KeycloakAngularModule,
     IonicModule.forRoot()
-
-
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

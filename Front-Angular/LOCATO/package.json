@@ -26,6 +26,7 @@
     "flowbite": "^2.0.0",
     "ionicons": "^7.2.2",
     "jquery": "^3.7.1",
+    "keycloak-angular": "^15.0.0",
     "leaflet": "^1.9.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
