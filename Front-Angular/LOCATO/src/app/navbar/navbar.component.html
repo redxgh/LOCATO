@@ -3,7 +3,7 @@
   <div class="header-bottom">
     <div class="container">
       <!-- Header Bottom Content -->
-      <a href="#" class="logo">
+      <a routeLink="/" class="logo">
         <img src="./assets/logo.png" alt="locato logo">
       </a>
 
@@ -22,11 +22,11 @@
             <li>
               <a routerLink="/list-ads" class="navbar-link" data-nav-link>Home</a>
             </li>
-            <li>
-              <a href="#about" class="navbar-link" data-nav-link  (click)="login()">Login</a>
+            <li *ngIf="!secService.isAuthenticated()">
+              <a  class="navbar-link" data-nav-link  (click)="login()">Login</a>
             </li>
             <li *ngIf="secService.isAuthenticated()">
-              <a (click)="logout()" href="#property" class="navbar-link" data-nav-link>Logout</a>
+              <a (click)="logout()" class="navbar-link" data-nav-link>Logout</a>
             </li>
             <li>
               <a  routerLink="/post-ad" class="navbar-link" data-nav-link>PostAd</a>

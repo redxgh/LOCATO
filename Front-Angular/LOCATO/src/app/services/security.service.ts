@@ -19,7 +19,10 @@ export class SecurityService {
       }
     });
   }
-
+  public getAuthenticatedUserId(): string | undefined {
+    // Renvoie l'ID de l'utilisateur authentifié s'il est disponible
+    return this.profile?.id;
+  }
   public hasRoleIn(roles:string[]):boolean{
     let userRoles = this.kcService.getUserRoles();
     for(let role of roles){
