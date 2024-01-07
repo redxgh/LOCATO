@@ -23,6 +23,7 @@ export class SecurityService {
     this.loadUserProfile();
   }
 
+
   private loadUserProfile() {
     this.kcService
       .loadUserProfile()
@@ -42,6 +43,7 @@ export class SecurityService {
   public async getAuthenticatedUserId(): Promise<string | undefined> {
     await this.init();
     return this.profile?.id;
+
   }
 
   public hasRoleIn(roles: string[]): boolean {

@@ -22,8 +22,7 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { IonicModule } from '@ionic/angular';
 import { MylistAdsComponent } from './mylist-ads/mylist-ads.component';
 import { MyadCardComponent } from './myad-card/myad-card.component';
-
-
+import { NotFoundComponent } from './not-found/not-found.component'
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -60,6 +59,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     AdDetailComponent,
     MylistAdsComponent,
     MyadCardComponent,
+    NotFoundComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./accomodation.component.scss']
 })
 export class AccomodationComponent {
-
   formData: any;
   numbers: number[] = Array.from({ length: 11 }, (_, i) => i);
   categories: number[] = [1, 2, 3]

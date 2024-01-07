@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-welcome-page',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./welcome-page.component.scss']
 })
 export class WelcomePageComponent {
-
+  ngAfterViewInit() {
+    Aos.init();
+  }
 }
