@@ -19,14 +19,15 @@ import { MapComponent } from './post-ad/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { IonicModule } from '@ionic/angular'
+import { IonicModule } from '@ionic/angular';
+import { NotFoundComponent } from './not-found/not-found.component'
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
         url: 'http://localhost:8080',
-        realm: 'locato',
+        realm: 'revision',
         clientId: 'angular-client'
       },
       initOptions: {
@@ -54,6 +55,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     LocationComponent,
     MapComponent,
     AdDetailComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

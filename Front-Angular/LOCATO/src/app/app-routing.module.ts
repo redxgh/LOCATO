@@ -12,6 +12,7 @@ import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 import { AuthGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: WelcomePageComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'location', component:LocationComponent},
   { path: 'post-images', component:PostImagesComponent},
   { path: 'ad-detail/:id', component:AdDetailComponent},
+  { path:"**",component:NotFoundComponent}
 
 
 ];
