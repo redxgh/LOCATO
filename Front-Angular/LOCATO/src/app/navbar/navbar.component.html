@@ -1,45 +1,42 @@
-<header class="header" data-header>
-  <div class="overlay" data-overlay></div>
-  <div class="header-bottom">
-    <div class="container">
-      <!-- Header Bottom Content -->
-      <a routeLink="/" class="logo">
-        <img src="./assets/logo.png" alt="locato logo">
+<header>
+  <div class="container">
+    <div class="logo-box">
+      <a routeLink="/">
+        <img width="80px" src="./assets/logo.png" alt="locato logo">
       </a>
-
-      <nav class="navbar" data-navbar>
-        <div class="navbar-top">
-          <a href="#" class="logo">
-            <img src="./assets/logo.png" alt="locato logo">
-          </a>
-          <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
-        </div>
-        <div class="navbar-bottom">
-          <!-- Navbar Links -->
-          <ul class="navbar-list">
-            <li>
-              <a routerLink="/list-ads" class="navbar-link" data-nav-link>Home</a>
-            </li>
-            <li *ngIf="!secService.isAuthenticated()">
-              <a  class="navbar-link" data-nav-link  (click)="login()">Login</a>
-            </li>
-            <li *ngIf="secService.isAuthenticated()">
-              <a (click)="logout()" class="navbar-link" data-nav-link>Logout</a>
-            </li>
-            <li>
-              <a  routerLink="/post-ad" class="navbar-link" data-nav-link>PostAd</a>
-            </li>
-            <li *ngIf="secService.isAuthenticated()">
-              <a routerLink="/mylist-ads" class="navbar-link" data-nav-link>My Ads</a>
-            </li>
-            <li>
-              <a href="" class="navbar-link" data-nav-link>Contact</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
     </div>
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="/list-ads" data-nav-link>Home</a>
+        </li>
+        <li>
+          <a routerLink="/post-ad" data-nav-link>Post Ad</a>
+        </li>
+        <li *ngIf="secService.isAuthenticated()">
+          <a routerLink="/mylist-ads" data-nav-link>My Ads</a>
+        </li>
+        <li>
+          <a href="" data-nav-link>Contact</a>
+        </li>
+        <li></li>
+        <span *ngIf="!secService.isAuthenticated()">
+          <button (click)="login()" class="button">
+            <span class="button_lg">
+              <span class="button_sl"></span>
+              <span class="button_text">Login</span>
+            </span>
+          </button>
+        </span>
+        <span *ngIf="secService.isAuthenticated()">
+          <button (click)="logout()" class="button">
+            <span class="button_lg">
+              <span class="button_sl"></span>
+              <span class="button_text">Logout</span>
+            </span>
+          </button>
+        </span>
+      </ul>
+    </nav>
   </div>
 </header>

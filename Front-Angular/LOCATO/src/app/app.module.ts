@@ -7,7 +7,6 @@ import { AdCardComponent } from './components/ad-card/ad-card.component';
 import { PostAdComponent } from './post-ad/post-ad/post-ad.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormServiceComponent } from './form-service/form-service.component';
 import { AccomodationComponent } from './post-ad/accomodation/accomodation.component';
 import { RentingAdComponent } from './post-ad/renting-ad/renting-ad.component';
 import { RoommateAdComponent } from './post-ad/roommate-ad/roommate-ad.component';
@@ -52,7 +51,6 @@ function initializeKeycloak(keycloak: KeycloakService) {
     RoommateAdComponent,
     TypePostComponent,
     NavbarComponent,
-    FormServiceComponent,
     PostImagesComponent,
     LocationComponent,
     MapComponent,
