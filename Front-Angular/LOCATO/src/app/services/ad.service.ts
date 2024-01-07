@@ -20,4 +20,12 @@ export class AdService {
     return this.http.get<any>(adUrl);
   }
 
+  // ad.service.ts
+
+  getAdsByUserId(userId: string): Observable<Ad[]> {
+    const adUrl = `http://localhost:8081/ads/user/${userId}`;
+    return this.http.get<Ad[]>(adUrl);
+  }
+
+
 }

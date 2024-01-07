@@ -1,16 +1,15 @@
 import { AfterViewInit, Component, ElementRef, Input, QueryList, ViewChildren } from '@angular/core';
-import { Ad } from '../../model/Ad';
+import { Ad } from '../model/Ad';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
-
 @Component({
-  selector: 'app-ad-card',
-  templateUrl: './ad-card.component.html',
-  styleUrls: ['./ad-card.component.scss']
+  selector: 'app-myad-card',
+  templateUrl: './myad-card.component.html',
+  styleUrls: ['./myad-card.component.scss']
 })
-export class AdCardComponent implements AfterViewInit {
+export class MyadCardComponent implements AfterViewInit {
   @ViewChildren('cardImageGroup')
   cardImageGroups!: QueryList<ElementRef>;
   @ViewChildren('cardImageSwiperAfter')

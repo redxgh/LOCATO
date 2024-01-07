@@ -31,8 +31,11 @@
             <li>
               <a  routerLink="/post-ad" class="navbar-link" data-nav-link>PostAd</a>
             </li>
+            <li *ngIf="secService.isAuthenticated()">
+              <a routerLink="/mylist-ads" class="navbar-link" data-nav-link>My Ads</a>
+            </li>
             <li>
-              <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+              <a href="" class="navbar-link" data-nav-link>Contact</a>
             </li>
           </ul>
         </div>

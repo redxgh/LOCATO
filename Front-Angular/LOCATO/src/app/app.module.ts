@@ -19,7 +19,11 @@ import { MapComponent } from './post-ad/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdDetailComponent } from './components/ad-detail/ad-detail.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { IonicModule } from '@ionic/angular'
+import { IonicModule } from '@ionic/angular';
+import { MylistAdsComponent } from './mylist-ads/mylist-ads.component';
+import { MyadCardComponent } from './myad-card/myad-card.component';
+
+
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -54,6 +58,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     LocationComponent,
     MapComponent,
     AdDetailComponent,
+    MylistAdsComponent,
+    MyadCardComponent,
   ],
   imports: [
     BrowserModule,

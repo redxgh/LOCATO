@@ -1,0 +1,40 @@
+<div>
+  <section>
+
+      <!-- Navigation Bar -->
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
+        <div class="row">
+          <!-- Brand List -->
+          <div class="col-md-18" data-aos="fade-right">
+            <ul class="brand-list">
+              <li><a href="" class="active">Types</a></li>
+              <li><a href="">House</a></li>
+              <li><a href="">Apartment</a></li>
+              <li><a href="">Villa</a></li>
+              <li><a href="">Studio</a></li>
+              <li><a href="">Hotel</a></li>
+              <li><a href="">Hostel</a></li>
+              <li><a href="">Villa</a></li>
+
+              <!-- Search Input -->
+              <div class="col-md-3 order-md-1 search-top" data-aos="fade-left" data-aos-duration="1000">
+                <form class="input-wrapper">
+                  <input type="text" name="searchText" placeholder="Filter by name" [(ngModel)]="searchText"
+                   (ngModelChange)="filterResults()" class="input">
+                </form>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ad Cards Section -->
+      <div class="row" style="margin-top: 200px;">
+        <div class="col-md-4 mb-1" style="margin-top: -350px;" *ngFor="let ad of ads; let i = index">
+          <app-myad-card [ad]="ad" id="ad"></app-myad-card >
+        </div>
+      </div>
+
+
+  </section>
+</div>

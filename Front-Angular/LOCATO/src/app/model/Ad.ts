@@ -4,6 +4,7 @@ export interface Ad {
   description: string;
   price: number;
   surface: Number;
+  userId: string;
   accomodation: {
     rooms: number;
     bathrooms: number;

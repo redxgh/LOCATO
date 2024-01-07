@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-accomodation',
@@ -24,7 +23,7 @@ export class AccomodationComponent {
     best: [1, Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute,private securityService:SecurityService) {
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
       this.formData = params;
       console.log('Received Data:', this.formData);
@@ -32,7 +31,6 @@ export class AccomodationComponent {
   }
 
   ngOnInit() {
-  const userId = this.securityService.getAuthenticatedUserId();
     this.form = this.fb.group({
       surface: [null, Validators.required],
       rooms: [null, Validators.required],
@@ -40,7 +38,6 @@ export class AccomodationComponent {
       categoryId: [null, Validators.required],
       type: ['', Validators.required],
       best: [1, Validators.required],
-      userId: [userId, Validators.required],
     });
   }
   mergeForms() {
