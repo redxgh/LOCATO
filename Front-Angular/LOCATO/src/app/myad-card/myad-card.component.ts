@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { AdService } from '../services/ad.service';
 
 @Component({
   selector: 'app-myad-card',
@@ -114,10 +115,22 @@ ngAfterViewInit() {
     cardImageSwiperAfter.nativeElement.addEventListener('click', () => swiperHandle(false));
   });
 }
-constructor(private router: Router) {}
+constructor(private router: Router , private adService: AdService) {}
 
 editAd(adId: number) {
   this.router.navigate(['/edit-roommate-ad'], { queryParams: { adId: adId } });
 }
+
+deleteAd(adId: string): void {
+  this.adService.deleteAd(adId).subscribe(
+    (response) => {
+      console.log('Ad deleted successfully:', response);
+    },
+    (error) => {
+      console.error('Error deleting ad:', error);
+    }
+  );
+}
+
 
 }

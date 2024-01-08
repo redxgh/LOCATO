@@ -27,5 +27,9 @@ export class AdService {
     return this.http.get<Ad[]>(adUrl);
   }
 
+  deleteAd(adId: string): Observable<any> {
+    const url = `http://localhost:8081/deleteAd?id=${adId}`;
+    return this.http.delete(url);
+  }
 
 }
