@@ -3,6 +3,7 @@ import { Ad } from '../model/Ad';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-myad-card',
@@ -113,6 +114,10 @@ ngAfterViewInit() {
     cardImageSwiperAfter.nativeElement.addEventListener('click', () => swiperHandle(false));
   });
 }
+constructor(private router: Router) {}
 
+editAd(adId: number) {
+  this.router.navigate(['/edit-roommate-ad'], { queryParams: { adId: adId } });
+}
 
 }

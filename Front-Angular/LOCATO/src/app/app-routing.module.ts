@@ -13,6 +13,8 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MylistAdsComponent } from './mylist-ads/mylist-ads.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EditRoommateAdComponent } from './edit-ad/edit-roommate-ad/edit-roommate-ad.component';
+import { EditAccomodationComponent } from './edit-ad/edit-accomodation/edit-accomodation.component';
 
 const routes: Routes = [
   { path: '', component: WelcomePageComponent},
@@ -27,9 +29,9 @@ const routes: Routes = [
   { path: 'location', component:LocationComponent},
   { path: 'post-images', component:PostImagesComponent},
   { path: 'ad-detail/:id', component:AdDetailComponent},
-  { path:"**",component:NotFoundComponent}
-
-
+  { path: 'edit-roommate-ad', component:EditRoommateAdComponent },
+  { path: 'edit-accomodation-ad', component:EditAccomodationComponent },
+  { path:"**",component:NotFoundComponent},
 ];
 
 @NgModule({

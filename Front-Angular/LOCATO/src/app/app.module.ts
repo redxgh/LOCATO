@@ -22,14 +22,18 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { IonicModule } from '@ionic/angular';
 import { MylistAdsComponent } from './mylist-ads/mylist-ads.component';
 import { MyadCardComponent } from './myad-card/myad-card.component';
-import { NotFoundComponent } from './not-found/not-found.component'
+import { NotFoundComponent } from './not-found/not-found.component';
+import { EditAccomodationComponent } from './edit-ad/edit-accomodation/edit-accomodation.component';
+import { EditImageComponent } from './edit-ad/edit-image/edit-image.component';
+import { EditMapComponent } from './edit-ad/edit-map/edit-map.component';
+import { EditRoommateAdComponent } from './edit-ad/edit-roommate-ad/edit-roommate-ad.component'
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
         url: 'http://localhost:8080',
-        realm: 'locato',
+        realm: 'revision',
         clientId: 'angular-client'
       },
       initOptions: {
@@ -60,6 +64,10 @@ function initializeKeycloak(keycloak: KeycloakService) {
     MylistAdsComponent,
     MyadCardComponent,
     NotFoundComponent,
+    EditAccomodationComponent,
+    EditImageComponent,
+    EditMapComponent,
+    EditRoommateAdComponent,
 
   ],
   imports: [

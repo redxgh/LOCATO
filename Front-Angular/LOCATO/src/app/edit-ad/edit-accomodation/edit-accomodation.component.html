@@ -1,0 +1,58 @@
+<h1 class="title">Edit accommodation details</h1>
+<div class="container px-5 my-5">
+  <form [formGroup]="form" (submit)="mergeForms()" class="row g-3 needs-validation" id="contactForm"
+    data-sb-form-api-token="API_TOKEN">
+    <div class="row g-3">
+      <div class="col-md-3 position-relative">
+        <label class="form-label" for="surface">Surface</label>
+        <input formControlName="surface" class="form-control" id="surface" type="text" placeholder="Surface"
+          data-sb-validations="required" />
+        <div class="invalid-feedback" data-sb-feedback="surface:required">Surface is required.</div>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-3 position-relative">
+        <label class="form-label" for="rooms">Rooms</label>
+        <select formControlName="rooms" class="form-select" id="rooms" aria-label="Rooms">
+          <option *ngFor="let number of numbers" [value]="number">{{ number }}</option>
+        </select>
+      </div>
+      <div class="col-md-3 position-relative">
+        <label class="form-label" for="bathrooms">Bathrooms</label>
+        <select formControlName="bathrooms" class="form-select" id="bathrooms" aria-label="Bathrooms">
+          <option *ngFor="let number of numbers" [value]="number">{{ number }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-3 position-relative">
+        <label class="form-label" for="category">Category</label>
+        <select formControlName="categoryId" class="form-select" id="category" aria-label="Category">
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+      </div>
+      <div class="col-md-3 position-relative">
+        <label class="form-label" for="type">Type</label>
+        <select formControlName="type" class="form-select" id="type" aria-label="Type">
+          <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="d-none" id="submitSuccessMessage">
+      <div class="text-center mb-3">
+        <div class="fw-bolder">Form submission successful!</div>
+        <p>To activate this form, sign up at</p>
+      </div>
+    </div>
+    <div class="d-none" id="submitErrorMessage">
+      <div class="text-center text-danger mb-3">Error sending message!</div>
+    </div>
+    <div class="d-grid">
+      <div class="col-lg-10">
+        <button routerLink="/roommate-ad" class="btn"> Return</button>
+        <button type="submit" class="btn"> Next</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
