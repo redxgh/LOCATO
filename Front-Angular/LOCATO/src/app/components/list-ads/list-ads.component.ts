@@ -42,8 +42,7 @@ export class ListAdsComponent implements AfterViewInit {
     } else {
       this.filteredAdList = this.ads.filter(ad => {
         return (
-          ad?.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
-          this.containsImage(ad, this.searchText.toLowerCase())
+          ad?.title.toLowerCase().includes(this.searchText.toLowerCase()) 
         );
       });
     }
